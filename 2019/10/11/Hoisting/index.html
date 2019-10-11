@@ -55,19 +55,19 @@
   };
 </script>
 
-  <meta name="description" content="JavaScript 在執行時會分為兩個部分，一為創造環境，一為執行。 變數 創造階段先被挑出來，並在記憶體上給個空間 執行階段賦值12345678// 以下面程式碼為例var hp = &apos;Harry Potter&apos;;// 在 JavaScript 執行時會切成創造、執行兩部份// 創造var hp;// 執行hp = &apos;Harry Potter&apos;;    函式(陳述式) 創造階段函式陳述式：優先">
+  <meta name="description" content="JavaScript 在執行時會分為兩個部分，一為創造環境，一為執行。 變數 創造階段先被挑出來，並在記憶體上給個空間 執行階段賦值1234567// 以下面程式碼為例var hp = &apos;Harry Potter&apos;;// 創造var hp;// 執行hp = &apos;Harry Potter&apos;;    函式(陳述式) 創造階段函式陳述式：優先載入函式表達式：情形同變數 執行階段函式陳述式：在創造階段就已">
 <meta property="og:type" content="article">
 <meta property="og:title" content="Hoisting">
 <meta property="og:url" content="https://github.com/IvyLee-wu/ioioy77.github.io/blog/2019/10/11/Hoisting/index.html">
 <meta property="og:site_name" content="Hexo">
-<meta property="og:description" content="JavaScript 在執行時會分為兩個部分，一為創造環境，一為執行。 變數 創造階段先被挑出來，並在記憶體上給個空間 執行階段賦值12345678// 以下面程式碼為例var hp = &apos;Harry Potter&apos;;// 在 JavaScript 執行時會切成創造、執行兩部份// 創造var hp;// 執行hp = &apos;Harry Potter&apos;;    函式(陳述式) 創造階段函式陳述式：優先">
+<meta property="og:description" content="JavaScript 在執行時會分為兩個部分，一為創造環境，一為執行。 變數 創造階段先被挑出來，並在記憶體上給個空間 執行階段賦值1234567// 以下面程式碼為例var hp = &apos;Harry Potter&apos;;// 創造var hp;// 執行hp = &apos;Harry Potter&apos;;    函式(陳述式) 創造階段函式陳述式：優先載入函式表達式：情形同變數 執行階段函式陳述式：在創造階段就已">
 <meta property="og:locale" content="zh-tw">
-<meta property="og:image" content="https://imgur.com/19OVXqf">
-<meta property="og:updated_time" content="2019-10-11T07:57:47.822Z">
+<meta property="og:image" content="https://imgur.com/19OVXqf.png">
+<meta property="og:updated_time" content="2019-10-11T08:00:24.571Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Hoisting">
-<meta name="twitter:description" content="JavaScript 在執行時會分為兩個部分，一為創造環境，一為執行。 變數 創造階段先被挑出來，並在記憶體上給個空間 執行階段賦值12345678// 以下面程式碼為例var hp = &apos;Harry Potter&apos;;// 在 JavaScript 執行時會切成創造、執行兩部份// 創造var hp;// 執行hp = &apos;Harry Potter&apos;;    函式(陳述式) 創造階段函式陳述式：優先">
-<meta name="twitter:image" content="https://imgur.com/19OVXqf">
+<meta name="twitter:description" content="JavaScript 在執行時會分為兩個部分，一為創造環境，一為執行。 變數 創造階段先被挑出來，並在記憶體上給個空間 執行階段賦值1234567// 以下面程式碼為例var hp = &apos;Harry Potter&apos;;// 創造var hp;// 執行hp = &apos;Harry Potter&apos;;    函式(陳述式) 創造階段函式陳述式：優先載入函式表達式：情形同變數 執行階段函式陳述式：在創造階段就已">
+<meta name="twitter:image" content="https://imgur.com/19OVXqf.png">
   <link rel="canonical" href="https://github.com/IvyLee-wu/ioioy77.github.io/blog/2019/10/11/Hoisting/">
 
 
@@ -225,7 +225,7 @@
                 
               
 
-              <time title="Erstellt: 2019-10-11 14:34:17 / Geändert am: 15:57:47" itemprop="dateCreated datePublished" datetime="2019-10-11T14:34:17+08:00">2019-10-11</time>
+              <time title="Erstellt: 2019-10-11 14:34:17 / Geändert am: 16:00:24" itemprop="dateCreated datePublished" datetime="2019-10-11T14:34:17+08:00">2019-10-11</time>
             </span>
           
             
@@ -244,10 +244,10 @@
     <div class="post-body" itemprop="articleBody">
 
       
-        <p>JavaScript 在執行時會分為兩個部分，一為創造環境，一為執行。<br><img src="https://imgur.com/19OVXqf" alt="JavaScript 執行環境"></p>
+        <p>JavaScript 在執行時會分為兩個部分，一為創造環境，一為執行。<br><img src="https://imgur.com/19OVXqf.png" alt="JavaScript 執行環境"></p>
 <h3 id="變數"><a href="#變數" class="headerlink" title="變數"></a>變數</h3><ul>
 <li>創造階段<br>先被挑出來，並在記憶體上給個空間</li>
-<li>執行階段<br>賦值<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 以下面程式碼為例</span></span><br><span class="line"><span class="keyword">var</span> hp = <span class="string">'Harry Potter'</span>;</span><br><span class="line"></span><br><span class="line"><span class="comment">// 在 JavaScript 執行時會切成創造、執行兩部份</span></span><br><span class="line"><span class="comment">// 創造</span></span><br><span class="line"><span class="keyword">var</span> hp;</span><br><span class="line"><span class="comment">// 執行</span></span><br><span class="line">hp = <span class="string">'Harry Potter'</span>;</span><br></pre></td></tr></table></figure>
+<li>執行階段<br>賦值<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 以下面程式碼為例</span></span><br><span class="line"><span class="keyword">var</span> hp = <span class="string">'Harry Potter'</span>;</span><br><span class="line"></span><br><span class="line"><span class="comment">// 創造</span></span><br><span class="line"><span class="keyword">var</span> hp;</span><br><span class="line"><span class="comment">// 執行</span></span><br><span class="line">hp = <span class="string">'Harry Potter'</span>;</span><br></pre></td></tr></table></figure>
 
 </li>
 </ul>
