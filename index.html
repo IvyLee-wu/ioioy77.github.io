@@ -219,7 +219,7 @@
                 
               
 
-              <time title="Erstellt: 2019-10-11 14:34:17 / Geändert am: 16:48:18" itemprop="dateCreated datePublished" datetime="2019-10-11T14:34:17+08:00">2019-10-11</time>
+              <time title="Erstellt: 2019-10-11 14:34:17 / Geändert am: 16:51:42" itemprop="dateCreated datePublished" datetime="2019-10-11T14:34:17+08:00">2019-10-11</time>
             </span>
           
             
@@ -238,14 +238,14 @@
     <div class="post-body" itemprop="articleBody">
 
       
-          <p>JavaScript 在執行時會分為兩個部分，一為創造環境，一為執行。<br><img src="https://imgur.com/19OVXqf.png" style="align: left"></p>
+          <p>JavaScript 在執行時會分為兩個部分，一為創造環境，一為執行。<br><img src="https://imgur.com/19OVXqf.png" style="display: inline-block"></p>
 <h4 id="變數"><a href="#變數" class="headerlink" title="變數"></a>變數</h4><ul>
 <li>創造階段<br>先被挑出來，並在記憶體上給個空間</li>
 <li>執行階段<br>賦值</li>
 </ul>
 <figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 以下面程式碼為例</span></span><br><span class="line"><span class="keyword">var</span> hp = <span class="string">'Harry Potter'</span>;</span><br><span class="line"></span><br><span class="line"><span class="comment">// 創造</span></span><br><span class="line"><span class="keyword">var</span> hp;</span><br><span class="line"><span class="comment">// 執行</span></span><br><span class="line">hp = <span class="string">'Harry Potter'</span>;</span><br></pre></td></tr></table></figure>
 
-<h4 id="函式-陳述式"><a href="#函式-陳述式" class="headerlink" title="函式(陳述式)"></a>函式(陳述式)</h4><ul>
+<h4 id="函式"><a href="#函式" class="headerlink" title="函式"></a>函式</h4><ul>
 <li>創造階段<br>函式陳述式：優先載入<br>函式表達式：情形同變數</li>
 <li>執行階段<br>函式陳述式：在創造階段就已能運行<br>函式表達式：賦值</li>
 </ul>
@@ -253,6 +253,7 @@
 
 <figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 以下面程式碼為例(函式表達式)</span></span><br><span class="line">hp1();</span><br><span class="line"><span class="keyword">var</span> hp1 = <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">    <span class="built_in">console</span>.log(<span class="string">"Harry Potter and the Philosopher's Stone"</span>);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">// 創造</span></span><br><span class="line"><span class="keyword">var</span> hp1;</span><br><span class="line"><span class="comment">// 執行</span></span><br><span class="line">hp1 = <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">    <span class="built_in">console</span>.log(<span class="string">"Harry Potter and the Philosopher's Stone"</span>);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">// error，顯示 hp1 is not a function</span></span><br></pre></td></tr></table></figure>
 
+<hr>
 <p>範例 1</p>
 <figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">hp</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">    <span class="built_in">console</span>.log(<span class="string">'Harry Potter lose the battle.'</span>);</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">var</span> hp = <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">    <span class="built_in">console</span>.log(<span class="string">'Harry Potter win the battle.'</span>);</span><br><span class="line">&#125;</span><br><span class="line">hp();</span><br><span class="line"></span><br><span class="line"><span class="comment">// Harry Potter win the battle.</span></span><br></pre></td></tr></table></figure>
 
