@@ -47,27 +47,27 @@
     path: '',
     motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
     translation: {
-      copy_button: 'Copy',
-      copy_success: 'Copied',
-      copy_failure: 'Copy failed'
+      copy_button: 'Kopieren',
+      copy_success: 'Kopiert',
+      copy_failure: 'Kopieren fehlgeschlagen'
     },
     sidebarPadding: 40
   };
 </script>
 
-  <meta name="description" content="JavaScript 在執行時會分為兩個部分，一為創造環境，一為執行。 變數 創造階段先被挑出來，並在記憶體上給個空間 執行階段賦值  1234567// 以下面程式碼為例var hp = &apos;Harry Potter&apos;;// 創造var hp;// 執行hp = &apos;Harry Potter&apos;;  函式 創造階段函式陳述式：優先載入函式表達式：情形同變數 執行階段函式陳述式：在創造階段就已能運行函式">
+  <meta name="description" content="JavaScript 在執行時會分為兩個部分，一為創造環境，一為執行。">
 <meta name="keywords" content="JavaScript">
 <meta property="og:type" content="article">
 <meta property="og:title" content="Hoisting">
 <meta property="og:url" content="https://github.com/IvyLee-wu/ioioy77.github.io/blog/2019/10/11/Hoisting/index.html">
 <meta property="og:site_name" content="Hexo">
-<meta property="og:description" content="JavaScript 在執行時會分為兩個部分，一為創造環境，一為執行。 變數 創造階段先被挑出來，並在記憶體上給個空間 執行階段賦值  1234567// 以下面程式碼為例var hp = &apos;Harry Potter&apos;;// 創造var hp;// 執行hp = &apos;Harry Potter&apos;;  函式 創造階段函式陳述式：優先載入函式表達式：情形同變數 執行階段函式陳述式：在創造階段就已能運行函式">
+<meta property="og:description" content="JavaScript 在執行時會分為兩個部分，一為創造環境，一為執行。">
 <meta property="og:locale" content="zh-tw">
 <meta property="og:image" content="https://imgur.com/19OVXqf.png">
-<meta property="og:updated_time" content="2019-10-11T08:56:27.084Z">
+<meta property="og:updated_time" content="2019-10-11T09:14:09.445Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Hoisting">
-<meta name="twitter:description" content="JavaScript 在執行時會分為兩個部分，一為創造環境，一為執行。 變數 創造階段先被挑出來，並在記憶體上給個空間 執行階段賦值  1234567// 以下面程式碼為例var hp = &apos;Harry Potter&apos;;// 創造var hp;// 執行hp = &apos;Harry Potter&apos;;  函式 創造階段函式陳述式：優先載入函式表達式：情形同變數 執行階段函式陳述式：在創造階段就已能運行函式">
+<meta name="twitter:description" content="JavaScript 在執行時會分為兩個部分，一為創造環境，一為執行。">
 <meta name="twitter:image" content="https://imgur.com/19OVXqf.png">
   <link rel="canonical" href="https://github.com/IvyLee-wu/ioioy77.github.io/blog/2019/10/11/Hoisting/">
 
@@ -137,7 +137,7 @@
   </div>
 
   <div class="site-nav-toggle">
-    <button aria-label="Toggle navigation bar">
+    <button aria-label="Navigationsleiste an/ausschalten">
       <span class="btn-bar"></span>
       <span class="btn-bar"></span>
       <span class="btn-bar"></span>
@@ -157,7 +157,7 @@
       
     
 
-    <a href="/ioioy77.github.io/" rel="section"><i class="menu-item-icon fa fa-fw fa-home"></i> <br>Home</a>
+    <a href="/ioioy77.github.io/" rel="section"><i class="menu-item-icon fa fa-fw fa-home"></i> <br>Startseite</a>
 
   </li>
       
@@ -168,7 +168,7 @@
       
     
 
-    <a href="/ioioy77.github.io/archives/" rel="section"><i class="menu-item-icon fa fa-fw fa-archive"></i> <br>Archives</a>
+    <a href="/ioioy77.github.io/archives/" rel="section"><i class="menu-item-icon fa fa-fw fa-archive"></i> <br>Archiv</a>
 
   </li>
   </ul>
@@ -220,13 +220,13 @@
               <span class="post-meta-item-icon">
                 <i class="fa fa-calendar-o"></i>
               </span>
-              <span class="post-meta-item-text">Posted on</span>
+              <span class="post-meta-item-text">Veröffentlicht am</span>
 
               
                 
               
 
-              <time title="Created: 2019-10-11 14:34:17 / Modified: 16:56:27" itemprop="dateCreated datePublished" datetime="2019-10-11T14:34:17+08:00">2019-10-11</time>
+              <time title="Erstellt: 2019-10-11 14:34:17 / Geändert am: 17:14:09" itemprop="dateCreated datePublished" datetime="2019-10-11T14:34:17+08:00">2019-10-11</time>
             </span>
           
             
@@ -237,7 +237,7 @@
               <span class="post-meta-item-icon">
                 <i class="fa fa-folder-o"></i>
               </span>
-              <span class="post-meta-item-text">In</span>
+              <span class="post-meta-item-text">in</span>
               
                 <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/ioioy77.github.io/categories/前端學習筆記/" itemprop="url" rel="index"><span itemprop="name">前端學習筆記</span></a></span>
 
@@ -259,6 +259,8 @@
 
       
         <p>JavaScript 在執行時會分為兩個部分，一為創造環境，一為執行。<br><img src="https://imgur.com/19OVXqf.png" style="display: inline-block"></p>
+<a id="more"></a>
+
 <h4 id="變數"><a href="#變數" class="headerlink" title="變數"></a>變數</h4><ul>
 <li>創造階段<br>先被挑出來，並在記憶體上給個空間</li>
 <li>執行階段<br>賦值</li>
@@ -361,10 +363,10 @@
 
       <ul class="sidebar-nav motion-element">
         <li class="sidebar-nav-toc">
-          Table of Contents
+          Inhaltsverzeichnis
         </li>
         <li class="sidebar-nav-overview">
-          Overview
+          Übersicht
         </li>
       </ul>
 
@@ -386,7 +388,7 @@
           <a href="/ioioy77.github.io/archives/">
         
           <span class="site-state-item-count">3</span>
-          <span class="site-state-item-name">posts</span>
+          <span class="site-state-item-name">Artikel</span>
         </a>
       </div>
     
@@ -395,7 +397,7 @@
       <div class="site-state-item site-state-categories">
         
         <span class="site-state-item-count">1</span>
-        <span class="site-state-item-name">categories</span>
+        <span class="site-state-item-name">Kategorien</span>
         
       </div>
     
@@ -404,7 +406,7 @@
       <div class="site-state-item site-state-tags">
         
         <span class="site-state-item-count">1</span>
-        <span class="site-state-item-name">tags</span>
+        <span class="site-state-item-name">schlagwörter</span>
         
       </div>
     
@@ -430,9 +432,9 @@
   </span>
   <span class="author" itemprop="copyrightHolder">Ivy</span>
 </div>
-  <div class="powered-by">Powered by <a href="https://hexo.io" class="theme-link" rel="noopener" target="_blank">Hexo</a> v3.9.0</div>
+  <div class="powered-by">Erstellt mit  <a href="https://hexo.io" class="theme-link" rel="noopener" target="_blank">Hexo</a> v3.9.0</div>
   <span class="post-meta-divider">|</span>
-  <div class="theme-info">Theme – <a href="https://theme-next.org" class="theme-link" rel="noopener" target="_blank">NexT.Muse</a> v7.4.0</div>
+  <div class="theme-info">Design – <a href="https://theme-next.org" class="theme-link" rel="noopener" target="_blank">NexT.Muse</a> v7.4.0</div>
 
         
 

@@ -47,9 +47,9 @@
     path: '',
     motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
     translation: {
-      copy_button: 'Copy',
-      copy_success: 'Copied',
-      copy_failure: 'Copy failed'
+      copy_button: 'Kopieren',
+      copy_success: 'Kopiert',
+      copy_failure: 'Kopieren fehlgeschlagen'
     },
     sidebarPadding: 40
   };
@@ -130,7 +130,7 @@
   </div>
 
   <div class="site-nav-toggle">
-    <button aria-label="Toggle navigation bar">
+    <button aria-label="Navigationsleiste an/ausschalten">
       <span class="btn-bar"></span>
       <span class="btn-bar"></span>
       <span class="btn-bar"></span>
@@ -150,7 +150,7 @@
       
     
 
-    <a href="/ioioy77.github.io/" rel="section"><i class="menu-item-icon fa fa-fw fa-home"></i> <br>Home</a>
+    <a href="/ioioy77.github.io/" rel="section"><i class="menu-item-icon fa fa-fw fa-home"></i> <br>Startseite</a>
 
   </li>
       
@@ -161,7 +161,7 @@
       
     
 
-    <a href="/ioioy77.github.io/archives/" rel="section"><i class="menu-item-icon fa fa-fw fa-archive"></i> <br>Archives</a>
+    <a href="/ioioy77.github.io/archives/" rel="section"><i class="menu-item-icon fa fa-fw fa-archive"></i> <br>Archiv</a>
 
   </li>
   </ul>
@@ -213,13 +213,13 @@
               <span class="post-meta-item-icon">
                 <i class="fa fa-calendar-o"></i>
               </span>
-              <span class="post-meta-item-text">Posted on</span>
+              <span class="post-meta-item-text">Veröffentlicht am</span>
 
               
                 
               
 
-              <time title="Created: 2019-10-11 14:34:17 / Modified: 16:56:27" itemprop="dateCreated datePublished" datetime="2019-10-11T14:34:17+08:00">2019-10-11</time>
+              <time title="Erstellt: 2019-10-11 14:34:17 / Geändert am: 17:14:09" itemprop="dateCreated datePublished" datetime="2019-10-11T14:34:17+08:00">2019-10-11</time>
             </span>
           
             
@@ -230,7 +230,7 @@
               <span class="post-meta-item-icon">
                 <i class="fa fa-folder-o"></i>
               </span>
-              <span class="post-meta-item-text">In</span>
+              <span class="post-meta-item-text">in</span>
               
                 <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/ioioy77.github.io/categories/前端學習筆記/" itemprop="url" rel="index"><span itemprop="name">前端學習筆記</span></a></span>
 
@@ -252,36 +252,15 @@
 
       
           <p>JavaScript 在執行時會分為兩個部分，一為創造環境，一為執行。<br><img src="https://imgur.com/19OVXqf.png" style="display: inline-block"></p>
-<h4 id="變數"><a href="#變數" class="headerlink" title="變數"></a>變數</h4><ul>
-<li>創造階段<br>先被挑出來，並在記憶體上給個空間</li>
-<li>執行階段<br>賦值</li>
-</ul>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 以下面程式碼為例</span></span><br><span class="line"><span class="keyword">var</span> hp = <span class="string">'Harry Potter'</span>;</span><br><span class="line"></span><br><span class="line"><span class="comment">// 創造</span></span><br><span class="line"><span class="keyword">var</span> hp;</span><br><span class="line"><span class="comment">// 執行</span></span><br><span class="line">hp = <span class="string">'Harry Potter'</span>;</span><br></pre></td></tr></table></figure>
-
-<h4 id="函式"><a href="#函式" class="headerlink" title="函式"></a>函式</h4><ul>
-<li>創造階段<br>函式陳述式：優先載入<br>函式表達式：情形同變數</li>
-<li>執行階段<br>函式陳述式：在創造階段就已能運行<br>函式表達式：賦值</li>
-</ul>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 以下面程式碼為例(函式陳述式)</span></span><br><span class="line">hp1();</span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">hp1</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">    <span class="built_in">console</span>.log(<span class="string">"Harry Potter and the Philosopher's Stone"</span>);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">// 創造</span></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">hp1</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">    <span class="built_in">console</span>.log(<span class="string">"Harry Potter and the Philosopher's Stone"</span>);</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">// 執行</span></span><br><span class="line">hp1();</span><br><span class="line"></span><br><span class="line"><span class="comment">// Harry Potter and the Philosopher's Stone</span></span><br></pre></td></tr></table></figure>
-
-<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 以下面程式碼為例(函式表達式)</span></span><br><span class="line">hp1();</span><br><span class="line"><span class="keyword">var</span> hp1 = <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">    <span class="built_in">console</span>.log(<span class="string">"Harry Potter and the Philosopher's Stone"</span>);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">// 創造</span></span><br><span class="line"><span class="keyword">var</span> hp1;</span><br><span class="line"><span class="comment">// 執行</span></span><br><span class="line">hp1 = <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">    <span class="built_in">console</span>.log(<span class="string">"Harry Potter and the Philosopher's Stone"</span>);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">// error，顯示 hp1 is not a function</span></span><br></pre></td></tr></table></figure>
-
-<hr>
-<p>範例 1</p>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">hp</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">    <span class="built_in">console</span>.log(<span class="string">'Harry Potter lose the battle.'</span>);</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">var</span> hp = <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">    <span class="built_in">console</span>.log(<span class="string">'Harry Potter win the battle.'</span>);</span><br><span class="line">&#125;</span><br><span class="line">hp();</span><br><span class="line"></span><br><span class="line"><span class="comment">// Harry Potter win the battle.</span></span><br></pre></td></tr></table></figure>
-
-<p>在以上範例中，不論是陳述式放前還是表達式放前，<code>hp()</code>的結果都是<code>Harry Potter win the battle.</code>。<br>以提升的拆解來看，</p>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 創造</span></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">hp</span>(<span class="params"></span>) </span>&#123;&#125;</span><br><span class="line">    <span class="built_in">console</span>.log(<span class="string">'Harry Potter lose the battle.'</span>);</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">var</span> hp;</span><br><span class="line"></span><br><span class="line"><span class="comment">// 執行</span></span><br><span class="line">hp = <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">    <span class="built_in">console</span>.log(<span class="string">'Harry Potter win the battle.'</span>);</span><br><span class="line">&#125;</span><br><span class="line">hp();</span><br></pre></td></tr></table></figure>
-
-<p>在執行階段<code>hp()</code>被賦予了一個新值，覆蓋掉了前面的值，所以此題的答案永遠都是<code>Harry Potter win the battle.</code>。</p>
-<p>範例 2</p>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">theBoyWhoLived</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">    <span class="built_in">console</span>.log(<span class="string">'Neville Longbottom'</span>);</span><br><span class="line">&#125;</span><br><span class="line">theBoyWhoLived();</span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">theBoyWhoLived</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">    <span class="built_in">console</span>.log(<span class="string">'Harry Potter'</span>);</span><br><span class="line">&#125;</span><br><span class="line">theBoyWhoLived();</span><br><span class="line"></span><br><span class="line"><span class="comment">// Harry Potter</span></span><br><span class="line"><span class="comment">// Harry Potter</span></span><br></pre></td></tr></table></figure>
-
-<p>以上的範例中，兩次執行<code>theBoyWhoLived();</code>得出的結果都是<code>Harry Potter</code>。<br>以提升的拆解來看，</p>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 創造</span></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">theBoyWhoLived</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">    <span class="built_in">console</span>.log(<span class="string">'Neville Longbottom'</span>);</span><br><span class="line">&#125;</span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">theBoyWhoLived</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">    <span class="built_in">console</span>.log(<span class="string">'Harry Potter'</span>);</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">// 執行</span></span><br><span class="line">theBoyWhoLived();</span><br><span class="line">theBoyWhoLived();</span><br></pre></td></tr></table></figure>
-
-<p>這樣，為什麼兩次執行結果都是<code>Harry Potter</code>是不是就很清楚了呢~</p>
-
+          <!--noindex-->
+          
+            <div class="post-button text-center">
+              <a class="btn" href="/ioioy77.github.io/2019/10/11/Hoisting/#more" rel="contents">
+                Weiterlesen &raquo;
+              </a>
+            </div>
+          
+          <!--/noindex-->
         
       
     </div>
@@ -328,13 +307,13 @@
               <span class="post-meta-item-icon">
                 <i class="fa fa-calendar-o"></i>
               </span>
-              <span class="post-meta-item-text">Posted on</span>
+              <span class="post-meta-item-text">Veröffentlicht am</span>
 
               
                 
               
 
-              <time title="Created: 2019-09-02 22:50:09" itemprop="dateCreated datePublished" datetime="2019-09-02T22:50:09+08:00">2019-09-02</time>
+              <time title="Erstellt: 2019-09-02 22:50:09" itemprop="dateCreated datePublished" datetime="2019-09-02T22:50:09+08:00">2019-09-02</time>
             </span>
           
             
@@ -344,8 +323,8 @@
                 <span class="post-meta-item-icon">
                   <i class="fa fa-calendar-check-o"></i>
                 </span>
-                <span class="post-meta-item-text">Edited on</span>
-                <time title="Modified: 2019-10-11 14:49:22" itemprop="dateModified" datetime="2019-10-11T14:49:22+08:00">2019-10-11</time>
+                <span class="post-meta-item-text">Bearbeitet am</span>
+                <time title="Geändert am: 2019-10-11 14:49:22" itemprop="dateModified" datetime="2019-10-11T14:49:22+08:00">2019-10-11</time>
               </span>
             
           
@@ -408,13 +387,13 @@
               <span class="post-meta-item-icon">
                 <i class="fa fa-calendar-o"></i>
               </span>
-              <span class="post-meta-item-text">Posted on</span>
+              <span class="post-meta-item-text">Veröffentlicht am</span>
 
               
                 
               
 
-              <time title="Created: 2019-09-02 22:48:32" itemprop="dateCreated datePublished" datetime="2019-09-02T22:48:32+08:00">2019-09-02</time>
+              <time title="Erstellt: 2019-09-02 22:48:32" itemprop="dateCreated datePublished" datetime="2019-09-02T22:48:32+08:00">2019-09-02</time>
             </span>
           
 
@@ -485,10 +464,10 @@
 
       <ul class="sidebar-nav motion-element">
         <li class="sidebar-nav-toc">
-          Table of Contents
+          Inhaltsverzeichnis
         </li>
         <li class="sidebar-nav-overview">
-          Overview
+          Übersicht
         </li>
       </ul>
 
@@ -508,7 +487,7 @@
           <a href="/ioioy77.github.io/archives/">
         
           <span class="site-state-item-count">3</span>
-          <span class="site-state-item-name">posts</span>
+          <span class="site-state-item-name">Artikel</span>
         </a>
       </div>
     
@@ -517,7 +496,7 @@
       <div class="site-state-item site-state-categories">
         
         <span class="site-state-item-count">1</span>
-        <span class="site-state-item-name">categories</span>
+        <span class="site-state-item-name">Kategorien</span>
         
       </div>
     
@@ -526,7 +505,7 @@
       <div class="site-state-item site-state-tags">
         
         <span class="site-state-item-count">1</span>
-        <span class="site-state-item-name">tags</span>
+        <span class="site-state-item-name">schlagwörter</span>
         
       </div>
     
@@ -552,9 +531,9 @@
   </span>
   <span class="author" itemprop="copyrightHolder">Ivy</span>
 </div>
-  <div class="powered-by">Powered by <a href="https://hexo.io" class="theme-link" rel="noopener" target="_blank">Hexo</a> v3.9.0</div>
+  <div class="powered-by">Erstellt mit  <a href="https://hexo.io" class="theme-link" rel="noopener" target="_blank">Hexo</a> v3.9.0</div>
   <span class="post-meta-divider">|</span>
-  <div class="theme-info">Theme – <a href="https://theme-next.org" class="theme-link" rel="noopener" target="_blank">NexT.Muse</a> v7.4.0</div>
+  <div class="theme-info">Design – <a href="https://theme-next.org" class="theme-link" rel="noopener" target="_blank">NexT.Muse</a> v7.4.0</div>
 
         
 
