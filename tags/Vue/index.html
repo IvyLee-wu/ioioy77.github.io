@@ -7,12 +7,12 @@
 
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
 
-<title>目錄: 2019 - Qing</title>
+<title>標籤: Vue - Qing</title>
 
 
     <meta property="og:type" content="website">
 <meta property="og:title" content="Hexo">
-<meta property="og:url" content="https://github.com/IvyLee-wu/ioioy77.github.io/blog/archives/2019/index.html">
+<meta property="og:url" content="https://github.com/IvyLee-wu/ioioy77.github.io/blog/tags/Vue/index.html">
 <meta property="og:site_name" content="Hexo">
 <meta property="og:locale" content="zh-TW">
 <meta property="og:image" content="https://github.com/ioioy77.github.io/images/og_image.png">
@@ -117,37 +117,111 @@
     <section class="section">
         <div class="container">
             <div class="columns">
-                <div class="column is-8-tablet is-8-desktop is-6-widescreen has-order-2 column-main">
-
-<div class="card widget">
+                <div class="column is-8-tablet is-8-desktop is-6-widescreen has-order-2 column-main"><div class="card">
     <div class="card-content">
-        <h3 class="tag is-link">
-        2019
-        </h3>
-        <div class="timeline">
-        
-            <article class="media">
-                
-                <div class="media-content">
-                    <div class="content">
-                        <time class="has-text-grey is-size-7 is-block is-uppercase" datetime="2019-10-11T06:34:17.000Z">2019-10-11</time>
-                        <a href="/ioioy77.github.io/2019/10/11/Hoisting/" class="title has-link-black-ter is-size-6 has-text-weight-normal">Hoisting</a>
-                        <div class="level article-meta is-mobile">
-                            <div class="level-left">
-                                
-                                <div class="level-item is-size-7 is-uppercase">
-                                <a class="has-link-grey -link" href="/ioioy77.github.io/categories/前端學習筆記/">前端學習筆記</a>
-                                </div>
-                                
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </article>
-        
-        </div>
+        <nav class="breadcrumb" aria-label="breadcrumbs">
+        <ul>
+            <li><a href="/ioioy77.github.io/tags">標籤</a></li>
+            <li class="is-active"><a href="#" aria-current="page">Vue</a></li>
+        </ul>
+        </nav>
     </div>
 </div>
+
+    
+<div class="card">
+    
+    <div class="card-content article ">
+        
+        <div class="level article-meta is-size-7 is-uppercase is-mobile is-overflow-x-auto">
+            <div class="level-left">
+                <time class="level-item has-text-grey" datetime="2020-02-08T08:26:36.694Z">2020-02-08</time>
+                
+                <div class="level-item">
+                <a class="has-link-grey -link" href="/ioioy77.github.io/categories/前端學習筆記/">前端學習筆記</a>
+                </div>
+                
+                
+                <!-- <span class="level-item has-text-grey">
+                    
+                    
+                    7 分鐘 閱讀文 (大約 1002 個字)
+                </span> -->
+                
+                
+            </div>
+        </div>
+        
+        <h1 class="title is-size-3 is-size-4-mobile has-text-weight-normal">
+            
+                <a class="has-link-black-ter" href="/ioioy77.github.io/2020/02/08/Vue Instance/">Vue Instance</a>
+            
+        </h1>
+        <div class="content">
+            <h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><p>Vue 音似 View，用意為表示 Vue.js 專注於 View。和其他實作 MVC 的 JavaScript 框架 ( Angular.js、Ember.js ) 相比，Vue.js 屬於 MVVM 設計模式的實作。</p>
+<p>MVVM 由 Model–View–ViewModel 組成，使用者看到的是 View，Model 則是資料，View 會和 ViewModel 做資料綁定，然後由 ViewModel 去存取資料，也就是說 View 不會直接存取 Model (資料)，而是由 ViewModel 來做，它是一個同步 View 和 Model 的物件，Vue.js 主要就是在做 ViewModel 的工作。它讓 View 來和它綁定，然後當 Model 發生變化時，自動反應到 View 上。</p>
+<p>原生的 JavaScript 或是 jQurey，必須先取得元素才能插入資料，Vue.js 則將 HTML 當成模板，藉由 el 屬性來確認它的執行範圍，然後將資料傳給模板，處理後呈現最後看到的 View。所有 View 的設計，全都在 HTML 中做好，並指定要放資料的區域，Vue.js 便會自動把資料放入其中。</p>
+<h2 id="創建實體"><a href="#創建實體" class="headerlink" title="創建實體"></a>創建實體</h2><p>每個 Vue 的應用皆始於使用 Vue function 建構一個新的 Vue 實體。</p>
+<figure class="highlight javascript hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="hljs-keyword">var</span> vm = <span class="hljs-keyword">new</span> Vue(&#123;</span><br><span class="line">    <span class="hljs-comment">// options</span></span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure>
+
+<p>由於受到 MVVM 影響，是以習慣使用變數 vm (ViewModel 的縮寫) 來表示 Vue 實體。 </p>
+<h3 id="基礎型態"><a href="#基礎型態" class="headerlink" title="基礎型態"></a>基礎型態</h3><p>實體內 el 參數為 DOM id (指定 id 外不受此實體影響)，data 用於定義屬性：author、series、character，methods 定義函式，可通過 return 返回值，鬍子語法輸出屬性值或函式返回值。</p>
+<figure class="highlight javascript hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line">&lt;div id=<span class="hljs-string">""</span>&gt;</span><br><span class="line">  &#123;&#123; 屬性名稱 &#125;&#125;</span><br><span class="line">&lt;<span class="hljs-regexp">/div&gt;</span></span><br><span class="line"><span class="hljs-regexp"></span></span><br><span class="line"><span class="hljs-regexp">new Vue(</span></span><br><span class="line"><span class="hljs-regexp">  /</span><span class="hljs-regexp">/ 傳入物件</span></span><br><span class="line"><span class="hljs-regexp">  &#123;</span></span><br><span class="line"><span class="hljs-regexp">    el: 'DOM id', </span></span><br><span class="line"><span class="hljs-regexp">    /</span><span class="hljs-regexp">/ data 的值為物件格式或函式，通常會直接用物件，但在計算屬性只能使用函式</span></span><br><span class="line"><span class="hljs-regexp">    data: &#123; </span></span><br><span class="line"><span class="hljs-regexp">      /</span><span class="hljs-regexp">/ 屬性名稱自訂，用來和 HTML 模板中的 &#123;&#123; 屬性名稱 &#125;&#125; 相對應。</span></span><br><span class="line"><span class="hljs-regexp">      屬性名稱: '屬性值' </span></span><br><span class="line"><span class="hljs-regexp">    &#125;,</span></span><br><span class="line"><span class="hljs-regexp">    method: &#123;</span></span><br><span class="line"><span class="hljs-regexp">      /</span><span class="hljs-regexp">/ 設定 function</span></span><br><span class="line"><span class="hljs-regexp">    &#125;</span></span><br><span class="line"><span class="hljs-regexp">  &#125;</span></span><br><span class="line"><span class="hljs-regexp">)</span></span><br></pre></td></tr></table></figure>
+
+<h3 id="實體範例"><a href="#實體範例" class="headerlink" title="實體範例"></a>實體範例</h3><figure class="highlight javascript hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br></pre></td><td class="code"><pre><span class="line">&lt;!DOCTYPE html&gt;</span><br><span class="line">&lt;html&gt;</span><br><span class="line">&lt;head&gt;</span><br><span class="line">	&lt;meta charset=<span class="hljs-string">"utf-8"</span>&gt;</span><br><span class="line">	&lt;title&gt;Vue Instance&lt;<span class="hljs-regexp">/title&gt;</span></span><br><span class="line"><span class="hljs-regexp">	&lt;script src="https:/</span><span class="hljs-regexp">/cdn.staticfile.org/</span>vue/<span class="hljs-number">2.4</span><span class="hljs-number">.2</span>/vue.min.js<span class="hljs-string">"&gt;&lt;/script&gt;</span></span><br><span class="line"><span class="hljs-string">&lt;/head&gt;</span></span><br><span class="line"><span class="hljs-string">&lt;body&gt;</span></span><br><span class="line"><span class="hljs-string">  &lt;div id="</span>vue_instance<span class="hljs-string">"&gt;</span></span><br><span class="line"><span class="hljs-string">	&lt;h1&gt;author : &#123;&#123; author &#125;&#125;&lt;/h1&gt;</span></span><br><span class="line"><span class="hljs-string">	&lt;h1&gt;series : &#123;&#123; series &#125;&#125;&lt;/h1&gt;</span></span><br><span class="line"><span class="hljs-string">	&lt;h1&gt;&#123;&#123; details() &#125;&#125;&lt;/h1&gt;</span></span><br><span class="line"><span class="hljs-string">  &lt;/div&gt;</span></span><br><span class="line"><span class="hljs-string">  &lt;script type="</span>text/javascript<span class="hljs-string">"&gt;</span></span><br><span class="line"><span class="hljs-string">	var vm = new Vue(&#123;</span></span><br><span class="line"><span class="hljs-string">	  el: '#vue_instance',</span></span><br><span class="line"><span class="hljs-string">	  data: &#123;</span></span><br><span class="line"><span class="hljs-string">		author: "</span>Andrzej Sapkowski<span class="hljs-string">",</span></span><br><span class="line"><span class="hljs-string">		series: "</span>The Witcher<span class="hljs-string">",</span></span><br><span class="line"><span class="hljs-string">		character: [</span></span><br><span class="line"><span class="hljs-string">			'Geralt of Rivia',</span></span><br><span class="line"><span class="hljs-string">			'Cirilla Fiona Elen Riannon, the Lion Cub of Cintra'</span></span><br><span class="line"><span class="hljs-string">		]</span></span><br><span class="line"><span class="hljs-string">	  &#125;,</span></span><br><span class="line"><span class="hljs-string">	  methods: &#123;</span></span><br><span class="line"><span class="hljs-string">		details: function() &#123;</span></span><br><span class="line"><span class="hljs-string">		  return this.author + ' writes a series about ' + this.character[0] + ' and ' + this.character[1] + '.';</span></span><br><span class="line"><span class="hljs-string">	    &#125;</span></span><br><span class="line"><span class="hljs-string">	  &#125;</span></span><br><span class="line"><span class="hljs-string">	&#125;)</span></span><br><span class="line"><span class="hljs-string">  &lt;/script&gt;</span></span><br><span class="line"><span class="hljs-string">&lt;/body&gt;</span></span><br></pre></td></tr></table></figure>
+
+<h3 id="運行結果"><a href="#運行結果" class="headerlink" title="運行結果"></a>運行結果</h3><figure class="highlight plain hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">author : Andrzej Sapkowski</span><br><span class="line">series : The Witcher</span><br><span class="line">Andrzej Sapkowski writes a series about Geralt of Rivia and Cirilla Fiona Elen Riannon, the Lion Cub of Cintra.</span><br></pre></td></tr></table></figure>
+
+<h3 id="響應式狀態"><a href="#響應式狀態" class="headerlink" title="響應式狀態"></a>響應式狀態</h3><p>當一個 Vue 實體被創建時，它將 data 對象中的所有的屬性加入到 Vue 的響應式系統中。若屬性的值發生改變，頁面將會更新為新的值。</p>
+<figure class="highlight javascript hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="hljs-keyword">var</span> obj = &#123; <span class="hljs-attr">a</span>: <span class="hljs-number">1</span> &#125;</span><br><span class="line"><span class="hljs-keyword">var</span> vm = <span class="hljs-keyword">new</span> Vue(&#123;</span><br><span class="line">  data: obj</span><br><span class="line">&#125;)</span><br><span class="line"><span class="hljs-comment">// 指針相同</span></span><br><span class="line">vm.a === obj.a <span class="hljs-comment">// true</span></span><br><span class="line"><span class="hljs-comment">// 修改設置屬性會影響原始數據</span></span><br><span class="line">vm.a = <span class="hljs-number">2</span></span><br><span class="line">obj.a <span class="hljs-comment">// 2</span></span><br><span class="line"><span class="hljs-comment">// 無論更動哪方原始數據都會被修改</span></span><br><span class="line">obj.a = <span class="hljs-number">3</span></span><br><span class="line">vm.a <span class="hljs-comment">// 3</span></span><br></pre></td></tr></table></figure>
+
+<p>僅有實體被創建時就已經存在於 data 中的屬性才是響應式的。若是之後才新增的屬性，比如：</p>
+<figure class="highlight plain hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">vm.b = &apos;I am new！&apos;</span><br></pre></td></tr></table></figure>
+
+<p>則對 b 的改動不會觸發頁面更新。所以一個 Vue 實體在未來所會使用到的所有屬性在最開始時就須全部設定完畢(初始設定為空或不存在：””、0、false、[]、null)。</p>
+<p><small>※ 使用 Object.freeze() 能阻止修改現有屬性，並導致響應系統無法再追蹤變化。</small></p>
+<h2 id="Vue-所提供的屬性及方法"><a href="#Vue-所提供的屬性及方法" class="headerlink" title="Vue 所提供的屬性及方法"></a>Vue 所提供的屬性及方法</h2><p>Vue 實體提供了一些能夠被存取的屬性與方法，並以前綴 $ 與用戶自定義的屬性區分。</p>
+<h3 id="範例"><a href="#範例" class="headerlink" title="範例"></a>範例</h3><p>```javascript</p>
+<div id="vm">
+  
+</div>
+
+<script>
+var vm = new Vue({
+  el: '#vm',
+  data: {
+    a: 'Hello World！'
+  }
+})
+
+// 取得的 el 屬性和用 JavaScript 方法取得的元素相同
+vm.$el === document.querySelector('#vm') // true
+
+// 取得資料物件的屬性
+console.log(vm.a) // Hello World！
+
+// 呼叫 watch 方法，當 a 的值改變時觸發
+vm.$watch('a', function(newVal, oldVal){
+  console.log('a 現在是 ' + newVal + ', 之前是' + oldVal)
+  // a 現在是 change！, 之前是 Hello World！
+})
+// 模擬 2 秒後改變 a 的值，並觸發 vm.$watch() 方法
+setTimeout(function(){
+  vm.a = 'change！'
+}, 2000)
+</script>
+        </div>
+        
+        
+        
+    </div>
+</div>
+
+<!-- 
+ -->
+
+
+
 
 
 </div>
