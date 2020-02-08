@@ -19,7 +19,7 @@
 <meta property="og:description" content="前言Vue 音似 View，用意為表示 Vue.js 專注於 View。和其他實作 MVC 的 JavaScript 框架 ( Angular.js、Ember.js ) 相比，Vue.js 屬於 MVVM 設計模式的實作。">
 <meta property="og:locale" content="zh-TW">
 <meta property="og:image" content="https://github.com/ioioy77.github.io/images/og_image.png">
-<meta property="og:updated_time" content="2020-02-08T08:57:12.439Z">
+<meta property="og:updated_time" content="2020-02-08T09:00:18.781Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Vue Instance">
 <meta name="twitter:description" content="前言Vue 音似 View，用意為表示 Vue.js 專注於 View。和其他實作 MVC 的 JavaScript 框架 ( Angular.js、Ember.js ) 相比，Vue.js 屬於 MVVM 設計模式的實作。">
@@ -177,35 +177,7 @@
 <p>則對 b 的改動不會觸發頁面更新。所以一個 Vue 實體在未來所會使用到的所有屬性在最開始時就須全部設定完畢(初始設定為空或不存在：””、0、false、[]、null)。</p>
 <p><small>※ 使用 Object.freeze() 能阻止修改現有屬性，並導致響應系統無法再追蹤變化。</small></p>
 <h2 id="Vue-所提供的屬性及方法"><a href="#Vue-所提供的屬性及方法" class="headerlink" title="Vue 所提供的屬性及方法"></a>Vue 所提供的屬性及方法</h2><p>Vue 實體提供了一些能夠被存取的屬性與方法，並以前綴 $ 與用戶自定義的屬性區分。</p>
-<h3 id="範例"><a href="#範例" class="headerlink" title="範例"></a>範例</h3><p>```javascript</p>
-<div id="vm">
-  
-</div>
-
-<script>
-var vm = new Vue({
-  el: '#vm',
-  data: {
-    a: 'Hello World！'
-  }
-})
-
-// 取得的 el 屬性和用 JavaScript 方法取得的元素相同
-vm.$el === document.querySelector('#vm') // true
-
-// 取得資料物件的屬性
-console.log(vm.a) // Hello World！
-
-// 呼叫 watch 方法，當 a 的值改變時觸發
-vm.$watch('a', function(newVal, oldVal){
-  console.log('a 現在是 ' + newVal + ', 之前是' + oldVal)
-  // a 現在是 change！, 之前是 Hello World！
-})
-// 模擬 2 秒後改變 a 的值，並觸發 vm.$watch() 方法
-setTimeout(function(){
-  vm.a = 'change！'
-}, 2000)
-</script>
+<h3 id="範例"><a href="#範例" class="headerlink" title="範例"></a>範例</h3><figure class="highlight javascript hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br></pre></td><td class="code"><pre><span class="line">&lt;div id=<span class="hljs-string">"vm"</span>&gt;</span><br><span class="line">  &#123;&#123;a&#125;&#125;</span><br><span class="line">&lt;<span class="hljs-regexp">/div&gt;</span></span><br><span class="line"><span class="hljs-regexp"></span></span><br><span class="line"><span class="hljs-regexp">&lt;script&gt;</span></span><br><span class="line"><span class="hljs-regexp">var vm = new Vue(&#123;</span></span><br><span class="line"><span class="hljs-regexp">  el: '#vm',</span></span><br><span class="line"><span class="hljs-regexp">  data: &#123;</span></span><br><span class="line"><span class="hljs-regexp">    a: 'Hello World！'</span></span><br><span class="line"><span class="hljs-regexp">  &#125;</span></span><br><span class="line"><span class="hljs-regexp">&#125;)</span></span><br><span class="line"><span class="hljs-regexp"></span></span><br><span class="line"><span class="hljs-regexp">/</span><span class="hljs-regexp">/ 取得的 el 屬性和用 JavaScript 方法取得的元素相同</span></span><br><span class="line"><span class="hljs-regexp">vm.$el === document.querySelector('#vm') /</span><span class="hljs-regexp">/ true</span></span><br><span class="line"><span class="hljs-regexp"></span></span><br><span class="line"><span class="hljs-regexp">/</span><span class="hljs-regexp">/ 取得資料物件的屬性</span></span><br><span class="line"><span class="hljs-regexp">console.log(vm.a) /</span><span class="hljs-regexp">/ Hello World！</span></span><br><span class="line"><span class="hljs-regexp"></span></span><br><span class="line"><span class="hljs-regexp">/</span><span class="hljs-regexp">/ 呼叫 watch 方法，當 a 的值改變時觸發</span></span><br><span class="line"><span class="hljs-regexp">vm.$watch('a', function(newVal, oldVal)&#123;</span></span><br><span class="line"><span class="hljs-regexp">  console.log('a 現在是 ' + newVal + ', 之前是' + oldVal)</span></span><br><span class="line"><span class="hljs-regexp">  /</span><span class="hljs-regexp">/ a 現在是 change！, 之前是 Hello World！</span></span><br><span class="line"><span class="hljs-regexp">&#125;)</span></span><br><span class="line"><span class="hljs-regexp">/</span><span class="hljs-regexp">/ 模擬 2 秒後改變 a 的值，並觸發 vm.$watch() 方法</span></span><br><span class="line"><span class="hljs-regexp">setTimeout(function()&#123;</span></span><br><span class="line"><span class="hljs-regexp">  vm.a = 'change！'</span></span><br><span class="line"><span class="hljs-regexp">&#125;, 2000)</span></span><br><span class="line"><span class="hljs-regexp">&lt;/</span>script&gt;</span><br></pre></td></tr></table></figure>
         </div>
         
         <div class="level is-size-7 is-uppercase">
