@@ -10,19 +10,19 @@
 <title>Vue Instance - Qing</title>
 
 
-    <meta name="description" content="前言Vue 音似 View，用意為表示 Vue.js 專注於 View。和其他實作 MVC 的 JavaScript 框架 ( Angular.js、Ember.js ) 相比，Vue.js 屬於 MVVM 設計模式的實作。 MVVM 由 Model–View–ViewModel 組成，使用者看到的是 View，Model 則是資料，View 會和 ViewModel 做資料綁定，然後由 View">
+    <meta name="description" content="前言Vue 音似 View，用意為表示 Vue.js 專注於 View。和其他實作 MVC 的 JavaScript 框架 ( Angular.js、Ember.js ) 相比，Vue.js 屬於 MVVM 設計模式的實作。">
 <meta name="keywords" content="Vue,w3HexSchool">
 <meta property="og:type" content="article">
 <meta property="og:title" content="Vue Instance">
 <meta property="og:url" content="https://github.com/IvyLee-wu/ioioy77.github.io/blog/2020/02/08/Vue Instance/index.html">
 <meta property="og:site_name" content="Hexo">
-<meta property="og:description" content="前言Vue 音似 View，用意為表示 Vue.js 專注於 View。和其他實作 MVC 的 JavaScript 框架 ( Angular.js、Ember.js ) 相比，Vue.js 屬於 MVVM 設計模式的實作。 MVVM 由 Model–View–ViewModel 組成，使用者看到的是 View，Model 則是資料，View 會和 ViewModel 做資料綁定，然後由 View">
+<meta property="og:description" content="前言Vue 音似 View，用意為表示 Vue.js 專注於 View。和其他實作 MVC 的 JavaScript 框架 ( Angular.js、Ember.js ) 相比，Vue.js 屬於 MVVM 設計模式的實作。">
 <meta property="og:locale" content="zh-TW">
 <meta property="og:image" content="https://github.com/ioioy77.github.io/images/og_image.png">
-<meta property="og:updated_time" content="2020-02-08T08:55:59.908Z">
+<meta property="og:updated_time" content="2020-02-08T08:57:12.439Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Vue Instance">
-<meta name="twitter:description" content="前言Vue 音似 View，用意為表示 Vue.js 專注於 View。和其他實作 MVC 的 JavaScript 框架 ( Angular.js、Ember.js ) 相比，Vue.js 屬於 MVVM 設計模式的實作。 MVVM 由 Model–View–ViewModel 組成，使用者看到的是 View，Model 則是資料，View 會和 ViewModel 做資料綁定，然後由 View">
+<meta name="twitter:description" content="前言Vue 音似 View，用意為表示 Vue.js 專注於 View。和其他實作 MVC 的 JavaScript 框架 ( Angular.js、Ember.js ) 相比，Vue.js 屬於 MVVM 設計模式的實作。">
 <meta name="twitter:image" content="https://github.com/ioioy77.github.io/images/og_image.png">
 
 
@@ -139,7 +139,7 @@
                 <!-- <span class="level-item has-text-grey">
                     
                     
-                    7 分鐘 閱讀文 (大約 1002 個字)
+                    7 分鐘 閱讀文 (大約 1003 個字)
                 </span> -->
                 
                 
@@ -153,6 +153,8 @@
         </h1>
         <div class="content">
             <h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><p>Vue 音似 View，用意為表示 Vue.js 專注於 View。和其他實作 MVC 的 JavaScript 框架 ( Angular.js、Ember.js ) 相比，Vue.js 屬於 MVVM 設計模式的實作。</p>
+<a id="more"></a>
+
 <p>MVVM 由 Model–View–ViewModel 組成，使用者看到的是 View，Model 則是資料，View 會和 ViewModel 做資料綁定，然後由 ViewModel 去存取資料，也就是說 View 不會直接存取 Model (資料)，而是由 ViewModel 來做，它是一個同步 View 和 Model 的物件，Vue.js 主要就是在做 ViewModel 的工作。它讓 View 來和它綁定，然後當 Model 發生變化時，自動反應到 View 上。</p>
 <p>原生的 JavaScript 或是 jQurey，必須先取得元素才能插入資料，Vue.js 則將 HTML 當成模板，藉由 el 屬性來確認它的執行範圍，然後將資料傳給模板，處理後呈現最後看到的 View。所有 View 的設計，全都在 HTML 中做好，並指定要放資料的區域，Vue.js 便會自動把資料放入其中。</p>
 <h2 id="創建實體"><a href="#創建實體" class="headerlink" title="創建實體"></a>創建實體</h2><p>每個 Vue 的應用皆始於使用 Vue function 建構一個新的 Vue 實體。</p>
