@@ -19,7 +19,7 @@
 <meta property="og:description" content="Vue 實體在被創建時會經過一系列初始化的步驟，如數據監聽、編譯模板、掛載實體、綁定資料等。與此同時 Vue 也提供了讓使用者能在特定階段自行客製化程式碼的方法，這些方法就稱為 Lifecycle Hook。">
 <meta property="og:locale" content="zh-TW">
 <meta property="og:image" content="https://github.com/ioioy77.github.io/images/og_image.png">
-<meta property="og:updated_time" content="2020-02-15T14:46:38.227Z">
+<meta property="og:updated_time" content="2020-02-15T14:50:25.938Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Vue Lifecycle">
 <meta name="twitter:description" content="Vue 實體在被創建時會經過一系列初始化的步驟，如數據監聽、編譯模板、掛載實體、綁定資料等。與此同時 Vue 也提供了讓使用者能在特定階段自行客製化程式碼的方法，這些方法就稱為 Lifecycle Hook。">
@@ -162,7 +162,7 @@
 <p><img src="https://i.imgur.com/9miePHm.jpg" alt></p>
 <h3 id="掛載階段"><a href="#掛載階段" class="headerlink" title="掛載階段"></a>掛載階段</h3><ul>
 <li>beforeMount：渲染至 template 之前。</li>
-<li>mounted：$el 配置與渲染。<br>此鉤子無法保證所有的子組件也都一起被掛載。如果希望等到整個視圖都渲染完畢，可以在 mounted 內部使用 vm.$nextTick：<figure class="highlight javascript hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">mounted: <span class="hljs-function"><span class="hljs-keyword">function</span> (<span class="hljs-params"></span>) </span>&#123;</span><br><span class="line">  <span class="hljs-keyword">this</span>.$nextTick(<span class="hljs-function"><span class="hljs-keyword">function</span> (<span class="hljs-params"></span>) </span>&#123;</span><br><span class="line">    <span class="hljs-comment">// 視圖渲染完畢後執行</span></span><br><span class="line">  &#125;)</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<li>mounted： $el 配置與渲染。<br>此鉤子無法保證所有的子組件也都一起被掛載。如果希望等到整個視圖都渲染完畢，可以在 mounted 內部使用 vm.$nextTick：<figure class="highlight javascript hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">mounted: <span class="hljs-function"><span class="hljs-keyword">function</span> (<span class="hljs-params"></span>) </span>&#123;</span><br><span class="line">  <span class="hljs-keyword">this</span>.$nextTick(<span class="hljs-function"><span class="hljs-keyword">function</span> (<span class="hljs-params"></span>) </span>&#123;</span><br><span class="line">    <span class="hljs-comment">// 視圖渲染完畢後執行</span></span><br><span class="line">  &#125;)</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
 </li>
 </ul>
