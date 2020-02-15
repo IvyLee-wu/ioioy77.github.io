@@ -19,7 +19,7 @@
 <meta property="og:description" content="Vue 實體在被創建時會經過一系列初始化的步驟，如數據監聽、編譯模板、掛載實體、綁定資料等。與此同時 Vue 也提供了讓使用者能在特定階段自行客製化程式碼的方法，這些方法就稱為 Lifecycle Hook。">
 <meta property="og:locale" content="zh-TW">
 <meta property="og:image" content="https://github.com/ioioy77.github.io/images/og_image.png">
-<meta property="og:updated_time" content="2020-02-15T14:55:46.930Z">
+<meta property="og:updated_time" content="2020-02-15T14:58:20.644Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Vue Lifecycle">
 <meta name="twitter:description" content="Vue 實體在被創建時會經過一系列初始化的步驟，如數據監聽、編譯模板、掛載實體、綁定資料等。與此同時 Vue 也提供了讓使用者能在特定階段自行客製化程式碼的方法，這些方法就稱為 Lifecycle Hook。">
@@ -172,7 +172,10 @@
 <p><img src="https://i.imgur.com/Z6Dg69G.jpg" alt></p>
 <h3 id="資料更新階段"><a href="#資料更新階段" class="headerlink" title="資料更新階段"></a>資料更新階段</h3><ul>
 <li>beforeUpdate：資料變化後，視圖改變前。</li>
-<li>updated：視圖更新後調用。<br>多數情況下應避免在此期間更改狀態。如需改變相應狀態，通常最好使用計算屬性或是 watcher。<figure class="highlight javascript hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="hljs-comment">// 此鉤子無法保證所有的子組件也都一起被重繪。如果希望等到整個視圖都重繪完畢，可以在 updated 裏使用 vm.$nextTick</span></span><br><span class="line">updated: <span class="hljs-function"><span class="hljs-keyword">function</span> (<span class="hljs-params"></span>) </span>&#123;</span><br><span class="line">  <span class="hljs-keyword">this</span>.$nextTick(<span class="hljs-function"><span class="hljs-keyword">function</span> (<span class="hljs-params"></span>) </span>&#123;</span><br><span class="line">    <span class="hljs-comment">// 視圖渲染完畢後執行</span></span><br><span class="line">  &#125;)</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<li>updated：視圖更新後調用。<br>多數情況下應避免在此期間更改狀態。如需改變相應狀態，通常最好使用計算屬性或是 watcher。<blockquote>
+<p>此鉤子無法保證所有的子組件也都一起被重繪。如果希望等到整個視圖都重繪完畢，可以在 updated 裏使用 vm.$nextTick</p>
+</blockquote>
+<figure class="highlight javascript hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">updated: <span class="hljs-function"><span class="hljs-keyword">function</span> (<span class="hljs-params"></span>) </span>&#123;</span><br><span class="line">  <span class="hljs-keyword">this</span>.$nextTick(<span class="hljs-function"><span class="hljs-keyword">function</span> (<span class="hljs-params"></span>) </span>&#123;</span><br><span class="line">    <span class="hljs-comment">// 視圖渲染完畢後執行</span></span><br><span class="line">  &#125;)</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
 </li>
 </ul>
