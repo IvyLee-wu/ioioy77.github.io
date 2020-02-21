@@ -7,22 +7,22 @@
 
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
 
-<title>Vue Lifecycle - Qing</title>
+<title>Vue Template_Syntax - basic - Qing</title>
 
 
-    <meta name="description" content="Vue 實體在被創建時會經過一系列初始化的步驟，如數據監聽、編譯模板、掛載實體、綁定資料等。與此同時 Vue 也提供了讓使用者能在特定階段自行客製化程式碼的方法，這些方法就稱為 Lifecycle Hook。">
+    <meta name="description" content="模板語法-基礎篇">
 <meta name="keywords" content="Vue,w3HexSchool">
 <meta property="og:type" content="article">
-<meta property="og:title" content="Vue Lifecycle">
-<meta property="og:url" content="https://github.com/IvyLee-wu/ioioy77.github.io/blog/2020/02/15/Vue Lifecycle/index.html">
+<meta property="og:title" content="Vue Template_Syntax - basic">
+<meta property="og:url" content="https://github.com/IvyLee-wu/ioioy77.github.io/blog/2020/02/21/Vue Template_Syntax-basic/index.html">
 <meta property="og:site_name" content="Hexo">
-<meta property="og:description" content="Vue 實體在被創建時會經過一系列初始化的步驟，如數據監聽、編譯模板、掛載實體、綁定資料等。與此同時 Vue 也提供了讓使用者能在特定階段自行客製化程式碼的方法，這些方法就稱為 Lifecycle Hook。">
+<meta property="og:description" content="模板語法-基礎篇">
 <meta property="og:locale" content="zh-TW">
 <meta property="og:image" content="https://github.com/ioioy77.github.io/images/og_image.png">
-<meta property="og:updated_time" content="2020-02-15T14:58:20.644Z">
+<meta property="og:updated_time" content="2020-02-21T14:31:25.834Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Vue Lifecycle">
-<meta name="twitter:description" content="Vue 實體在被創建時會經過一系列初始化的步驟，如數據監聽、編譯模板、掛載實體、綁定資料等。與此同時 Vue 也提供了讓使用者能在特定階段自行客製化程式碼的方法，這些方法就稱為 Lifecycle Hook。">
+<meta name="twitter:title" content="Vue Template_Syntax - basic">
+<meta name="twitter:description" content="模板語法-基礎篇">
 <meta name="twitter:image" content="https://github.com/ioioy77.github.io/images/og_image.png">
 
 
@@ -81,7 +81,7 @@
         <div class="navbar-brand is-flex-center">
             <a class="navbar-item navbar-logo" href="/ioioy77.github.io/">
             
-                <img src="/ioioy77.github.io/images/logo.svg" alt="Vue Lifecycle" height="25" width="25">
+                <img src="/ioioy77.github.io/images/logo.svg" alt="Vue Template_Syntax - basic" height="25" width="25">
             
             </a>
         </div>
@@ -129,7 +129,7 @@
         
         <div class="level article-meta is-size-7 is-uppercase is-mobile is-overflow-x-auto">
             <div class="level-left">
-                <time class="level-item has-text-grey" datetime="2020-02-15T14:36:28.913Z">2020-02-15</time>
+                <time class="level-item has-text-grey" datetime="2020-02-21T14:25:34.754Z">2020-02-21</time>
                 
                 <div class="level-item">
                 <a class="has-link-grey -link" href="/ioioy77.github.io/categories/前端學習筆記/">前端學習筆記</a>
@@ -139,7 +139,7 @@
                 <!-- <span class="level-item has-text-grey">
                     
                     
-                    5 分鐘 閱讀文 (大約 751 個字)
+                    4 分鐘 閱讀文 (大約 631 個字)
                 </span> -->
                 
                 
@@ -148,68 +148,58 @@
         
         <h1 class="title is-size-3 is-size-4-mobile has-text-weight-normal">
             
-                Vue Lifecycle
+                Vue Template_Syntax - basic
             
         </h1>
         <div class="content">
-            <p>Vue 實體在被創建時會經過一系列初始化的步驟，如數據監聽、編譯模板、掛載實體、綁定資料等。與此同時 Vue 也提供了讓使用者能在特定階段自行客製化程式碼的方法，這些方法就稱為 Lifecycle Hook。</p>
+            <p>模板語法-基礎篇</p>
 <a id="more"></a>
+<h2 id="插值"><a href="#插值" class="headerlink" title="插值"></a>插值</h2><h3 id="文本"><a href="#文本" class="headerlink" title="文本"></a>文本</h3><p>使用鬍子插值，HTML 的鬍子標籤(雙大括號)內會被填入 data 裡相對應的值。</p>
+<figure class="highlight javascript hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">&lt;div id=<span class="hljs-string">"app"</span>&gt;</span><br><span class="line">  &lt;p&gt;&#123;&#123; message &#125;&#125;&lt;<span class="hljs-regexp">/p&gt;</span></span><br><span class="line"><span class="hljs-regexp">&lt;/</span>div&gt;</span><br><span class="line"></span><br><span class="line">&lt;script&gt;</span><br><span class="line"><span class="hljs-keyword">new</span> Vue(&#123;</span><br><span class="line">  el: <span class="hljs-string">'#app'</span>,</span><br><span class="line">  data: &#123;</span><br><span class="line">    message: <span class="hljs-string">'Hello World!'</span></span><br><span class="line">  &#125;</span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure>
 
-<h2 id="生命週期掛鉤"><a href="#生命週期掛鉤" class="headerlink" title="生命週期掛鉤"></a>生命週期掛鉤</h2><h3 id="創建階段"><a href="#創建階段" class="headerlink" title="創建階段"></a>創建階段</h3><ul>
-<li>beforeCreate：實體建構前。</li>
-<li>Created：實體建構後調用，此時 Vue 實體內除 $el 外皆已配置(可取得並處理)。</li>
-</ul>
-<p><img src="https://i.imgur.com/9miePHm.jpg" alt></p>
-<h3 id="掛載階段"><a href="#掛載階段" class="headerlink" title="掛載階段"></a>掛載階段</h3><ul>
-<li>beforeMount：渲染至 template 之前。</li>
-<li>mounted：$el 配置與渲染。<blockquote>
-<p>此鉤子無法保證所有的子組件也都一起被掛載。如果希望等到整個視圖都渲染完畢，可以在 mounted 內部使用 vm.$nextTick</p>
-</blockquote>
-<figure class="highlight javascript hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">mounted: <span class="hljs-function"><span class="hljs-keyword">function</span> (<span class="hljs-params"></span>) </span>&#123;</span><br><span class="line">  <span class="hljs-keyword">this</span>.$nextTick(<span class="hljs-function"><span class="hljs-keyword">function</span> (<span class="hljs-params"></span>) </span>&#123;</span><br><span class="line">    <span class="hljs-comment">// 視圖渲染完畢後執行</span></span><br><span class="line">  &#125;)</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>運行結果：Hello World!</p>
+<h3 id="HTML"><a href="#HTML" class="headerlink" title="HTML"></a>HTML</h3><p>如果打算插入 HTML 而不是純文本，不能使用鬍子</p>
+<figure class="highlight javascript hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">&lt;div id=<span class="hljs-string">"app"</span>&gt;</span><br><span class="line">    &lt;div&gt;&#123;&#123; message &#125;&#125;&lt;<span class="hljs-regexp">/div&gt;</span></span><br><span class="line"><span class="hljs-regexp">&lt;/</span>div&gt;</span><br><span class="line">	</span><br><span class="line">&lt;script&gt;</span><br><span class="line"><span class="hljs-keyword">new</span> Vue(&#123;</span><br><span class="line">  el: <span class="hljs-string">'#app'</span>,</span><br><span class="line">  data: &#123;</span><br><span class="line">    message: <span class="hljs-string">'&lt;span style="color:red"&gt;Hello World!&lt;/span&gt;'</span></span><br><span class="line">  &#125;</span><br><span class="line">&#125;)</span><br><span class="line">&lt;<span class="hljs-regexp">/script&gt;</span></span><br></pre></td></tr></table></figure>
 
-</li>
-</ul>
-<p><img src="https://i.imgur.com/Z6Dg69G.jpg" alt></p>
-<h3 id="資料更新階段"><a href="#資料更新階段" class="headerlink" title="資料更新階段"></a>資料更新階段</h3><ul>
-<li>beforeUpdate：資料變化後，視圖改變前。</li>
-<li>updated：視圖更新後調用。<br>多數情況下應避免在此期間更改狀態。如需改變相應狀態，通常最好使用計算屬性或是 watcher。<blockquote>
-<p>此鉤子無法保證所有的子組件也都一起被重繪。如果希望等到整個視圖都重繪完畢，可以在 updated 裏使用 vm.$nextTick</p>
-</blockquote>
-<figure class="highlight javascript hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">updated: <span class="hljs-function"><span class="hljs-keyword">function</span> (<span class="hljs-params"></span>) </span>&#123;</span><br><span class="line">  <span class="hljs-keyword">this</span>.$nextTick(<span class="hljs-function"><span class="hljs-keyword">function</span> (<span class="hljs-params"></span>) </span>&#123;</span><br><span class="line">    <span class="hljs-comment">// 視圖渲染完畢後執行</span></span><br><span class="line">  &#125;)</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>運行結果會是這樣：&lt;span style=”color:red”&gt;Hello World!&lt;/span&gt;</p>
+<p>鬍子標籤無法讀取 HTML，要讀取 HTML 只能使用 v-html</p>
+<figure class="highlight javascript hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">&lt;div id=<span class="hljs-string">"app"</span>&gt;</span><br><span class="line">    &lt;div v-html=<span class="hljs-string">"message"</span>&gt;&lt;/div&gt;</span><br><span class="line">&lt;<span class="hljs-regexp">/div&gt;</span></span><br><span class="line"><span class="hljs-regexp">	</span></span><br><span class="line"><span class="hljs-regexp">&lt;script&gt;</span></span><br><span class="line"><span class="hljs-regexp">new Vue(&#123;</span></span><br><span class="line"><span class="hljs-regexp">  el: '#app',</span></span><br><span class="line"><span class="hljs-regexp">  data: &#123;</span></span><br><span class="line"><span class="hljs-regexp">    message: '&lt;span style="color:red"&gt;Hello World!&lt;/</span>span&gt;<span class="hljs-string">'</span></span><br><span class="line"><span class="hljs-string">  &#125;</span></span><br><span class="line"><span class="hljs-string">&#125;)</span></span><br><span class="line"><span class="hljs-string">&lt;/script&gt;</span></span><br></pre></td></tr></table></figure>
 
-</li>
-</ul>
-<p><img src="https://i.imgur.com/fukaeMt.jpg" alt></p>
-<h3 id="刪除階段"><a href="#刪除階段" class="headerlink" title="刪除階段"></a>刪除階段</h3><ul>
-<li>beforeDestroy：實體銷毀前調用。</li>
-<li>destroyed：實體銷毀後調用。</li>
-</ul>
-<p><img src="https://i.imgur.com/doU2jQv.jpg" alt></p>
-<h3 id="保存-緩存狀態"><a href="#保存-緩存狀態" class="headerlink" title="保存/緩存狀態"></a>保存/緩存狀態</h3><ul>
-<li>activated：keep-alive 觸發時調用。</li>
-<li>deactivated：keep-alive 停用時調用。</li>
-</ul>
-<p>※ 若有設定 &lt;keep-alive&gt;，則只會有 activated Hook 與 deactivated Hook，而不觸發 destroyed Hook。</p>
-<h3 id="錯誤處理"><a href="#錯誤處理" class="headerlink" title="錯誤處理"></a>錯誤處理</h3><ul>
-<li>errorCaptured：捕獲子孫組件的錯誤時調用。<blockquote>
-<p>此鉤子會收到三個參數：錯誤對象、發生錯誤的組件實體以及一個包含錯誤來源信息的字符串。並返回 false 以阻止該錯誤繼續向上傳播。</p>
-</blockquote>
-</li>
-</ul>
-<hr>
-<h3 id="範例"><a href="#範例" class="headerlink" title="範例"></a>範例</h3><figure class="highlight plain hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">&lt;div id=&quot;app&quot;&gt;</span><br><span class="line">  &#123;&#123; Lifecycle &#125;&#125;</span><br><span class="line">  &lt;button v-on:click=&quot;Lifecycle++&quot;&gt;add&lt;/button&gt;</span><br><span class="line">  &lt;button v-on:click=&quot;$destroy()&quot;&gt;Destroy instance&lt;/button&gt;</span><br><span class="line">&lt;/div&gt;</span><br></pre></td></tr></table></figure>
+<p>運行結果：<span style="color:red">Hello World!</span></p>
+<p>※ 注意 <span style="color:red">Hello World!</span> 此時已經是 &lt;span&gt; 而不是 &lt;div&gt; 了</p>
+<h3 id="屬性"><a href="#屬性" class="headerlink" title="屬性"></a>屬性</h3><p>鬍子語法同樣不能作用在 HTML attribute 上，要在 HTML 屬性裡帶入資料，必須使用 v-bind 語法</p>
+<figure class="highlight javascript hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">&lt;div id=<span class="hljs-string">"app"</span>&gt;</span><br><span class="line">  &lt;input v-bind:placeholder=<span class="hljs-string">'vbind'</span>&gt;</span><br><span class="line">&lt;<span class="hljs-regexp">/div&gt;</span></span><br><span class="line"><span class="hljs-regexp">    </span></span><br><span class="line"><span class="hljs-regexp">&lt;script&gt;</span></span><br><span class="line"><span class="hljs-regexp">new Vue(&#123;</span></span><br><span class="line"><span class="hljs-regexp">    el: '#app',</span></span><br><span class="line"><span class="hljs-regexp">  data:&#123;</span></span><br><span class="line"><span class="hljs-regexp">      vbind: '請輸入文字'</span></span><br><span class="line"><span class="hljs-regexp">  &#125;</span></span><br><span class="line"><span class="hljs-regexp">&#125;);</span></span><br><span class="line"><span class="hljs-regexp">&lt;/</span>script&gt;</span><br></pre></td></tr></table></figure>
 
-<p>初始化時</p>
-<figure class="highlight javascript hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br></pre></td><td class="code"><pre><span class="line"><span class="hljs-keyword">var</span> vm = <span class="hljs-keyword">new</span> Vue(&#123;</span><br><span class="line">  el: <span class="hljs-string">'#app'</span>,</span><br><span class="line">  data: &#123;</span><br><span class="line">    Lifecycle: <span class="hljs-number">1</span></span><br><span class="line">  &#125;,</span><br><span class="line">  <span class="hljs-comment">// 實體被 constructor 建立前</span></span><br><span class="line">  beforeCreate() &#123;</span><br><span class="line">    <span class="hljs-built_in">console</span>.log(<span class="hljs-string">'beforeCreate'</span>);</span><br><span class="line">    <span class="hljs-built_in">console</span>.log(<span class="hljs-string">`this.Lifecycle: <span class="hljs-subst">$&#123;<span class="hljs-keyword">this</span>.Lifecycle&#125;</span>`</span>); <span class="hljs-comment">// undefined</span></span><br><span class="line">    <span class="hljs-built_in">console</span>.log(<span class="hljs-string">`this.$el: <span class="hljs-subst">$&#123;<span class="hljs-keyword">this</span>.$el&#125;</span>`</span>); <span class="hljs-comment">// undefined</span></span><br><span class="line">    <span class="hljs-built_in">console</span>.log();</span><br><span class="line">  &#125;,</span><br><span class="line">  <span class="hljs-comment">// 實體被 constructor 建立後，在這裡完成 data binding</span></span><br><span class="line">  created() &#123;</span><br><span class="line">    <span class="hljs-built_in">console</span>.log(<span class="hljs-string">'created'</span>);</span><br><span class="line">    <span class="hljs-built_in">console</span>.log(<span class="hljs-string">`this.Lifecycle: <span class="hljs-subst">$&#123;<span class="hljs-keyword">this</span>.Lifecycle&#125;</span>`</span>); <span class="hljs-comment">// 1</span></span><br><span class="line">    <span class="hljs-built_in">console</span>.log(<span class="hljs-string">`this.$el: <span class="hljs-subst">$&#123;<span class="hljs-keyword">this</span>.$el&#125;</span>`</span>); <span class="hljs-comment">// undefined</span></span><br><span class="line">    <span class="hljs-built_in">console</span>.log();</span><br><span class="line">  &#125;,</span><br><span class="line">  <span class="hljs-comment">// 綁定 DOM 之前</span></span><br><span class="line">  beforeMount() &#123;</span><br><span class="line">    <span class="hljs-built_in">console</span>.log(<span class="hljs-string">'beforeMount'</span>);</span><br><span class="line">    <span class="hljs-built_in">console</span>.log(<span class="hljs-keyword">this</span>.$el.outerHTML);</span><br><span class="line">    <span class="hljs-comment">// &lt;div id='app'&gt;</span></span><br><span class="line">    <span class="hljs-comment">// &#123;&#123; Lifecycle &#125;&#125;</span></span><br><span class="line">    <span class="hljs-comment">// &lt;button v-on:click='Lifecycle++'&gt;add&lt;/button&gt;</span></span><br><span class="line">    <span class="hljs-comment">// &lt;button v-on:click='$destroy()'&gt;Destroy instance&lt;/button&gt;</span></span><br><span class="line">    <span class="hljs-comment">// &lt;/div&gt;</span></span><br><span class="line">    <span class="hljs-built_in">console</span>.log();</span><br><span class="line">  &#125;,</span><br><span class="line">  <span class="hljs-comment">// 綁定 DOM 之後</span></span><br><span class="line">  mounted() &#123;</span><br><span class="line">    <span class="hljs-built_in">console</span>.log(<span class="hljs-string">'mounted'</span>);</span><br><span class="line">    <span class="hljs-built_in">console</span>.log(<span class="hljs-keyword">this</span>.$el.outerHTML);</span><br><span class="line">    <span class="hljs-comment">// &lt;div id='app'&gt;</span></span><br><span class="line">    <span class="hljs-comment">// 1</span></span><br><span class="line">    <span class="hljs-comment">// &lt;button&gt;add&lt;/button&gt; &lt;button&gt;Destroy instance&lt;/button&gt;&lt;/div&gt;</span></span><br><span class="line">    <span class="hljs-built_in">console</span>.log();</span><br><span class="line">  &#125;,</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>
+<p>運行結果：<img src="https://i.imgur.com/Q6s6BKA.png" alt></p>
+<p><a href="https://developer.mozilla.org/zh-TW/docs/Web/HTML/Attributes" target="_blank" rel="noopener">MDN-HTML attribute reference</a></p>
+<h3 id="表達式"><a href="#表達式" class="headerlink" title="表達式"></a>表達式</h3><p>鬍子內還可以放 javascript 表達式</p>
+<figure class="highlight javascript hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line">&lt;div id=<span class="hljs-string">"app"</span>&gt;</span><br><span class="line">    &#123;&#123; number + <span class="hljs-number">1</span> &#125;&#125;&lt;br&gt;</span><br><span class="line">    &#123;&#123; prize ? <span class="hljs-string">'中獎！'</span> : <span class="hljs-string">'沒中'</span> &#125;&#125;&lt;br&gt;</span><br><span class="line">    &#123;&#123; message.split(<span class="hljs-string">''</span>).reverse().join(<span class="hljs-string">''</span>) &#125;&#125;</span><br><span class="line">&lt;<span class="hljs-regexp">/div&gt;</span></span><br><span class="line"><span class="hljs-regexp">	</span></span><br><span class="line"><span class="hljs-regexp">&lt;script&gt;</span></span><br><span class="line"><span class="hljs-regexp">new Vue(&#123;</span></span><br><span class="line"><span class="hljs-regexp">  el: '#app',</span></span><br><span class="line"><span class="hljs-regexp">  data: &#123;</span></span><br><span class="line"><span class="hljs-regexp">    prize: true,</span></span><br><span class="line"><span class="hljs-regexp">    message: '！dlroW olleH',</span></span><br><span class="line"><span class="hljs-regexp">    number: 8</span></span><br><span class="line"><span class="hljs-regexp">  &#125;</span></span><br><span class="line"><span class="hljs-regexp">&#125;)</span></span><br><span class="line"><span class="hljs-regexp">&lt;/</span>script&gt;</span><br></pre></td></tr></table></figure>
 
-<p>按下 <kbd>add</kbd> 後</p>
-<figure class="highlight javascript hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br></pre></td><td class="code"><pre><span class="line"><span class="hljs-keyword">var</span> vm = <span class="hljs-keyword">new</span> Vue(&#123;</span><br><span class="line">  el: <span class="hljs-string">'#app'</span>,</span><br><span class="line">  data: &#123;</span><br><span class="line">    Lifecycle: <span class="hljs-number">1</span></span><br><span class="line">  &#125;,</span><br><span class="line">  <span class="hljs-comment">// 資料更新，但尚未更新 DOM</span></span><br><span class="line">  beforeUpdate() &#123;</span><br><span class="line">    <span class="hljs-built_in">console</span>.log(<span class="hljs-string">'beforeUpdate'</span>);</span><br><span class="line">    <span class="hljs-built_in">console</span>.log(<span class="hljs-string">`this.Lifecycle: <span class="hljs-subst">$&#123;<span class="hljs-keyword">this</span>.Lifecycle&#125;</span>`</span>); <span class="hljs-comment">// 2</span></span><br><span class="line">    <span class="hljs-built_in">console</span>.log(<span class="hljs-keyword">this</span>.$el.outerHTML);</span><br><span class="line">    <span class="hljs-comment">// &lt;div id='app'&gt;</span></span><br><span class="line">    <span class="hljs-comment">// 1</span></span><br><span class="line">    <span class="hljs-comment">// &lt;button&gt;add&lt;/button&gt; &lt;button&gt;Destroy instance&lt;/button&gt;&lt;/div&gt;</span></span><br><span class="line">    <span class="hljs-built_in">console</span>.log();</span><br><span class="line">  &#125;,</span><br><span class="line">  <span class="hljs-comment">// 資料更新，並更新 DOM</span></span><br><span class="line">  updated() &#123;</span><br><span class="line">    <span class="hljs-built_in">console</span>.log(<span class="hljs-string">'updated'</span>);</span><br><span class="line">    <span class="hljs-built_in">console</span>.log(<span class="hljs-string">`this.Lifecycle: <span class="hljs-subst">$&#123;<span class="hljs-keyword">this</span>.Lifecycle&#125;</span>`</span>); <span class="hljs-comment">// 2</span></span><br><span class="line">    <span class="hljs-built_in">console</span>.log(<span class="hljs-keyword">this</span>.$el.outerHTML);</span><br><span class="line">    <span class="hljs-comment">// &lt;div id='app'&gt;</span></span><br><span class="line">    <span class="hljs-comment">// 2</span></span><br><span class="line">    <span class="hljs-comment">// &lt;button&gt;add&lt;/button&gt; &lt;button&gt;Destroy instance&lt;/button&gt;&lt;/div&gt;</span></span><br><span class="line">    <span class="hljs-built_in">console</span>.log();</span><br><span class="line">  &#125;,</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>
+<p>運行結果：<br>9<br>中獎！<br>Hello World！</p>
+<h2 id="指令"><a href="#指令" class="headerlink" title="指令"></a>指令</h2><p>帶有 v- 前綴的特殊 attribute。<br>attribute 的預期值是單個 JavaScript 表達式 (v-for 例外)。<br>當表達式的值改變時，指令會將改變的值響應式地作用於 DOM。</p>
+<h3 id="參數"><a href="#參數" class="headerlink" title="參數"></a>參數</h3><p>部分指令能夠接收參數，參數位置放在指令後並以冒號連接。</p>
+<figure class="highlight plain hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">&lt;!-- 響應式更新 HTML attribute --&gt;</span><br><span class="line">&lt;a v-bind:herf=&quot;url&quot;&gt;...&lt;/a&gt;</span><br></pre></td></tr></table></figure>
 
-<p>按下 <kbd>Destroy instance</kbd> 後</p>
-<figure class="highlight javascript hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="hljs-built_in">console</span>.log(<span class="hljs-string">`this.Lifecycle: <span class="hljs-subst">$&#123;<span class="hljs-keyword">this</span>.Lifecycle&#125;</span>`</span>); <span class="hljs-comment">// undefined</span></span><br><span class="line"><span class="hljs-built_in">console</span>.log(<span class="hljs-string">`this.$el: <span class="hljs-subst">$&#123;<span class="hljs-keyword">this</span>.$el&#125;</span>`</span>); <span class="hljs-comment">// undefined</span></span><br></pre></td></tr></table></figure>
+<figure class="highlight plain hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">&lt;!-- 監聽 DOM 事件 --&gt;</span><br><span class="line">&lt;button v-on:click=&quot;fn&quot;&gt;...&lt;/button&gt;</span><br></pre></td></tr></table></figure>
 
-<h3 id="生命週期圖示"><a href="#生命週期圖示" class="headerlink" title="生命週期圖示"></a>生命週期圖示</h3><p><img src="https://i.imgur.com/0BCNIGd.png" alt></p>
+<h3 id="動態參數"><a href="#動態參數" class="headerlink" title="動態參數"></a>動態參數</h3><p>參數能夠以 javascript 表達式動態求值</p>
+<figure class="highlight plain hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&lt;a v-bind:[attributeName]=&quot;url&quot;&gt;...&lt;/a&gt;</span><br></pre></td></tr></table></figure>
 
+<figure class="highlight plain hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&lt;button v-on:[eventName]=&quot;doSomething&quot;&gt;...&lt;/button&gt;</span><br></pre></td></tr></table></figure>
+
+<h4 id="值的限制"><a href="#值的限制" class="headerlink" title="值的限制"></a>值的限制</h4><p>動態參數所求的值必須要是字串，特殊情況下值為 null，並且可以依據 null 狀態來解除綁定，除此之外其他任何型態的值都會觸發警告。</p>
+<h4 id="表達式的限制"><a href="#表達式的限制" class="headerlink" title="表達式的限制"></a>表達式的限制</h4><p>空格與引號在動態參數內是無效的，請使用模板字串或是計算屬性代替。</p>
+<figure class="highlight plain hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">&lt;!-- 無效寫法 --&gt;</span><br><span class="line">&lt;div :[key + &apos;foo&apos;]=&quot;value&quot;&gt;&lt;/div&gt;</span><br><span class="line"></span><br><span class="line">&lt;!-- 正確寫法 --&gt;</span><br><span class="line">&lt;div :[`$&#123;key&#125;foo`]=&quot;value&quot;&gt;&lt;/div&gt;</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight javascript hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line">&lt;div id=<span class="hljs-string">"app"</span>&gt;</span><br><span class="line">  &lt;div :[idorclass()]=<span class="hljs-string">"'test'"</span>&gt;Testing&lt;<span class="hljs-regexp">/div&gt;</span></span><br><span class="line"><span class="hljs-regexp">&lt;/</span>div&gt;</span><br><span class="line"></span><br><span class="line">&lt;script&gt;</span><br><span class="line">  <span class="hljs-keyword">var</span> app = <span class="hljs-keyword">new</span> Vue(&#123;</span><br><span class="line">    el: <span class="hljs-string">"#app"</span>,</span><br><span class="line">    methods: &#123;</span><br><span class="line">      idorclass() &#123;</span><br><span class="line">        <span class="hljs-comment">// Just a "random" behavior</span></span><br><span class="line">        <span class="hljs-keyword">return</span> <span class="hljs-keyword">new</span> <span class="hljs-built_in">Date</span>().getTime() % <span class="hljs-number">2</span> == <span class="hljs-number">0</span> ? <span class="hljs-string">"id"</span> : <span class="hljs-string">"class"</span>;</span><br><span class="line">      &#125;</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;);</span><br><span class="line">&lt;<span class="hljs-regexp">/script&gt;</span></span><br><span class="line"><span class="hljs-regexp"></span></span><br><span class="line"><span class="hljs-regexp">/</span><span class="hljs-regexp">/ source: https:/</span><span class="hljs-regexp">/openbox.pt/</span>vuejs/vue-js<span class="hljs-number">-2</span><span class="hljs-number">-6</span>-dynamic-directive-<span class="hljs-built_in">arguments</span>/</span><br></pre></td></tr></table></figure>
+
+<p>瀏覽器會自動把 HTML attribute 轉成小寫，所以在實體的 property(屬性名稱) 內記得必須使用小寫，否則程式碼不會生效。</p>
+<figure class="highlight javascript hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">&lt;div id=<span class="hljs-string">"app"</span>&gt;</span><br><span class="line">    &lt;a v-bind:[attributeName]=<span class="hljs-string">"url"</span>&gt;Link&lt;<span class="hljs-regexp">/a&gt;</span></span><br><span class="line"><span class="hljs-regexp">&lt;/</span>div&gt;</span><br><span class="line"></span><br><span class="line"><span class="hljs-keyword">new</span> Vue(&#123;</span><br><span class="line">  el: <span class="hljs-string">'#app'</span>,</span><br><span class="line">  data: &#123;</span><br><span class="line">    attributename: <span class="hljs-string">'href'</span>,  <span class="hljs-comment">// lowercase</span></span><br><span class="line">    url: <span class="hljs-string">'http://vuejs.org'</span>,</span><br><span class="line">    &#125; </span><br><span class="line">  &#125;</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>
+
+<h3 id="縮寫"><a href="#縮寫" class="headerlink" title="縮寫"></a>縮寫</h3><p>v-bind 與 v-on 作為最常用的兩個指令，擁有自己的縮寫。</p>
+<figure class="highlight plain hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">&lt;!-- 完整語法 --&gt;</span><br><span class="line">&lt;a v-bind:herf=&quot;url&quot;&gt;...&lt;/a&gt;</span><br><span class="line">&lt;!-- 縮寫 --&gt;</span><br><span class="line">&lt;a :herf=&quot;url&quot;&gt;...&lt;/a&gt;</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight plain hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">&lt;!-- 完整語法 --&gt;</span><br><span class="line">&lt;button v-on:click=&quot;fn&quot;&gt;...&lt;/button&gt;</span><br><span class="line">&lt;!-- 縮寫 --&gt;</span><br><span class="line">&lt;button @click=&quot;fn&quot;&gt;...&lt;/button&gt;</span><br></pre></td></tr></table></figure>
         </div>
         
         <div class="level is-size-7 is-uppercase">
@@ -242,17 +232,10 @@
 <div class="card card-transparent">
     <div class="level post-navigation is-flex-wrap is-mobile">
         
-        <div class="level-start">
-            <a class="level level-item has-link-grey  article-nav-prev" href="/ioioy77.github.io/2020/02/21/Vue Template_Syntax-basic/">
-                <i class="level-item fas fa-chevron-left"></i>
-                <span class="level-item">Vue Template_Syntax - basic</span>
-            </a>
-        </div>
-        
         
         <div class="level-end">
-            <a class="level level-item has-link-grey  article-nav-next" href="/ioioy77.github.io/2020/02/08/Vue Instance/">
-                <span class="level-item">Vue Instance</span>
+            <a class="level level-item has-link-grey  article-nav-next" href="/ioioy77.github.io/2020/02/15/Vue Lifecycle/">
+                <span class="level-item">Vue Lifecycle</span>
                 <i class="level-item fas fa-chevron-right"></i>
             </a>
         </div>
@@ -686,7 +669,7 @@
             <div class="level-start has-text-centered-mobile">
                 <a class="footer-logo is-block has-mb-6" href="/ioioy77.github.io/">
                 
-                    <img src="/ioioy77.github.io/images/logo.svg" alt="Vue Lifecycle" height="28">
+                    <img src="/ioioy77.github.io/images/logo.svg" alt="Vue Template_Syntax - basic" height="28">
                 
                 </a>
                 <p class="is-size-7">
