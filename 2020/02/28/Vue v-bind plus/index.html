@@ -7,17 +7,22 @@
 
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
 
-<title>標籤: JavaScript - Qing</title>
+<title>Class and Style Bindings - Qing</title>
 
 
-    <meta property="og:type" content="website">
-<meta property="og:title" content="Hexo">
-<meta property="og:url" content="https://github.com/IvyLee-wu/ioioy77.github.io/blog/tags/JavaScript/index.html">
+    <meta name="description" content="class 與 style 皆是屬性，在 HTML 屬性裡帶入資料，用的是 v-bind 語法。通常來說 v-bind 的屬性值為字串，為了操作的方便，Vue 另外增強了 class 與 style 綁定的功能。">
+<meta name="keywords" content="Vue,w3HexSchool">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Class and Style Bindings">
+<meta property="og:url" content="https://github.com/IvyLee-wu/ioioy77.github.io/blog/2020/02/28/Vue v-bind plus/index.html">
 <meta property="og:site_name" content="Hexo">
+<meta property="og:description" content="class 與 style 皆是屬性，在 HTML 屬性裡帶入資料，用的是 v-bind 語法。通常來說 v-bind 的屬性值為字串，為了操作的方便，Vue 另外增強了 class 與 style 綁定的功能。">
 <meta property="og:locale" content="zh-TW">
 <meta property="og:image" content="https://github.com/ioioy77.github.io/images/og_image.png">
+<meta property="og:updated_time" content="2020-02-28T01:57:05.629Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Hexo">
+<meta name="twitter:title" content="Class and Style Bindings">
+<meta name="twitter:description" content="class 與 style 皆是屬性，在 HTML 屬性裡帶入資料，用的是 v-bind 語法。通常來說 v-bind 的屬性值為字串，為了操作的方便，Vue 另外增強了 class 與 style 綁定的功能。">
 <meta name="twitter:image" content="https://github.com/ioioy77.github.io/images/og_image.png">
 
 
@@ -76,7 +81,7 @@
         <div class="navbar-brand is-flex-center">
             <a class="navbar-item navbar-logo" href="/ioioy77.github.io/">
             
-                <img src="/ioioy77.github.io/images/logo.svg" alt="Qing" height="25" width="25">
+                <img src="/ioioy77.github.io/images/logo.svg" alt="Class and Style Bindings" height="25" width="25">
             
             </a>
         </div>
@@ -117,25 +122,14 @@
     <section class="section">
         <div class="container">
             <div class="columns">
-                <div class="column is-8-tablet is-8-desktop is-6-widescreen has-order-2 column-main"><div class="card">
-    <div class="card-content">
-        <nav class="breadcrumb" aria-label="breadcrumbs">
-        <ul>
-            <li><a href="/ioioy77.github.io/tags">標籤</a></li>
-            <li class="is-active"><a href="#" aria-current="page">JavaScript</a></li>
-        </ul>
-        </nav>
-    </div>
-</div>
-
-    
+                <div class="column is-8-tablet is-8-desktop is-6-widescreen has-order-2 column-main">
 <div class="card">
     
     <div class="card-content article ">
         
         <div class="level article-meta is-size-7 is-uppercase is-mobile is-overflow-x-auto">
             <div class="level-left">
-                <time class="level-item has-text-grey" datetime="2019-10-11T06:34:17.000Z">2019-10-11</time>
+                <time class="level-item has-text-grey" datetime="2020-02-28T01:54:50.802Z">2020-02-28</time>
                 
                 <div class="level-item">
                 <a class="has-link-grey -link" href="/ioioy77.github.io/categories/前端學習筆記/">前端學習筆記</a>
@@ -145,7 +139,7 @@
                 <!-- <span class="level-item has-text-grey">
                     
                     
-                    3 分鐘 閱讀文 (大約 468 個字)
+                    3 分鐘 閱讀文 (大約 426 個字)
                 </span> -->
                 
                 
@@ -154,31 +148,108 @@
         
         <h1 class="title is-size-3 is-size-4-mobile has-text-weight-normal">
             
-                <a class="has-link-black-ter" href="/ioioy77.github.io/2019/10/11/Hoisting/">Hoisting</a>
+                Class and Style Bindings
             
         </h1>
         <div class="content">
-            <p>JavaScript 在執行時會分為兩個部分，一為創造環境，一為執行。</p>
+            <p>class 與 style 皆是屬性，在 HTML 屬性裡帶入資料，用的是 v-bind 語法。<br>通常來說 v-bind 的屬性值為字串，為了操作的方便，Vue 另外增強了 class 與 style 綁定的功能。</p>
+<a id="more"></a>
+<h2 id="Class"><a href="#Class" class="headerlink" title="Class"></a>Class</h2><h3 id="物件語法"><a href="#物件語法" class="headerlink" title="物件語法"></a>物件語法</h3><p>傳給 <code>v-bind:class</code> 一個物件，動態切換 class</p>
+<figure class="highlight javascript hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">&lt;div id=<span class="hljs-string">"app"</span>&gt;</span><br><span class="line">  &lt;div <span class="hljs-class"><span class="hljs-keyword">class</span></span>=<span class="hljs-string">"sth"</span> v-bind:<span class="hljs-class"><span class="hljs-keyword">class</span></span>=<span class="hljs-string">"&#123; 'text-danger': hasError &#125;"</span>&gt;一些警告&lt;<span class="hljs-regexp">/div&gt;</span></span><br><span class="line"><span class="hljs-regexp">&lt;/</span>div&gt;</span><br><span class="line"></span><br><span class="line"><span class="hljs-keyword">var</span> vm = <span class="hljs-keyword">new</span> Vue(&#123;</span><br><span class="line">  el: <span class="hljs-string">'#app'</span></span><br><span class="line">    data: &#123;</span><br><span class="line">      hasError: <span class="hljs-literal">true</span></span><br><span class="line">    &#125;</span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure>
+
+<p>HTML 會渲染成： </p>
+<figure class="highlight plain hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&lt;div class=&quot;sth text-danger&quot;&gt;一些警告&lt;/div&gt;</span><br></pre></td></tr></table></figure>
+
+<p>視圖顯示：<span style="color: red">一些警告</span></p>
+<p>如果 vm.hasError = false</p>
+<p>則：一些警告</p>
+<p>也可以這樣寫：</p>
+<figure class="highlight javascript hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">&lt;div v-bind:<span class="hljs-class"><span class="hljs-keyword">class</span></span>=<span class="hljs-string">"classObject"</span>&gt;&lt;/div&gt;</span><br><span class="line"></span><br><span class="line">data: &#123;</span><br><span class="line">  classObject: &#123;</span><br><span class="line">    <span class="hljs-string">'text-danger'</span>: <span class="hljs-literal">true</span>,</span><br><span class="line">    <span class="hljs-string">'text-primary'</span>: <span class="hljs-literal">false</span></span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>或是使用計算屬性</p>
+<figure class="highlight javascript hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">&lt;div v-bind:<span class="hljs-class"><span class="hljs-keyword">class</span></span>=<span class="hljs-string">"classObject"</span>&gt;&lt;/div&gt;</span><br><span class="line"></span><br><span class="line">data: &#123;</span><br><span class="line">  <span class="hljs-string">'text-danger'</span>: <span class="hljs-literal">true</span>,</span><br><span class="line">  <span class="hljs-string">'text-primary'</span>: <span class="hljs-literal">false</span></span><br><span class="line">&#125;,</span><br><span class="line">computed: &#123;</span><br><span class="line">  classObject: <span class="hljs-function"><span class="hljs-keyword">function</span> (<span class="hljs-params"></span>) </span>&#123;</span><br><span class="line">    <span class="hljs-keyword">return</span> &#123;</span><br><span class="line">      <span class="hljs-string">'text-danger'</span>: <span class="hljs-comment">// 表達式,</span></span><br><span class="line">      <span class="hljs-string">'text-primary'</span>: <span class="hljs-comment">// 表達式</span></span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h3 id="陣列語法"><a href="#陣列語法" class="headerlink" title="陣列語法"></a>陣列語法</h3><p>傳給 <code>v-bind:class</code> 一個陣列，帶入多個 class</p>
+<figure class="highlight javascript hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">&lt;div v-bind:<span class="hljs-class"><span class="hljs-keyword">class</span></span>=<span class="hljs-string">"[activeClass, errorClass]"</span>&gt;&lt;/div&gt;</span><br><span class="line"></span><br><span class="line">data: &#123;</span><br><span class="line">  activeClass: <span class="hljs-string">'active'</span>,</span><br><span class="line">  errorClass: <span class="hljs-string">'text-danger'</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>HTML 會渲染成： </p>
+<figure class="highlight plain hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&lt;div class=&quot;active text-danger&quot;&gt;&lt;/div&gt;</span><br></pre></td></tr></table></figure>
+
+<p>若是想根據真值假值切換列表內的 class，可以使用三元運算</p>
+<figure class="highlight plain hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&lt;div v-bind:class=&quot;[isActive ? activeClass : &apos;&apos;, errorClass]&quot;&gt;&lt;/div&gt;</span><br></pre></td></tr></table></figure>
+
+<p>或是直接用物件語法</p>
+<figure class="highlight plain hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&lt;div v-bind:class=&quot;[&#123; active: isActive &#125;, errorClass]&quot;&gt;&lt;/div&gt;</span><br></pre></td></tr></table></figure>
+
+<h3 id="元件"><a href="#元件" class="headerlink" title="元件"></a>元件</h3><p>在自定義元件上使用屬性 class 時，所使用的 class 將被添加到元件根元素上，原本位於根元素上的 class 不會被覆蓋。</p>
+<figure class="highlight javascript hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">Vue.component(<span class="hljs-string">'my-component'</span>, &#123;</span><br><span class="line">  template: <span class="hljs-string">'&lt;p class="classA classB"&gt;Hi&lt;/p&gt;'</span></span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure>
+
+<p>添加 class</p>
+<figure class="highlight plain hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&lt;my-component class=&quot;classC classD&quot;&gt;&lt;/my-component&gt;</span><br></pre></td></tr></table></figure>
+
+<p>HTML 會渲染成： </p>
+<figure class="highlight plain hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&lt;p class=&quot;classA classB classC classD&quot;&gt;Hi&lt;/p&gt;</span><br></pre></td></tr></table></figure>
+
+<p>用物件語法也行</p>
+<figure class="highlight plain hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&lt;my-component v-bind:class=&quot;&#123; active: isActive &#125;&quot;&gt;&lt;/my-component&gt;</span><br></pre></td></tr></table></figure>
+
+<p>若 isActive 為真值，則</p>
+<figure class="highlight plain hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&lt;p class=&quot;classA classB active&quot;&gt;Hi&lt;/p&gt;</span><br></pre></td></tr></table></figure>
+
+<h2 id="Style"><a href="#Style" class="headerlink" title="Style"></a>Style</h2><h3 id="物件語法-1"><a href="#物件語法-1" class="headerlink" title="物件語法"></a>物件語法</h3><p>css 屬姓名可用 駝峰式(camelCase) 或 橫線(kebab-case) 來命名，橫線記得包在引號內。</p>
+<figure class="highlight javascript hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">&lt;div v-bind:style=<span class="hljs-string">"&#123; color: activeColor, fontSize: fontSize + 'px' &#125;"</span>&gt;&lt;/div&gt;</span><br><span class="line"></span><br><span class="line">data: &#123;</span><br><span class="line">  activeColor: <span class="hljs-string">'red'</span>,</span><br><span class="line">  fontSize: <span class="hljs-number">30</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>下面寫法更優</p>
+<figure class="highlight javascript hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">&lt;div v-bind:style=<span class="hljs-string">"styleObject"</span>&gt;&lt;/div&gt;</span><br><span class="line"></span><br><span class="line">data: &#123;</span><br><span class="line">  styleObject: &#123;</span><br><span class="line">    color: <span class="hljs-string">'red'</span>,</span><br><span class="line">    fontSize: <span class="hljs-string">'13px'</span></span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>又或是搭配返回物件的計算屬性使用。</p>
+<h3 id="陣列語法-1"><a href="#陣列語法-1" class="headerlink" title="陣列語法"></a>陣列語法</h3><p>帶入多個 style 物件。</p>
+<figure class="highlight plain hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">&lt;div v-bind:style=&quot;[colorStyle, sizeStyle]&quot;&gt;紅30&lt;/div&gt;</span><br><span class="line"></span><br><span class="line">data: &#123;</span><br><span class="line">  colorStyle: &#123;</span><br><span class="line">    color: &apos;red&apos;</span><br><span class="line">  &#125;,</span><br><span class="line">  sizeStyle: &#123;</span><br><span class="line">    &apos;font-size&apos;: &apos;30px&apos;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>視圖顯示：<br><span style="color:red;font-size:30px">紅30</span></p>
+
         </div>
         
-        
-        <div class="level is-mobile">
+        <div class="level is-size-7 is-uppercase">
             <div class="level-start">
                 <div class="level-item">
-                <a class="button is-size-7 is-light" href="/ioioy77.github.io/2019/10/11/Hoisting/#more">繼續閱讀</a>
+                    <span class="is-size-6 has-text-grey has-mr-7">#</span>
+                    <a class="has-link-grey -link" href="/ioioy77.github.io/tags/Vue/">Vue</a>, <a class="has-link-grey -link" href="/ioioy77.github.io/tags/w3HexSchool/">w3HexSchool</a>
                 </div>
             </div>
         </div>
+        
         
         
     </div>
 </div>
 
 <!-- 
+
+<div class="card">
+    <div class="card-content">
+        <h3 class="menu-label has-text-centered">喜歡這篇文章嗎? 贊助一下作者吧!</h3>
+        <div class="buttons is-centered">
+            
+        </div>
+    </div>
+</div>
  -->
 
 
-
+<div class="card card-transparent">
+    <div class="level post-navigation is-flex-wrap is-mobile">
+        
+        
+        <div class="level-end">
+            <a class="level level-item has-link-grey  article-nav-next" href="/ioioy77.github.io/2020/02/21/Vue Template_Syntax-basic/">
+                <span class="level-item">Vue Template_Syntax - basic</span>
+                <i class="level-item fas fa-chevron-right"></i>
+            </a>
+        </div>
+        
+    </div>
+</div>
 
 
 </div>
@@ -644,7 +715,7 @@
             <div class="level-start has-text-centered-mobile">
                 <a class="footer-logo is-block has-mb-6" href="/ioioy77.github.io/">
                 
-                    <img src="/ioioy77.github.io/images/logo.svg" alt="Qing" height="28">
+                    <img src="/ioioy77.github.io/images/logo.svg" alt="Class and Style Bindings" height="28">
                 
                 </a>
                 <p class="is-size-7">
