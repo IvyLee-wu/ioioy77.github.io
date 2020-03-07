@@ -10,19 +10,19 @@
 <title>Vue Computed Properties - Qing</title>
 
 
-    <meta name="description" content="計算屬性模板內的表達式做不到的就交給計算屬性吧。也就是說，任何複雜的邏輯都應該交給計算屬性。">
+    <meta name="description" content="模板內的表達式做不到的就交給計算屬性吧。也就是說，任何複雜的邏輯都應該交給計算屬性。">
 <meta name="keywords" content="Vue,w3HexSchool">
 <meta property="og:type" content="article">
 <meta property="og:title" content="Vue Computed Properties">
 <meta property="og:url" content="https://github.com/IvyLee-wu/ioioy77.github.io/blog/2020/03/07/Vue Computed Properties/index.html">
 <meta property="og:site_name" content="Hexo">
-<meta property="og:description" content="計算屬性模板內的表達式做不到的就交給計算屬性吧。也就是說，任何複雜的邏輯都應該交給計算屬性。">
+<meta property="og:description" content="模板內的表達式做不到的就交給計算屬性吧。也就是說，任何複雜的邏輯都應該交給計算屬性。">
 <meta property="og:locale" content="zh-TW">
 <meta property="og:image" content="https://github.com/ioioy77.github.io/images/og_image.png">
-<meta property="og:updated_time" content="2020-03-07T13:36:35.093Z">
+<meta property="og:updated_time" content="2020-03-07T13:39:33.711Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Vue Computed Properties">
-<meta name="twitter:description" content="計算屬性模板內的表達式做不到的就交給計算屬性吧。也就是說，任何複雜的邏輯都應該交給計算屬性。">
+<meta name="twitter:description" content="模板內的表達式做不到的就交給計算屬性吧。也就是說，任何複雜的邏輯都應該交給計算屬性。">
 <meta name="twitter:image" content="https://github.com/ioioy77.github.io/images/og_image.png">
 
 
@@ -139,7 +139,7 @@
                 <!-- <span class="level-item has-text-grey">
                     
                     
-                    3 分鐘 閱讀文 (大約 422 個字)
+                    3 分鐘 閱讀文 (大約 418 個字)
                 </span> -->
                 
                 
@@ -152,7 +152,7 @@
             
         </h1>
         <div class="content">
-            <h2 id="計算屬性"><a href="#計算屬性" class="headerlink" title="計算屬性"></a>計算屬性</h2><p>模板內的表達式做不到的就交給計算屬性吧。<br>也就是說，任何複雜的邏輯都應該交給計算屬性。</p>
+            <p>模板內的表達式做不到的就交給計算屬性吧。<br>也就是說，任何複雜的邏輯都應該交給計算屬性。</p>
 <a id="more"></a>
 <h3 id="基礎範例"><a href="#基礎範例" class="headerlink" title="基礎範例"></a>基礎範例</h3><figure class="highlight javascript hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line">&lt;div id=<span class="hljs-string">"example"</span>&gt;</span><br><span class="line">  &lt;p&gt;Original message: <span class="hljs-string">"&#123;&#123; message &#125;&#125;"</span>&lt;<span class="hljs-regexp">/p&gt;</span></span><br><span class="line"><span class="hljs-regexp">  &lt;p&gt;Computed reversed message: "&#123;&#123; reversedMessage &#125;&#125;"&lt;/</span>p&gt;</span><br><span class="line">&lt;<span class="hljs-regexp">/div&gt;</span></span><br><span class="line"><span class="hljs-regexp"></span></span><br><span class="line"><span class="hljs-regexp">var vm = new Vue(&#123;</span></span><br><span class="line"><span class="hljs-regexp">  el: '#example',</span></span><br><span class="line"><span class="hljs-regexp">  data: &#123;</span></span><br><span class="line"><span class="hljs-regexp">    message: 'Hello'</span></span><br><span class="line"><span class="hljs-regexp">  &#125;,</span></span><br><span class="line"><span class="hljs-regexp">  computed: &#123;</span></span><br><span class="line"><span class="hljs-regexp">    /</span><span class="hljs-regexp">/ 計算屬性的 getter</span></span><br><span class="line"><span class="hljs-regexp">    reversedMessage: function () &#123;</span></span><br><span class="line"><span class="hljs-regexp">      /</span><span class="hljs-regexp">/ this 指向 vm 實體</span></span><br><span class="line"><span class="hljs-regexp">      return this.message.split('').reverse().join('')</span></span><br><span class="line"><span class="hljs-regexp">    &#125;</span></span><br><span class="line"><span class="hljs-regexp">  &#125;</span></span><br><span class="line"><span class="hljs-regexp">&#125;)</span></span><br></pre></td></tr></table></figure>
 
