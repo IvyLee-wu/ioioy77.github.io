@@ -7,17 +7,22 @@
 
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
 
-<title>目錄: 2019 - Qing</title>
+<title>Vue Computed Properties - Qing</title>
 
 
-    <meta property="og:type" content="website">
-<meta property="og:title" content="Hexo">
-<meta property="og:url" content="https://github.com/IvyLee-wu/ioioy77.github.io/blog/archives/2019/index.html">
+    <meta name="description" content="計算屬性模板內的表達式做不到的就交給計算屬性吧。也就是說，任何複雜的邏輯都應該交給計算屬性。">
+<meta name="keywords" content="Vue,w3HexSchool">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Vue Computed Properties">
+<meta property="og:url" content="https://github.com/IvyLee-wu/ioioy77.github.io/blog/2020/03/07/Vue Computed Properties/index.html">
 <meta property="og:site_name" content="Hexo">
+<meta property="og:description" content="計算屬性模板內的表達式做不到的就交給計算屬性吧。也就是說，任何複雜的邏輯都應該交給計算屬性。">
 <meta property="og:locale" content="zh-TW">
 <meta property="og:image" content="https://github.com/ioioy77.github.io/images/og_image.png">
+<meta property="og:updated_time" content="2020-03-07T13:36:35.093Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Hexo">
+<meta name="twitter:title" content="Vue Computed Properties">
+<meta name="twitter:description" content="計算屬性模板內的表達式做不到的就交給計算屬性吧。也就是說，任何複雜的邏輯都應該交給計算屬性。">
 <meta name="twitter:image" content="https://github.com/ioioy77.github.io/images/og_image.png">
 
 
@@ -76,7 +81,7 @@
         <div class="navbar-brand is-flex-center">
             <a class="navbar-item navbar-logo" href="/ioioy77.github.io/">
             
-                <img src="/ioioy77.github.io/images/logo.svg" alt="Qing" height="25" width="25">
+                <img src="/ioioy77.github.io/images/logo.svg" alt="Vue Computed Properties" height="25" width="25">
             
             </a>
         </div>
@@ -118,34 +123,90 @@
         <div class="container">
             <div class="columns">
                 <div class="column is-8-tablet is-8-desktop is-6-widescreen has-order-2 column-main">
-
-<div class="card widget">
-    <div class="card-content">
-        <h3 class="tag is-link">
-        2019
-        </h3>
-        <div class="timeline">
+<div class="card">
+    
+    <div class="card-content article ">
         
-            <article class="media">
+        <div class="level article-meta is-size-7 is-uppercase is-mobile is-overflow-x-auto">
+            <div class="level-left">
+                <time class="level-item has-text-grey" datetime="2020-03-07T13:34:42.487Z">2020-03-07</time>
                 
-                <div class="media-content">
-                    <div class="content">
-                        <time class="has-text-grey is-size-7 is-block is-uppercase" datetime="2019-10-11T06:34:17.000Z">2019-10-11</time>
-                        <a href="/ioioy77.github.io/2019/10/11/Hoisting/" class="title has-link-black-ter is-size-6 has-text-weight-normal">Hoisting</a>
-                        <div class="level article-meta is-mobile">
-                            <div class="level-left">
-                                
-                                <div class="level-item is-size-7 is-uppercase">
-                                <a class="has-link-grey -link" href="/ioioy77.github.io/categories/前端學習筆記/">前端學習筆記</a>
-                                </div>
-                                
-                            </div>
-                        </div>
-                    </div>
+                <div class="level-item">
+                <a class="has-link-grey -link" href="/ioioy77.github.io/categories/前端學習筆記/">前端學習筆記</a>
                 </div>
-            </article>
-        
+                
+                
+                <!-- <span class="level-item has-text-grey">
+                    
+                    
+                    3 分鐘 閱讀文 (大約 422 個字)
+                </span> -->
+                
+                
+            </div>
         </div>
+        
+        <h1 class="title is-size-3 is-size-4-mobile has-text-weight-normal">
+            
+                Vue Computed Properties
+            
+        </h1>
+        <div class="content">
+            <h2 id="計算屬性"><a href="#計算屬性" class="headerlink" title="計算屬性"></a>計算屬性</h2><p>模板內的表達式做不到的就交給計算屬性吧。<br>也就是說，任何複雜的邏輯都應該交給計算屬性。</p>
+<a id="more"></a>
+<h3 id="基礎範例"><a href="#基礎範例" class="headerlink" title="基礎範例"></a>基礎範例</h3><figure class="highlight javascript hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line">&lt;div id=<span class="hljs-string">"example"</span>&gt;</span><br><span class="line">  &lt;p&gt;Original message: <span class="hljs-string">"&#123;&#123; message &#125;&#125;"</span>&lt;<span class="hljs-regexp">/p&gt;</span></span><br><span class="line"><span class="hljs-regexp">  &lt;p&gt;Computed reversed message: "&#123;&#123; reversedMessage &#125;&#125;"&lt;/</span>p&gt;</span><br><span class="line">&lt;<span class="hljs-regexp">/div&gt;</span></span><br><span class="line"><span class="hljs-regexp"></span></span><br><span class="line"><span class="hljs-regexp">var vm = new Vue(&#123;</span></span><br><span class="line"><span class="hljs-regexp">  el: '#example',</span></span><br><span class="line"><span class="hljs-regexp">  data: &#123;</span></span><br><span class="line"><span class="hljs-regexp">    message: 'Hello'</span></span><br><span class="line"><span class="hljs-regexp">  &#125;,</span></span><br><span class="line"><span class="hljs-regexp">  computed: &#123;</span></span><br><span class="line"><span class="hljs-regexp">    /</span><span class="hljs-regexp">/ 計算屬性的 getter</span></span><br><span class="line"><span class="hljs-regexp">    reversedMessage: function () &#123;</span></span><br><span class="line"><span class="hljs-regexp">      /</span><span class="hljs-regexp">/ this 指向 vm 實體</span></span><br><span class="line"><span class="hljs-regexp">      return this.message.split('').reverse().join('')</span></span><br><span class="line"><span class="hljs-regexp">    &#125;</span></span><br><span class="line"><span class="hljs-regexp">  &#125;</span></span><br><span class="line"><span class="hljs-regexp">&#125;)</span></span><br></pre></td></tr></table></figure>
+
+<p>結果：<br>Original message: “Hello”<br>Computed reversed message: “olleH”</p>
+<h3 id="緩存"><a href="#緩存" class="headerlink" title="緩存"></a>緩存</h3><p>使用方法其實也可以達到計算屬性的效果：</p>
+<figure class="highlight javascript hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line">&lt;div id=<span class="hljs-string">"example"</span>&gt;</span><br><span class="line">  &lt;p&gt;Original message: <span class="hljs-string">"&#123;&#123; message &#125;&#125;"</span>&lt;<span class="hljs-regexp">/p&gt;</span></span><br><span class="line"><span class="hljs-regexp">  &lt;p&gt;Computed reversed message: "&#123;&#123; reversedMessage &#125;&#125;"&lt;/</span>p&gt;</span><br><span class="line">  &lt;p&gt;Methods reversed message: <span class="hljs-string">"&#123;&#123; reversed() &#125;&#125;"</span>&lt;<span class="hljs-regexp">/p&gt;</span></span><br><span class="line"><span class="hljs-regexp">&lt;/</span>div&gt;</span><br><span class="line"></span><br><span class="line"><span class="hljs-keyword">var</span> vm = <span class="hljs-keyword">new</span> Vue(&#123;</span><br><span class="line">  el: <span class="hljs-string">'#example'</span>,</span><br><span class="line">  data: &#123;</span><br><span class="line">    message: <span class="hljs-string">'Hello'</span></span><br><span class="line">  &#125;,</span><br><span class="line">  computed: &#123;</span><br><span class="line">    reversedMessage: <span class="hljs-function"><span class="hljs-keyword">function</span> (<span class="hljs-params"></span>) </span>&#123;</span><br><span class="line">      <span class="hljs-keyword">return</span> <span class="hljs-keyword">this</span>.message.split(<span class="hljs-string">''</span>).reverse().join(<span class="hljs-string">''</span>)</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;,</span><br><span class="line">  methods: &#123;</span><br><span class="line">    reversed: <span class="hljs-function"><span class="hljs-keyword">function</span> (<span class="hljs-params"></span>) </span>&#123;</span><br><span class="line">      <span class="hljs-keyword">return</span> <span class="hljs-keyword">this</span>.message.split(<span class="hljs-string">''</span>).reverse().join(<span class="hljs-string">''</span>)</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure>
+
+<p>結果：<br>Original message: “Hello”<br>Computed reversed message: “olleH”<br>Methods reversed message: “olleH”</p>
+<p>計算屬性與方法的差異在於是否有緩存。<br>對於計算屬性來說，如果它所依賴的資料(以上面為例，就是 message)沒有改變，那麼它就不會重新求值，只會返回上次的計算結果；而調用方法則是每次觸發重新渲染都會重新求一次值。<br>所以如果現在有一個十分耗性能的函式，並且它不需用時時刷新，那麼最好就使用計算屬性，而當不希望有緩存時，就改成使用方法。</p>
+<h3 id="setter"><a href="#setter" class="headerlink" title="setter"></a>setter</h3><p>計算屬性默認只有 getter，但也能自設 setter</p>
+<figure class="highlight javascript hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br></pre></td><td class="code"><pre><span class="line">&lt;div id=<span class="hljs-string">"app"</span>&gt;</span><br><span class="line">  &lt;div&gt;&#123;&#123; fullName &#125;&#125;&lt;<span class="hljs-regexp">/div&gt;</span></span><br><span class="line"><span class="hljs-regexp">&lt;/</span>div&gt;</span><br><span class="line"></span><br><span class="line"><span class="hljs-keyword">var</span> vm = <span class="hljs-keyword">new</span> Vue(&#123;</span><br><span class="line">  el: <span class="hljs-string">'#app'</span>,</span><br><span class="line">  data: &#123;</span><br><span class="line">    firstName: <span class="hljs-string">'Clark'</span>,</span><br><span class="line">    lastName: <span class="hljs-string">'Kent'</span></span><br><span class="line">  &#125;,</span><br><span class="line">  computed: &#123;</span><br><span class="line">    fullName: &#123;</span><br><span class="line">      <span class="hljs-comment">// getter</span></span><br><span class="line">      <span class="hljs-keyword">get</span>: function () &#123;</span><br><span class="line">        <span class="hljs-keyword">return</span> <span class="hljs-keyword">this</span>.firstName + <span class="hljs-string">' '</span> + <span class="hljs-keyword">this</span>.lastName</span><br><span class="line">      &#125;,</span><br><span class="line">      <span class="hljs-comment">// setter</span></span><br><span class="line">      <span class="hljs-keyword">set</span>: function (newValue) &#123;</span><br><span class="line">        <span class="hljs-keyword">var</span> names = newValue.split(<span class="hljs-string">' '</span>)</span><br><span class="line">        <span class="hljs-keyword">this</span>.firstName = names[<span class="hljs-number">0</span>]</span><br><span class="line">        <span class="hljs-keyword">this</span>.lastName = names[names.length - <span class="hljs-number">1</span>]</span><br><span class="line">      &#125;</span><br><span class="line">    &#125; </span><br><span class="line">  &#125;    </span><br><span class="line">&#125;)</span><br><span class="line"><span class="hljs-comment">// vm.fullName = 'Kal El'</span></span><br></pre></td></tr></table></figure>
+
+<p>結果：<br>Clark Kent<br>如果解開最後一行的註解，setter 會被調用，data 會更新，結果：<br>Kal El</p>
+
+        </div>
+        
+        <div class="level is-size-7 is-uppercase">
+            <div class="level-start">
+                <div class="level-item">
+                    <span class="is-size-6 has-text-grey has-mr-7">#</span>
+                    <a class="has-link-grey -link" href="/ioioy77.github.io/tags/Vue/">Vue</a>, <a class="has-link-grey -link" href="/ioioy77.github.io/tags/w3HexSchool/">w3HexSchool</a>
+                </div>
+            </div>
+        </div>
+        
+        
+        
+    </div>
+</div>
+
+<!-- 
+
+<div class="card">
+    <div class="card-content">
+        <h3 class="menu-label has-text-centered">喜歡這篇文章嗎? 贊助一下作者吧!</h3>
+        <div class="buttons is-centered">
+            
+        </div>
+    </div>
+</div>
+ -->
+
+
+<div class="card card-transparent">
+    <div class="level post-navigation is-flex-wrap is-mobile">
+        
+        
+        <div class="level-end">
+            <a class="level level-item has-link-grey  article-nav-next" href="/ioioy77.github.io/2020/02/28/Vue v-bind plus/">
+                <span class="level-item">Vue Class and Style Bindings</span>
+                <i class="level-item fas fa-chevron-right"></i>
+            </a>
+        </div>
+        
     </div>
 </div>
 
@@ -624,7 +685,7 @@
             <div class="level-start has-text-centered-mobile">
                 <a class="footer-logo is-block has-mb-6" href="/ioioy77.github.io/">
                 
-                    <img src="/ioioy77.github.io/images/logo.svg" alt="Qing" height="28">
+                    <img src="/ioioy77.github.io/images/logo.svg" alt="Vue Computed Properties" height="28">
                 
                 </a>
                 <p class="is-size-7">
