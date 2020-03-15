@@ -7,17 +7,22 @@
 
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
 
-<title>標籤: w3HexSchool - Qing</title>
+<title>Vue Conditional Rendering - Qing</title>
 
 
-    <meta property="og:type" content="website">
-<meta property="og:title" content="Hexo">
-<meta property="og:url" content="https://github.com/IvyLee-wu/ioioy77.github.io/blog/tags/w3HexSchool/index.html">
+    <meta name="description" content="這次來介紹 Vue 的條件性渲染，主要的指令有 v-if 和 v-show。">
+<meta name="keywords" content="Vue,w3HexSchool">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Vue Conditional Rendering">
+<meta property="og:url" content="https://github.com/IvyLee-wu/ioioy77.github.io/blog/2020/03/15/Vue Conditional Rendering/index.html">
 <meta property="og:site_name" content="Hexo">
+<meta property="og:description" content="這次來介紹 Vue 的條件性渲染，主要的指令有 v-if 和 v-show。">
 <meta property="og:locale" content="zh-TW">
 <meta property="og:image" content="https://github.com/ioioy77.github.io/images/og_image.png">
+<meta property="og:updated_time" content="2020-03-15T03:02:08.887Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Hexo">
+<meta name="twitter:title" content="Vue Conditional Rendering">
+<meta name="twitter:description" content="這次來介紹 Vue 的條件性渲染，主要的指令有 v-if 和 v-show。">
 <meta name="twitter:image" content="https://github.com/ioioy77.github.io/images/og_image.png">
 
 
@@ -76,7 +81,7 @@
         <div class="navbar-brand is-flex-center">
             <a class="navbar-item navbar-logo" href="/ioioy77.github.io/">
             
-                <img src="/ioioy77.github.io/images/logo.svg" alt="Qing" height="25" width="25">
+                <img src="/ioioy77.github.io/images/logo.svg" alt="Vue Conditional Rendering" height="25" width="25">
             
             </a>
         </div>
@@ -117,18 +122,7 @@
     <section class="section">
         <div class="container">
             <div class="columns">
-                <div class="column is-8-tablet is-8-desktop is-6-widescreen has-order-2 column-main"><div class="card">
-    <div class="card-content">
-        <nav class="breadcrumb" aria-label="breadcrumbs">
-        <ul>
-            <li><a href="/ioioy77.github.io/tags">標籤</a></li>
-            <li class="is-active"><a href="#" aria-current="page">w3HexSchool</a></li>
-        </ul>
-        </nav>
-    </div>
-</div>
-
-    
+                <div class="column is-8-tablet is-8-desktop is-6-widescreen has-order-2 column-main">
 <div class="card">
     
     <div class="card-content article ">
@@ -154,296 +148,72 @@
         
         <h1 class="title is-size-3 is-size-4-mobile has-text-weight-normal">
             
-                <a class="has-link-black-ter" href="/ioioy77.github.io/2020/03/15/Vue Conditional Rendering/">Vue Conditional Rendering</a>
+                Vue Conditional Rendering
             
         </h1>
         <div class="content">
             <p>這次來介紹 Vue 的條件性渲染，主要的指令有 v-if 和 v-show。</p>
+<a id="more"></a>
+<h2 id="v-if"><a href="#v-if" class="headerlink" title="v-if"></a>v-if</h2><p>v-if 指令用於條件性的渲染一個區塊的內容，僅在表達式的回傳值為 truthy 時渲染，若是初始條件為 false 時則不會進行(惰性求值)。<br>因為會在切換時執行事件監聽和子元件的銷毀和重建，使用 v-if 的時機通常為運行條件很少改變時。</p>
+<figure class="highlight javascript hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">&lt;div id=<span class="hljs-string">"app"</span>&gt;</span><br><span class="line">  &lt;p v-<span class="hljs-keyword">if</span>=<span class="hljs-string">"seen"</span>&gt;現在渲染 v-<span class="hljs-keyword">if</span>&lt;<span class="hljs-regexp">/p&gt;</span></span><br><span class="line"><span class="hljs-regexp">&lt;/</span>div&gt;</span><br><span class="line">    </span><br><span class="line">&lt;script&gt;</span><br><span class="line"><span class="hljs-keyword">new</span> Vue(&#123;</span><br><span class="line">  el: <span class="hljs-string">'#app'</span>,</span><br><span class="line">  data: &#123;</span><br><span class="line">    seen: <span class="hljs-literal">true</span></span><br><span class="line">  &#125;</span><br><span class="line">&#125;)</span><br><span class="line">&lt;<span class="hljs-regexp">/script&gt;</span></span><br></pre></td></tr></table></figure>
+
+<p>視圖：現在渲染 v-if</p>
+<p>※ 除了普通的 block 外，v-if 也能作用在 <template> 上</template></p>
+<h3 id="v-else"><a href="#v-else" class="headerlink" title="v-else"></a>v-else</h3><p>v-if 的 else 語法，必須要緊接在 v-if 或是 v-else-if 後，才能被識別。</p>
+<figure class="highlight javascript hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">&lt;div id=<span class="hljs-string">"app"</span>&gt;</span><br><span class="line">  &lt;p v-<span class="hljs-keyword">if</span>=<span class="hljs-string">"seen"</span>&gt;現在渲染 v-<span class="hljs-keyword">if</span>&lt;<span class="hljs-regexp">/p&gt;</span></span><br><span class="line"><span class="hljs-regexp">  &lt;p v-else&gt;現在渲染 v-else&lt;/</span>p&gt;</span><br><span class="line">&lt;<span class="hljs-regexp">/div&gt;</span></span><br><span class="line"><span class="hljs-regexp">    </span></span><br><span class="line"><span class="hljs-regexp">&lt;script&gt;</span></span><br><span class="line"><span class="hljs-regexp">new Vue(&#123;</span></span><br><span class="line"><span class="hljs-regexp">  el: '#app',</span></span><br><span class="line"><span class="hljs-regexp">  data: &#123;</span></span><br><span class="line"><span class="hljs-regexp">    seen: false</span></span><br><span class="line"><span class="hljs-regexp">  &#125;</span></span><br><span class="line"><span class="hljs-regexp">&#125;)</span></span><br><span class="line"><span class="hljs-regexp">&lt;/</span>script&gt;</span><br></pre></td></tr></table></figure>
+
+<p>視圖：現在渲染 v-else</p>
+<h3 id="v-else-if"><a href="#v-else-if" class="headerlink" title="v-else-if"></a>v-else-if</h3><p>v-if 的 else-if 語法，同 v-else，必須要緊接在 v-if 或是 v-else-if 後，才能被識別。</p>
+<figure class="highlight javascript hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line">&lt;div id=<span class="hljs-string">"app"</span>&gt;</span><br><span class="line">  &lt;div v-<span class="hljs-keyword">if</span>=<span class="hljs-string">"type === 'A'"</span>&gt;顯示A&lt;<span class="hljs-regexp">/div&gt;</span></span><br><span class="line"><span class="hljs-regexp">  &lt;div v-else-if="type === 'B'"&gt;顯示B&lt;/</span>div&gt;</span><br><span class="line">  &lt;div v-<span class="hljs-keyword">else</span>-<span class="hljs-keyword">if</span>=<span class="hljs-string">"type === 'C'"</span>&gt;顯示C&lt;<span class="hljs-regexp">/div&gt;</span></span><br><span class="line"><span class="hljs-regexp">  &lt;div v-else&gt;非 A/</span>B/C&lt;<span class="hljs-regexp">/div&gt;</span></span><br><span class="line"><span class="hljs-regexp">&lt;/</span>div&gt;</span><br><span class="line">	</span><br><span class="line">&lt;script&gt;</span><br><span class="line"><span class="hljs-keyword">new</span> Vue(&#123;</span><br><span class="line">  el: <span class="hljs-string">'#app'</span>,</span><br><span class="line">  data: &#123;</span><br><span class="line">    type: <span class="hljs-string">'B'</span> </span><br><span class="line">  &#125;</span><br><span class="line">&#125;)</span><br><span class="line">&lt;<span class="hljs-regexp">/script&gt;</span></span><br></pre></td></tr></table></figure>
+
+<p>視圖：顯示B</p>
+<h2 id="v-show"><a href="#v-show" class="headerlink" title="v-show"></a>v-show</h2><p>v-show 指令也是條件性的渲染一個區塊的內容，語法和 v-if 幾乎相同，和 v-if 不同的地方在於，v-show 始終都會渲染，並且表達式回傳的結果是用來切換 css 的 display，而不是決定是否渲染。<br>因此，使用 v-show 的時機大多在需要頻繁切換塊作用域時。</p>
+<figure class="highlight javascript hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">&lt;div id=<span class="hljs-string">"app"</span>&gt;</span><br><span class="line">  &lt;p v-show=<span class="hljs-string">"seen"</span>&gt;Hello World&lt;<span class="hljs-regexp">/p&gt;</span></span><br><span class="line"><span class="hljs-regexp">&lt;/</span>div&gt;</span><br><span class="line">    </span><br><span class="line">&lt;script&gt;</span><br><span class="line"><span class="hljs-keyword">new</span> Vue(&#123;</span><br><span class="line">  el: <span class="hljs-string">'#app'</span>,</span><br><span class="line">  data: &#123;</span><br><span class="line">    seen: <span class="hljs-literal">true</span></span><br><span class="line">  &#125;</span><br><span class="line">&#125;)</span><br><span class="line">&lt;<span class="hljs-regexp">/script&gt;</span></span><br></pre></td></tr></table></figure>
+
+<p>※ v-show 不能接著使用 v-else，也無法作用在 <template> 上</template></p>
+
         </div>
         
-        
-        <div class="level is-mobile">
+        <div class="level is-size-7 is-uppercase">
             <div class="level-start">
                 <div class="level-item">
-                <a class="button is-size-7 is-light" href="/ioioy77.github.io/2020/03/15/Vue Conditional Rendering/#more">繼續閱讀</a>
+                    <span class="is-size-6 has-text-grey has-mr-7">#</span>
+                    <a class="has-link-grey -link" href="/ioioy77.github.io/tags/Vue/">Vue</a>, <a class="has-link-grey -link" href="/ioioy77.github.io/tags/w3HexSchool/">w3HexSchool</a>
                 </div>
             </div>
         </div>
+        
         
         
     </div>
 </div>
 
 <!-- 
- -->
 
-
-
-
-
-    
 <div class="card">
-    
-    <div class="card-content article ">
-        
-        <div class="level article-meta is-size-7 is-uppercase is-mobile is-overflow-x-auto">
-            <div class="level-left">
-                <time class="level-item has-text-grey" datetime="2020-03-07T13:34:42.487Z">2020-03-07</time>
-                
-                <div class="level-item">
-                <a class="has-link-grey -link" href="/ioioy77.github.io/categories/前端學習筆記/">前端學習筆記</a>
-                </div>
-                
-                
-                <!-- <span class="level-item has-text-grey">
-                    
-                    
-                    3 分鐘 閱讀文 (大約 418 個字)
-                </span> -->
-                
-                
-            </div>
-        </div>
-        
-        <h1 class="title is-size-3 is-size-4-mobile has-text-weight-normal">
+    <div class="card-content">
+        <h3 class="menu-label has-text-centered">喜歡這篇文章嗎? 贊助一下作者吧!</h3>
+        <div class="buttons is-centered">
             
-                <a class="has-link-black-ter" href="/ioioy77.github.io/2020/03/07/Vue Computed Properties/">Vue Computed Properties</a>
-            
-        </h1>
-        <div class="content">
-            <p>模板內的表達式做不到的就交給計算屬性吧。<br>也就是說，任何複雜的邏輯都應該交給計算屬性。</p>
         </div>
-        
-        
-        <div class="level is-mobile">
-            <div class="level-start">
-                <div class="level-item">
-                <a class="button is-size-7 is-light" href="/ioioy77.github.io/2020/03/07/Vue Computed Properties/#more">繼續閱讀</a>
-                </div>
-            </div>
-        </div>
-        
-        
     </div>
 </div>
-
-<!-- 
  -->
 
 
-
-
-
-    
-<div class="card">
-    
-    <div class="card-content article ">
+<div class="card card-transparent">
+    <div class="level post-navigation is-flex-wrap is-mobile">
         
-        <div class="level article-meta is-size-7 is-uppercase is-mobile is-overflow-x-auto">
-            <div class="level-left">
-                <time class="level-item has-text-grey" datetime="2020-02-28T01:54:50.802Z">2020-02-28</time>
-                
-                <div class="level-item">
-                <a class="has-link-grey -link" href="/ioioy77.github.io/categories/前端學習筆記/">前端學習筆記</a>
-                </div>
-                
-                
-                <!-- <span class="level-item has-text-grey">
-                    
-                    
-                    3 分鐘 閱讀文 (大約 426 個字)
-                </span> -->
-                
-                
-            </div>
+        
+        <div class="level-end">
+            <a class="level level-item has-link-grey  article-nav-next" href="/ioioy77.github.io/2020/03/07/Vue Computed Properties/">
+                <span class="level-item">Vue Computed Properties</span>
+                <i class="level-item fas fa-chevron-right"></i>
+            </a>
         </div>
-        
-        <h1 class="title is-size-3 is-size-4-mobile has-text-weight-normal">
-            
-                <a class="has-link-black-ter" href="/ioioy77.github.io/2020/02/28/Vue v-bind plus/">Vue Class and Style Bindings</a>
-            
-        </h1>
-        <div class="content">
-            <p>class 與 style 皆是屬性，在 HTML 屬性裡帶入資料，用的是 v-bind 語法。<br>通常來說 v-bind 的屬性值為字串，為了操作的方便，Vue 另外增強了 class 與 style 綁定的功能。</p>
-        </div>
-        
-        
-        <div class="level is-mobile">
-            <div class="level-start">
-                <div class="level-item">
-                <a class="button is-size-7 is-light" href="/ioioy77.github.io/2020/02/28/Vue v-bind plus/#more">繼續閱讀</a>
-                </div>
-            </div>
-        </div>
-        
         
     </div>
 </div>
-
-<!-- 
- -->
-
-
-
-
-
-    
-<div class="card">
-    
-    <div class="card-content article ">
-        
-        <div class="level article-meta is-size-7 is-uppercase is-mobile is-overflow-x-auto">
-            <div class="level-left">
-                <time class="level-item has-text-grey" datetime="2020-02-21T14:25:34.754Z">2020-02-21</time>
-                
-                <div class="level-item">
-                <a class="has-link-grey -link" href="/ioioy77.github.io/categories/前端學習筆記/">前端學習筆記</a>
-                </div>
-                
-                
-                <!-- <span class="level-item has-text-grey">
-                    
-                    
-                    4 分鐘 閱讀文 (大約 631 個字)
-                </span> -->
-                
-                
-            </div>
-        </div>
-        
-        <h1 class="title is-size-3 is-size-4-mobile has-text-weight-normal">
-            
-                <a class="has-link-black-ter" href="/ioioy77.github.io/2020/02/21/Vue Template_Syntax-basic/">Vue Template_Syntax - basic</a>
-            
-        </h1>
-        <div class="content">
-            <p>模板語法-基礎篇</p>
-        </div>
-        
-        
-        <div class="level is-mobile">
-            <div class="level-start">
-                <div class="level-item">
-                <a class="button is-size-7 is-light" href="/ioioy77.github.io/2020/02/21/Vue Template_Syntax-basic/#more">繼續閱讀</a>
-                </div>
-            </div>
-        </div>
-        
-        
-    </div>
-</div>
-
-<!-- 
- -->
-
-
-
-
-
-    
-<div class="card">
-    
-    <div class="card-content article ">
-        
-        <div class="level article-meta is-size-7 is-uppercase is-mobile is-overflow-x-auto">
-            <div class="level-left">
-                <time class="level-item has-text-grey" datetime="2020-02-15T14:36:28.913Z">2020-02-15</time>
-                
-                <div class="level-item">
-                <a class="has-link-grey -link" href="/ioioy77.github.io/categories/前端學習筆記/">前端學習筆記</a>
-                </div>
-                
-                
-                <!-- <span class="level-item has-text-grey">
-                    
-                    
-                    5 分鐘 閱讀文 (大約 751 個字)
-                </span> -->
-                
-                
-            </div>
-        </div>
-        
-        <h1 class="title is-size-3 is-size-4-mobile has-text-weight-normal">
-            
-                <a class="has-link-black-ter" href="/ioioy77.github.io/2020/02/15/Vue Lifecycle/">Vue Lifecycle</a>
-            
-        </h1>
-        <div class="content">
-            <p>Vue 實體在被創建時會經過一系列初始化的步驟，如數據監聽、編譯模板、掛載實體、綁定資料等。與此同時 Vue 也提供了讓使用者能在特定階段自行客製化程式碼的方法，這些方法就稱為 Lifecycle Hook。</p>
-        </div>
-        
-        
-        <div class="level is-mobile">
-            <div class="level-start">
-                <div class="level-item">
-                <a class="button is-size-7 is-light" href="/ioioy77.github.io/2020/02/15/Vue Lifecycle/#more">繼續閱讀</a>
-                </div>
-            </div>
-        </div>
-        
-        
-    </div>
-</div>
-
-<!-- 
- -->
-
-
-
-
-
-    
-<div class="card">
-    
-    <div class="card-content article ">
-        
-        <div class="level article-meta is-size-7 is-uppercase is-mobile is-overflow-x-auto">
-            <div class="level-left">
-                <time class="level-item has-text-grey" datetime="2020-02-08T08:26:36.694Z">2020-02-08</time>
-                
-                <div class="level-item">
-                <a class="has-link-grey -link" href="/ioioy77.github.io/categories/前端學習筆記/">前端學習筆記</a>
-                </div>
-                
-                
-                <!-- <span class="level-item has-text-grey">
-                    
-                    
-                    7 分鐘 閱讀文 (大約 1003 個字)
-                </span> -->
-                
-                
-            </div>
-        </div>
-        
-        <h1 class="title is-size-3 is-size-4-mobile has-text-weight-normal">
-            
-                <a class="has-link-black-ter" href="/ioioy77.github.io/2020/02/08/Vue Instance/">Vue Instance</a>
-            
-        </h1>
-        <div class="content">
-            <h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><p>Vue 音似 View，用意為表示 Vue.js 專注於 View。和其他實作 MVC 的 JavaScript 框架 ( Angular.js、Ember.js ) 相比，Vue.js 屬於 MVVM 設計模式的實作。</p>
-        </div>
-        
-        
-        <div class="level is-mobile">
-            <div class="level-start">
-                <div class="level-item">
-                <a class="button is-size-7 is-light" href="/ioioy77.github.io/2020/02/08/Vue Instance/#more">繼續閱讀</a>
-                </div>
-            </div>
-        </div>
-        
-        
-    </div>
-</div>
-
-<!-- 
- -->
-
-
-
 
 
 </div>
@@ -920,7 +690,7 @@
             <div class="level-start has-text-centered-mobile">
                 <a class="footer-logo is-block has-mb-6" href="/ioioy77.github.io/">
                 
-                    <img src="/ioioy77.github.io/images/logo.svg" alt="Qing" height="28">
+                    <img src="/ioioy77.github.io/images/logo.svg" alt="Vue Conditional Rendering" height="28">
                 
                 </a>
                 <p class="is-size-7">
