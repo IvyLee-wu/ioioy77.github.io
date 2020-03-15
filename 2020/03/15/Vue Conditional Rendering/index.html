@@ -19,7 +19,7 @@
 <meta property="og:description" content="這次來介紹 Vue 的條件性渲染，主要的指令有 v-if 和 v-show。">
 <meta property="og:locale" content="zh-TW">
 <meta property="og:image" content="https://github.com/ioioy77.github.io/images/og_image.png">
-<meta property="og:updated_time" content="2020-03-15T03:02:08.887Z">
+<meta property="og:updated_time" content="2020-03-15T03:06:40.990Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Vue Conditional Rendering">
 <meta name="twitter:description" content="這次來介紹 Vue 的條件性渲染，主要的指令有 v-if 和 v-show。">
@@ -170,7 +170,7 @@
 <h2 id="v-show"><a href="#v-show" class="headerlink" title="v-show"></a>v-show</h2><p>v-show 指令也是條件性的渲染一個區塊的內容，語法和 v-if 幾乎相同，和 v-if 不同的地方在於，v-show 始終都會渲染，並且表達式回傳的結果是用來切換 css 的 display，而不是決定是否渲染。<br>因此，使用 v-show 的時機大多在需要頻繁切換塊作用域時。</p>
 <figure class="highlight javascript hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">&lt;div id=<span class="hljs-string">"app"</span>&gt;</span><br><span class="line">  &lt;p v-show=<span class="hljs-string">"seen"</span>&gt;Hello World&lt;<span class="hljs-regexp">/p&gt;</span></span><br><span class="line"><span class="hljs-regexp">&lt;/</span>div&gt;</span><br><span class="line">    </span><br><span class="line">&lt;script&gt;</span><br><span class="line"><span class="hljs-keyword">new</span> Vue(&#123;</span><br><span class="line">  el: <span class="hljs-string">'#app'</span>,</span><br><span class="line">  data: &#123;</span><br><span class="line">    seen: <span class="hljs-literal">true</span></span><br><span class="line">  &#125;</span><br><span class="line">&#125;)</span><br><span class="line">&lt;<span class="hljs-regexp">/script&gt;</span></span><br></pre></td></tr></table></figure>
 
-<p>※ v-show 不能接著使用 v-else，也無法作用在 <template> 上</template></p>
+<p>※ v-show 不能接著使用 v-else，也無法作用在 &lt;template&gt; 上</p>
 
         </div>
         
