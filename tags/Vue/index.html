@@ -135,6 +135,147 @@
         
         <div class="level article-meta is-size-7 is-uppercase is-mobile is-overflow-x-auto">
             <div class="level-left">
+                <time class="level-item has-text-grey" datetime="2020-03-22T02:52:28.048Z">2020-03-22</time>
+                
+                <div class="level-item">
+                <a class="has-link-grey -link" href="/ioioy77.github.io/categories/前端學習筆記/">前端學習筆記</a>
+                </div>
+                
+                
+                <!-- <span class="level-item has-text-grey">
+                    
+                    
+                    4 分鐘 閱讀文 (大約 621 個字)
+                </span> -->
+                
+                
+            </div>
+        </div>
+        
+        <h1 class="title is-size-3 is-size-4-mobile has-text-weight-normal">
+            
+                <a class="has-link-black-ter" href="/ioioy77.github.io/2020/03/22/Vue List Rendering/">Vue List Rendering</a>
+            
+        </h1>
+        <div class="content">
+            <h2 id="繪製陣列內的元素"><a href="#繪製陣列內的元素" class="headerlink" title="繪製陣列內的元素"></a>繪製陣列內的元素</h2><p>v-for 指令用來渲染多筆基於陣列的元素。<br>語法是 item in items。<br>items 是資料的來源陣列，item 是陣列內的元素。</p>
+<figure class="highlight javascript hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line">&lt;ul id=<span class="hljs-string">"example-1"</span>&gt;</span><br><span class="line">  &lt;li v-<span class="hljs-keyword">for</span>=<span class="hljs-string">"item in items"</span>&gt;</span><br><span class="line">    &#123;&#123; item.message &#125;&#125;</span><br><span class="line">  &lt;<span class="hljs-regexp">/li&gt;</span></span><br><span class="line"><span class="hljs-regexp">&lt;/u</span>l&gt;</span><br><span class="line"></span><br><span class="line"><span class="hljs-keyword">var</span> example1 = <span class="hljs-keyword">new</span> Vue(&#123;</span><br><span class="line">  el: <span class="hljs-string">'#example-1'</span>,</span><br><span class="line">  data: &#123;</span><br><span class="line">    items: [</span><br><span class="line">      &#123; <span class="hljs-attr">message</span>: <span class="hljs-string">'Foo'</span> &#125;,</span><br><span class="line">      &#123; <span class="hljs-attr">message</span>: <span class="hljs-string">'Bar'</span> &#125;</span><br><span class="line">    ]</span><br><span class="line">  &#125;</span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure>
+
+<p>視圖顯示：</p>
+<ul>
+<li>Foo</li>
+<li>Bar</li>
+</ul>
+<p>v-for 還支持另一個參數(可選)，即陣列內的索引。</p>
+<figure class="highlight javascript hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line">&lt;ul id=<span class="hljs-string">"example-2"</span>&gt;</span><br><span class="line">  &lt;li v-<span class="hljs-keyword">for</span>=<span class="hljs-string">"(item, index) in items"</span>&gt;</span><br><span class="line">    &#123;&#123; index &#125;&#125; - &#123;&#123; item.message &#125;&#125;</span><br><span class="line">  &lt;<span class="hljs-regexp">/li&gt;</span></span><br><span class="line"><span class="hljs-regexp">&lt;/u</span>l&gt;</span><br><span class="line"></span><br><span class="line"><span class="hljs-keyword">var</span> example2 = <span class="hljs-keyword">new</span> Vue(&#123;</span><br><span class="line">  el: <span class="hljs-string">'#example-2'</span>,</span><br><span class="line">  data: &#123;</span><br><span class="line">    items: [</span><br><span class="line">      &#123; <span class="hljs-attr">message</span>: <span class="hljs-string">'Foo'</span> &#125;,</span><br><span class="line">      &#123; <span class="hljs-attr">message</span>: <span class="hljs-string">'Bar'</span> &#125;</span><br><span class="line">    ]</span><br><span class="line">  &#125;</span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure>
+
+<p>視圖顯示：</p>
+<ul>
+<li>0 - Foo</li>
+<li>1 - Bar</li>
+</ul>
+<p>※ item in items 也可以寫成 item of items。</p>
+<h2 id="物件"><a href="#物件" class="headerlink" title="物件"></a>物件</h2><p>v-for 也能取出物件內的資料。<br>根據屬性取出值。</p>
+<figure class="highlight javascript hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line">&lt;ul id=<span class="hljs-string">"v-for-object"</span> <span class="hljs-class"><span class="hljs-keyword">class</span></span>=<span class="hljs-string">"demo"</span>&gt;</span><br><span class="line">  &lt;li v-<span class="hljs-keyword">for</span>=<span class="hljs-string">"value in object"</span>&gt;</span><br><span class="line">    &#123;&#123; value &#125;&#125;</span><br><span class="line">  &lt;<span class="hljs-regexp">/li&gt;</span></span><br><span class="line"><span class="hljs-regexp">&lt;/u</span>l&gt;</span><br><span class="line"></span><br><span class="line"><span class="hljs-keyword">new</span> Vue(&#123;</span><br><span class="line">  el: <span class="hljs-string">'#v-for-object'</span>,</span><br><span class="line">  data: &#123;</span><br><span class="line">    object: &#123;</span><br><span class="line">      title: <span class="hljs-string">'How to do lists in Vue'</span>,</span><br><span class="line">      author: <span class="hljs-string">'Jane Doe'</span>,</span><br><span class="line">      publishedAt: <span class="hljs-string">'2016-04-10'</span></span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure>
+
+<p>視圖顯示：</p>
+<ul>
+<li>How to do lists in Vue</li>
+<li>Jane Doe</li>
+<li>2016-04-10</li>
+</ul>
+<p>第二個參數(可選)為屬性名(key)。</p>
+<figure class="highlight javascript hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">&lt;div v-<span class="hljs-keyword">for</span>=<span class="hljs-string">"(value, name) in object"</span>&gt;</span><br><span class="line">  &#123;&#123; name &#125;&#125;: &#123;&#123; value &#125;&#125;</span><br><span class="line">&lt;<span class="hljs-regexp">/div&gt;</span></span><br></pre></td></tr></table></figure>
+
+<p>視圖顯示：</p>
+<ul>
+<li>title: How to do lists in Vue</li>
+<li>author: Jane Doe</li>
+<li>publishedAt: 2016-04-10</li>
+</ul>
+<p>同樣有個索引參數。</p>
+<figure class="highlight javascript hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">&lt;div v-<span class="hljs-keyword">for</span>=<span class="hljs-string">"(value, name, index) in object"</span>&gt;</span><br><span class="line">  &#123;&#123; index &#125;&#125;. &#123;&#123; name &#125;&#125;: &#123;&#123; value &#125;&#125;</span><br><span class="line">&lt;<span class="hljs-regexp">/div&gt;</span></span><br></pre></td></tr></table></figure>
+
+<p>視圖顯示：</p>
+<ul>
+<li><ol start="0">
+<li>title: How to do lists in Vue</li>
+</ol>
+</li>
+<li><ol>
+<li>author: Jane Doe</li>
+</ol>
+</li>
+<li><ol start="2">
+<li>publishedAt: 2016-04-10</li>
+</ol>
+</li>
+</ul>
+<blockquote>
+<p>在迭代(遍歷)物件時，是依據 Object.keys() 的結果迭代，但要注意這結果在不同的 JavaScript 引擎可能有所不同。</p>
+</blockquote>
+<h2 id="陣列更新"><a href="#陣列更新" class="headerlink" title="陣列更新"></a>陣列更新</h2><h3 id="變異方法-mutation-method"><a href="#變異方法-mutation-method" class="headerlink" title="變異方法 (mutation method)"></a>變異方法 (mutation method)</h3><p>Vue 將被監聽的陣列的變異方法進行了包裹，使他們能夠觸發視圖更新。</p>
+<ul>
+<li>push()</li>
+<li>pop()</li>
+<li>shift()</li>
+<li>unshift()</li>
+<li>splice()</li>
+<li>sort()</li>
+<li>reverse()</li>
+</ul>
+<blockquote>
+<p>變異方法：會更改原陣列的方法。<br>&lt;mutate the original array they are called on.&gt;</p>
+</blockquote>
+<h3 id="替換陣列-non-mutating-method"><a href="#替換陣列-non-mutating-method" class="headerlink" title="替換陣列 (non-mutating method)"></a>替換陣列 (non-mutating method)</h3><ul>
+<li>filter()</li>
+<li>concat()</li>
+<li>slice()</li>
+</ul>
+<h2 id="物件更新"><a href="#物件更新" class="headerlink" title="物件更新"></a>物件更新</h2><p>若非實體創建時就已經存在於 data 中的屬性，是無法響應式的更新的。<br>如果想要更動一個物件內的屬性，則需使用 set 方法。</p>
+<figure class="highlight javascript hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="hljs-keyword">var</span> vm = <span class="hljs-keyword">new</span> Vue(&#123;</span><br><span class="line">  data: &#123;</span><br><span class="line">    userProfile: &#123;</span><br><span class="line">      name: <span class="hljs-string">'Anika'</span></span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure>
+
+<p>使用 Vue.set(object, propertyName, value) 增加一個 age 屬性到 userProfile 物件裡</p>
+<figure class="highlight javascript hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">Vue.set(vm.userProfile, <span class="hljs-string">'age'</span>, <span class="hljs-number">27</span>)</span><br></pre></td></tr></table></figure>
+
+<p>或是用 vm.$set </p>
+<figure class="highlight javascript hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">vm.$<span class="hljs-keyword">set</span>(vm.userProfile, 'age', 27)</span><br></pre></td></tr></table></figure>
+
+<p>或是用 Object.assign() 增加多個屬性</p>
+<figure class="highlight javascript hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">vm.userProfile = <span class="hljs-built_in">Object</span>.assign(&#123;&#125;, vm.userProfile, &#123;</span><br><span class="line">  age: <span class="hljs-number">27</span>,</span><br><span class="line">  favoriteColor: <span class="hljs-string">'Vue Green'</span></span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure>
+
+<h2 id="顯示過濾-排序後的結果"><a href="#顯示過濾-排序後的結果" class="headerlink" title="顯示過濾/排序後的結果"></a>顯示過濾/排序後的結果</h2><p>若是不想改變原始數據，可以使用計算屬性或方法來返回處理過的陣列。</p>
+<h3 id="計算屬性"><a href="#計算屬性" class="headerlink" title="計算屬性"></a>計算屬性</h3><figure class="highlight javascript hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">&lt;li v-<span class="hljs-keyword">for</span>=<span class="hljs-string">"n in evenNumbers"</span>&gt; &#123;&#123; n &#125;&#125; &lt;<span class="hljs-regexp">/li&gt;</span></span><br><span class="line"><span class="hljs-regexp"></span></span><br><span class="line"><span class="hljs-regexp">data: &#123;</span></span><br><span class="line"><span class="hljs-regexp">  numbers: [ 1, 2, 3, 4, 5 ]</span></span><br><span class="line"><span class="hljs-regexp">&#125;,</span></span><br><span class="line"><span class="hljs-regexp">computed: &#123;</span></span><br><span class="line"><span class="hljs-regexp">  evenNumbers: function () &#123;</span></span><br><span class="line"><span class="hljs-regexp">    return this.numbers.filter(function (number) &#123;</span></span><br><span class="line"><span class="hljs-regexp">      return number % 2 === 0</span></span><br><span class="line"><span class="hljs-regexp">    &#125;)</span></span><br><span class="line"><span class="hljs-regexp">  &#125;</span></span><br><span class="line"><span class="hljs-regexp">&#125;</span></span><br></pre></td></tr></table></figure>
+
+<h3 id="方法"><a href="#方法" class="headerlink" title="方法"></a>方法</h3><p>有時計算屬性並不適用(e.g. inside nested v-for loops)，則可以用方法</p>
+<figure class="highlight javascript hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">&lt;ul v-<span class="hljs-keyword">for</span>=<span class="hljs-string">"set in sets"</span>&gt;</span><br><span class="line">  &lt;li v-<span class="hljs-keyword">for</span>=<span class="hljs-string">"n in even(set)"</span>&gt; &#123;&#123; n &#125;&#125; &lt;<span class="hljs-regexp">/li&gt;</span></span><br><span class="line"><span class="hljs-regexp">&lt;/u</span>l&gt;</span><br><span class="line"></span><br><span class="line">data: &#123;</span><br><span class="line">  sets: [[ <span class="hljs-number">1</span>, <span class="hljs-number">2</span>, <span class="hljs-number">3</span>, <span class="hljs-number">4</span>, <span class="hljs-number">5</span> ], [<span class="hljs-number">6</span>, <span class="hljs-number">7</span>, <span class="hljs-number">8</span>, <span class="hljs-number">9</span>, <span class="hljs-number">10</span>]]</span><br><span class="line">&#125;,</span><br><span class="line">methods: &#123;</span><br><span class="line">  even: <span class="hljs-function"><span class="hljs-keyword">function</span> (<span class="hljs-params">numbers</span>) </span>&#123;</span><br><span class="line">    <span class="hljs-keyword">return</span> numbers.filter(<span class="hljs-function"><span class="hljs-keyword">function</span> (<span class="hljs-params">number</span>) </span>&#123;</span><br><span class="line">      <span class="hljs-keyword">return</span> number % <span class="hljs-number">2</span> === <span class="hljs-number">0</span></span><br><span class="line">    &#125;)</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h2 id="接收整數"><a href="#接收整數" class="headerlink" title="接收整數"></a>接收整數</h2><p>v-for 也可以接受整數，並且會重複接受的整數次數。</p>
+<figure class="highlight javascript hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">&lt;div&gt;</span><br><span class="line">  &lt;span v-<span class="hljs-keyword">for</span>=<span class="hljs-string">"n in 10"</span>&gt; &#123;&#123; n &#125;&#125; &lt;<span class="hljs-regexp">/span&gt;</span></span><br><span class="line"><span class="hljs-regexp">&lt;/</span>div&gt;</span><br></pre></td></tr></table></figure>
+
+<p>結果：<br>1 2 3 4 5 6 7 8 9 10</p>
+
+        </div>
+        
+        
+        
+    </div>
+</div>
+
+<!-- 
+ -->
+
+
+
+
+
+    
+<div class="card">
+    
+    <div class="card-content article ">
+        
+        <div class="level article-meta is-size-7 is-uppercase is-mobile is-overflow-x-auto">
+            <div class="level-left">
                 <time class="level-item has-text-grey" datetime="2020-03-15T02:57:38.924Z">2020-03-15</time>
                 
                 <div class="level-item">
@@ -490,7 +631,7 @@
                         文章
                     </p>
                     <p class="title has-text-weight-normal">
-                        7
+                        8
                     </p>
                 </div>
             </div>
@@ -542,7 +683,7 @@
                     <span class="level-item">三月 2020</span>
                 </span>
                 <span class="level-end">
-                    <span class="level-item tag">2</span>
+                    <span class="level-item tag">3</span>
                 </span>
             </a>
         </li>
@@ -585,6 +726,25 @@
         
         <article class="media">
             
+            <a href="/ioioy77.github.io/2020/03/22/Vue List Rendering/" class="media-left">
+                <p class="image is-64x64">
+                    <img class="thumbnail" src="/ioioy77.github.io/images/thumbnail.svg" alt="Vue List Rendering">
+                </p>
+            </a>
+            
+            <div class="media-content">
+                <div class="content">
+                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2020-03-22T02:52:28.048Z">2020-03-22</time></div>
+                    <a href="/ioioy77.github.io/2020/03/22/Vue List Rendering/" class="title has-link-black-ter is-size-6 has-text-weight-normal">Vue List Rendering</a>
+                    <p class="is-size-7 is-uppercase">
+                        <a class="has-link-grey -link" href="/ioioy77.github.io/categories/前端學習筆記/">前端學習筆記</a>
+                    </p>
+                </div>
+            </div>
+        </article>
+        
+        <article class="media">
+            
             <a href="/ioioy77.github.io/2020/03/15/Vue Conditional Rendering/" class="media-left">
                 <p class="image is-64x64">
                     <img class="thumbnail" src="/ioioy77.github.io/images/thumbnail.svg" alt="Vue Conditional Rendering">
@@ -659,25 +819,6 @@
             </div>
         </article>
         
-        <article class="media">
-            
-            <a href="/ioioy77.github.io/2020/02/15/Vue Lifecycle/" class="media-left">
-                <p class="image is-64x64">
-                    <img class="thumbnail" src="/ioioy77.github.io/images/thumbnail.svg" alt="Vue Lifecycle">
-                </p>
-            </a>
-            
-            <div class="media-content">
-                <div class="content">
-                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2020-02-15T14:36:28.913Z">2020-02-15</time></div>
-                    <a href="/ioioy77.github.io/2020/02/15/Vue Lifecycle/" class="title has-link-black-ter is-size-6 has-text-weight-normal">Vue Lifecycle</a>
-                    <p class="is-size-7 is-uppercase">
-                        <a class="has-link-grey -link" href="/ioioy77.github.io/categories/前端學習筆記/">前端學習筆記</a>
-                    </p>
-                </div>
-            </div>
-        </article>
-        
     </div>
 </div>
         
@@ -695,7 +836,7 @@
                 <span class="level-item">前端學習筆記</span>
             </span>
             <span class="level-end">
-                <span class="level-item tag">7</span>
+                <span class="level-item tag">8</span>
             </span>
         </a></li>
             </ul>
@@ -721,14 +862,14 @@
                 <div class="control">
                     <a class="tags has-addons" href="/ioioy77.github.io/tags/Vue/">
                         <span class="tag">Vue</span>
-                        <span class="tag is-grey">6</span>
+                        <span class="tag is-grey">7</span>
                     </a>
                 </div>
                 
                 <div class="control">
                     <a class="tags has-addons" href="/ioioy77.github.io/tags/w3HexSchool/">
                         <span class="tag">w3HexSchool</span>
-                        <span class="tag is-grey">6</span>
+                        <span class="tag is-grey">7</span>
                     </a>
                 </div>
                 
@@ -756,6 +897,25 @@
         
         <article class="media">
             
+            <a href="/ioioy77.github.io/2020/03/22/Vue List Rendering/" class="media-left">
+                <p class="image is-64x64">
+                    <img class="thumbnail" src="/ioioy77.github.io/images/thumbnail.svg" alt="Vue List Rendering">
+                </p>
+            </a>
+            
+            <div class="media-content">
+                <div class="content">
+                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2020-03-22T02:52:28.048Z">2020-03-22</time></div>
+                    <a href="/ioioy77.github.io/2020/03/22/Vue List Rendering/" class="title has-link-black-ter is-size-6 has-text-weight-normal">Vue List Rendering</a>
+                    <p class="is-size-7 is-uppercase">
+                        <a class="has-link-grey -link" href="/ioioy77.github.io/categories/前端學習筆記/">前端學習筆記</a>
+                    </p>
+                </div>
+            </div>
+        </article>
+        
+        <article class="media">
+            
             <a href="/ioioy77.github.io/2020/03/15/Vue Conditional Rendering/" class="media-left">
                 <p class="image is-64x64">
                     <img class="thumbnail" src="/ioioy77.github.io/images/thumbnail.svg" alt="Vue Conditional Rendering">
@@ -830,25 +990,6 @@
             </div>
         </article>
         
-        <article class="media">
-            
-            <a href="/ioioy77.github.io/2020/02/15/Vue Lifecycle/" class="media-left">
-                <p class="image is-64x64">
-                    <img class="thumbnail" src="/ioioy77.github.io/images/thumbnail.svg" alt="Vue Lifecycle">
-                </p>
-            </a>
-            
-            <div class="media-content">
-                <div class="content">
-                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2020-02-15T14:36:28.913Z">2020-02-15</time></div>
-                    <a href="/ioioy77.github.io/2020/02/15/Vue Lifecycle/" class="title has-link-black-ter is-size-6 has-text-weight-normal">Vue Lifecycle</a>
-                    <p class="is-size-7 is-uppercase">
-                        <a class="has-link-grey -link" href="/ioioy77.github.io/categories/前端學習筆記/">前端學習筆記</a>
-                    </p>
-                </div>
-            </div>
-        </article>
-        
     </div>
 </div>
     
@@ -866,7 +1007,7 @@
                 <span class="level-item">前端學習筆記</span>
             </span>
             <span class="level-end">
-                <span class="level-item tag">7</span>
+                <span class="level-item tag">8</span>
             </span>
         </a></li>
             </ul>
@@ -892,14 +1033,14 @@
                 <div class="control">
                     <a class="tags has-addons" href="/ioioy77.github.io/tags/Vue/">
                         <span class="tag">Vue</span>
-                        <span class="tag is-grey">6</span>
+                        <span class="tag is-grey">7</span>
                     </a>
                 </div>
                 
                 <div class="control">
                     <a class="tags has-addons" href="/ioioy77.github.io/tags/w3HexSchool/">
                         <span class="tag">w3HexSchool</span>
-                        <span class="tag is-grey">6</span>
+                        <span class="tag is-grey">7</span>
                     </a>
                 </div>
                 
