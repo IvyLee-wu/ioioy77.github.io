@@ -10,19 +10,19 @@
 <title>Vue List Rendering - Qing</title>
 
 
-    <meta name="description" content="繪製陣列內的元素v-for 指令用來渲染多筆基於陣列的元素。語法是 item in items。items 是資料的來源陣列，item 是陣列內的元素。 123456789101112131415&amp;lt;ul id=&quot;example-1&quot;&amp;gt;  &amp;lt;li v-for=&quot;item in items&quot;&amp;gt;    &amp;#123;&amp;#123; item.message &amp;#125;&amp;#125;">
+    <meta name="description" content="Vue 的列表渲染，使用的指令是 v-for。">
 <meta name="keywords" content="Vue,w3HexSchool">
 <meta property="og:type" content="article">
 <meta property="og:title" content="Vue List Rendering">
 <meta property="og:url" content="https://github.com/IvyLee-wu/ioioy77.github.io/blog/2020/03/22/Vue List Rendering/index.html">
 <meta property="og:site_name" content="Hexo">
-<meta property="og:description" content="繪製陣列內的元素v-for 指令用來渲染多筆基於陣列的元素。語法是 item in items。items 是資料的來源陣列，item 是陣列內的元素。 123456789101112131415&amp;lt;ul id=&quot;example-1&quot;&amp;gt;  &amp;lt;li v-for=&quot;item in items&quot;&amp;gt;    &amp;#123;&amp;#123; item.message &amp;#125;&amp;#125;">
+<meta property="og:description" content="Vue 的列表渲染，使用的指令是 v-for。">
 <meta property="og:locale" content="zh-TW">
 <meta property="og:image" content="https://github.com/ioioy77.github.io/images/og_image.png">
-<meta property="og:updated_time" content="2020-03-22T02:53:21.870Z">
+<meta property="og:updated_time" content="2020-03-22T02:59:30.610Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Vue List Rendering">
-<meta name="twitter:description" content="繪製陣列內的元素v-for 指令用來渲染多筆基於陣列的元素。語法是 item in items。items 是資料的來源陣列，item 是陣列內的元素。 123456789101112131415&amp;lt;ul id=&quot;example-1&quot;&amp;gt;  &amp;lt;li v-for=&quot;item in items&quot;&amp;gt;    &amp;#123;&amp;#123; item.message &amp;#125;&amp;#125;">
+<meta name="twitter:description" content="Vue 的列表渲染，使用的指令是 v-for。">
 <meta name="twitter:image" content="https://github.com/ioioy77.github.io/images/og_image.png">
 
 
@@ -139,7 +139,7 @@
                 <!-- <span class="level-item has-text-grey">
                     
                     
-                    4 分鐘 閱讀文 (大約 621 個字)
+                    4 分鐘 閱讀文 (大約 638 個字)
                 </span> -->
                 
                 
@@ -152,7 +152,9 @@
             
         </h1>
         <div class="content">
-            <h2 id="繪製陣列內的元素"><a href="#繪製陣列內的元素" class="headerlink" title="繪製陣列內的元素"></a>繪製陣列內的元素</h2><p>v-for 指令用來渲染多筆基於陣列的元素。<br>語法是 item in items。<br>items 是資料的來源陣列，item 是陣列內的元素。</p>
+            <p>Vue 的列表渲染，使用的指令是 v-for。</p>
+<a id="more"></a>
+<h2 id="繪製陣列內的元素"><a href="#繪製陣列內的元素" class="headerlink" title="繪製陣列內的元素"></a>繪製陣列內的元素</h2><p>v-for 指令用來渲染多筆基於陣列的元素。<br>語法是 item in items。<br>items 是資料的來源陣列，item 是陣列內的元素。</p>
 <figure class="highlight javascript hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line">&lt;ul id=<span class="hljs-string">"example-1"</span>&gt;</span><br><span class="line">  &lt;li v-<span class="hljs-keyword">for</span>=<span class="hljs-string">"item in items"</span>&gt;</span><br><span class="line">    &#123;&#123; item.message &#125;&#125;</span><br><span class="line">  &lt;<span class="hljs-regexp">/li&gt;</span></span><br><span class="line"><span class="hljs-regexp">&lt;/u</span>l&gt;</span><br><span class="line"></span><br><span class="line"><span class="hljs-keyword">var</span> example1 = <span class="hljs-keyword">new</span> Vue(&#123;</span><br><span class="line">  el: <span class="hljs-string">'#example-1'</span>,</span><br><span class="line">  data: &#123;</span><br><span class="line">    items: [</span><br><span class="line">      &#123; <span class="hljs-attr">message</span>: <span class="hljs-string">'Foo'</span> &#125;,</span><br><span class="line">      &#123; <span class="hljs-attr">message</span>: <span class="hljs-string">'Bar'</span> &#125;</span><br><span class="line">    ]</span><br><span class="line">  &#125;</span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure>
 
 <p>視圖顯示：</p>
