@@ -7,17 +7,22 @@
 
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
 
-<title>標籤: w3HexSchool - Qing</title>
+<title>Vue Two-way Data Bindings - Qing</title>
 
 
-    <meta property="og:type" content="website">
-<meta property="og:title" content="Hexo">
-<meta property="og:url" content="https://github.com/IvyLee-wu/ioioy77.github.io/blog/tags/w3HexSchool/index.html">
+    <meta name="description" content="Vue 的雙向綁定使用的指令是 v-model。雙向綁定指的是對綁定的操作除了 view model 至 view 以外，還能夠把在 view 上更新的資料傳回 view model。先前學習的綁定(v-bind、鬍子語法等)，皆是僅有從 view model 至 view 的單向綁定。">
+<meta name="keywords" content="Vue,w3HexSchool">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Vue Two-way Data Bindings">
+<meta property="og:url" content="https://github.com/IvyLee-wu/ioioy77.github.io/blog/2020/04/04/Vue v-model/index.html">
 <meta property="og:site_name" content="Hexo">
+<meta property="og:description" content="Vue 的雙向綁定使用的指令是 v-model。雙向綁定指的是對綁定的操作除了 view model 至 view 以外，還能夠把在 view 上更新的資料傳回 view model。先前學習的綁定(v-bind、鬍子語法等)，皆是僅有從 view model 至 view 的單向綁定。">
 <meta property="og:locale" content="zh-TW">
 <meta property="og:image" content="https://github.com/ioioy77.github.io/images/og_image.png">
+<meta property="og:updated_time" content="2020-04-04T03:40:42.979Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Hexo">
+<meta name="twitter:title" content="Vue Two-way Data Bindings">
+<meta name="twitter:description" content="Vue 的雙向綁定使用的指令是 v-model。雙向綁定指的是對綁定的操作除了 view model 至 view 以外，還能夠把在 view 上更新的資料傳回 view model。先前學習的綁定(v-bind、鬍子語法等)，皆是僅有從 view model 至 view 的單向綁定。">
 <meta name="twitter:image" content="https://github.com/ioioy77.github.io/images/og_image.png">
 
 
@@ -76,7 +81,7 @@
         <div class="navbar-brand is-flex-center">
             <a class="navbar-item navbar-logo" href="/ioioy77.github.io/">
             
-                <img src="/ioioy77.github.io/images/logo.svg" alt="Qing" height="25" width="25">
+                <img src="/ioioy77.github.io/images/logo.svg" alt="Vue Two-way Data Bindings" height="25" width="25">
             
             </a>
         </div>
@@ -117,18 +122,7 @@
     <section class="section">
         <div class="container">
             <div class="columns">
-                <div class="column is-8-tablet is-8-desktop is-6-widescreen has-order-2 column-main"><div class="card">
-    <div class="card-content">
-        <nav class="breadcrumb" aria-label="breadcrumbs">
-        <ul>
-            <li><a href="/ioioy77.github.io/tags">標籤</a></li>
-            <li class="is-active"><a href="#" aria-current="page">w3HexSchool</a></li>
-        </ul>
-        </nav>
-    </div>
-</div>
-
-    
+                <div class="column is-8-tablet is-8-desktop is-6-widescreen has-order-2 column-main">
 <div class="card">
     
     <div class="card-content article ">
@@ -154,455 +148,91 @@
         
         <h1 class="title is-size-3 is-size-4-mobile has-text-weight-normal">
             
-                <a class="has-link-black-ter" href="/ioioy77.github.io/2020/04/04/Vue v-model/">Vue Two-way Data Bindings</a>
+                Vue Two-way Data Bindings
             
         </h1>
         <div class="content">
             <p>Vue 的雙向綁定使用的指令是 v-model。<br>雙向綁定指的是對綁定的操作除了 view model 至 view 以外，還能夠把在 view 上更新的資料傳回 view model。<br>先前學習的綁定(v-bind、鬍子語法等)，皆是僅有從 view model 至 view 的單向綁定。</p>
+<a id="more"></a>
+
+<h2 id="基本綁定"><a href="#基本綁定" class="headerlink" title="基本綁定"></a>基本綁定</h2><h3 id="範例"><a href="#範例" class="headerlink" title="範例"></a>範例</h3><figure class="highlight javascript hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line">data: &#123;</span><br><span class="line">  inputMsg: <span class="hljs-string">'hello input'</span>,</span><br><span class="line">  textareaMsg: <span class="hljs-string">''</span>,</span><br><span class="line">  checkboxMsg: <span class="hljs-literal">true</span>,</span><br><span class="line">  radioMsg: <span class="hljs-string">''</span>,</span><br><span class="line">  arrayCheckboxMsg: [],</span><br><span class="line">  selectMsg: <span class="hljs-string">''</span>,</span><br><span class="line">  withVfor: <span class="hljs-string">'summer'</span>,</span><br><span class="line">  options: [</span><br><span class="line">    &#123; <span class="hljs-attr">value</span>: <span class="hljs-string">'spring'</span>, <span class="hljs-attr">text</span>: <span class="hljs-string">'春'</span> &#125;,</span><br><span class="line">    &#123; <span class="hljs-attr">value</span>: <span class="hljs-string">'summer'</span>, <span class="hljs-attr">text</span>: <span class="hljs-string">'夏'</span> &#125;,</span><br><span class="line">    &#123; <span class="hljs-attr">value</span>: <span class="hljs-string">'autumn'</span>, <span class="hljs-attr">text</span>: <span class="hljs-string">'秋'</span> &#125;,</span><br><span class="line">    &#123; <span class="hljs-attr">value</span>: <span class="hljs-string">'winter'</span>, <span class="hljs-attr">text</span>: <span class="hljs-string">'冬'</span> &#125;</span><br><span class="line">  ]</span><br><span class="line"> &#125;</span><br></pre></td></tr></table></figure>
+
+<p><a href="https://codepen.io/ivy-lee/pen/QWbVrdp" target="_blank" rel="noopener">https://codepen.io/ivy-lee/pen/QWbVrdp</a></p>
+<h3 id="Input"><a href="#Input" class="headerlink" title="Input"></a>Input</h3><p>在 input 標籤裡下 v-model，綁定 data，讓視圖上的 input 框內顯示 inputMsg 的值，並在更新 input 框資料時更改 inputMsg 的值。</p>
+<figure class="highlight plain hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">&lt;input type=&quot;text&quot; v-model=&quot;inputMsg&quot;&gt;</span><br><span class="line">&lt;span&gt;&#123;&#123; inputMsg &#125;&#125;&lt;/span&gt;</span><br></pre></td></tr></table></figure>
+
+<p>由於 inputMsg 預設為 hello input，初始渲染時輸入框內就會顯示 hello input。</p>
+<h3 id="Textarea"><a href="#Textarea" class="headerlink" title="Textarea"></a>Textarea</h3><p>多行文本的雙向綁定，基本上同 input，但是使用情境為需要多行文本時。</p>
+<figure class="highlight plain hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">&lt;textarea cols=&quot;30&quot; rows=&quot;3&quot; v-model=&quot;textareaMsg&quot;&gt;&lt;/textarea&gt;</span><br><span class="line">&lt;p style=&quot;white-space: pre-line;&quot;&gt;&#123;&#123; textareaMsg &#125;&#125;&lt;/p&gt;</span><br></pre></td></tr></table></figure>
+
+<h3 id="Checkbox"><a href="#Checkbox" class="headerlink" title="Checkbox"></a>Checkbox</h3><p>依據 checkbox 的勾選與否，視圖頁面上會呈現 true 或 false。</p>
+<figure class="highlight plain hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">&lt;input type=&quot;checkbox&quot; id=&quot;checkbox&quot; v-model=&quot;checkboxMsg&quot;&gt;</span><br><span class="line">&lt;label for=&quot;checkbox&quot;&gt;&#123;&#123; checkboxMsg &#125;&#125;&lt;/label&gt;</span><br></pre></td></tr></table></figure>
+
+<p>由於 checkboxMsg 預設為 true，初始渲染時會是打勾的狀態。</p>
+<h3 id="Radio"><a href="#Radio" class="headerlink" title="Radio"></a>Radio</h3><p>在所有的 input 裡下 v-model，依據選擇的選項，視圖頁面上的 p 標籤裡會顯示該 input 的 value。</p>
+<figure class="highlight plain hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">&lt;input type=&quot;radio&quot; name=&quot;radio&quot; id=&quot;witcher&quot; value=&quot;witcher!&quot; v-model=&quot;radioMsg&quot;&gt;</span><br><span class="line">&lt;label for=&quot;witcher&quot;&gt;Geralt&lt;/label&gt;</span><br><span class="line"></span><br><span class="line">&lt;input type=&quot;radio&quot; name=&quot;radio&quot; id=&quot;bard&quot; value=&quot;bard~&quot; v-model=&quot;radioMsg&quot;&gt;</span><br><span class="line">&lt;label for=&quot;bard&quot;&gt;Jaskier&lt;/label&gt;</span><br><span class="line"></span><br><span class="line">&lt;input type=&quot;radio&quot; name=&quot;radio&quot; id=&quot;sorcerer&quot; value=&quot;&quot; v-model=&quot;radioMsg&quot;&gt;</span><br><span class="line">&lt;label for=&quot;sorcerer&quot;&gt;Yennefer&lt;/label&gt;</span><br><span class="line"></span><br><span class="line">&lt;p&gt;&#123;&#123; radioMsg &#125;&#125;&lt;/p&gt;</span><br></pre></td></tr></table></figure>
+
+<p>由於 radioMsg 預設為 ‘’，初始顯示會為 value 為空的那個 input，也就是 Yennefer。</p>
+<h3 id="Multiple-Checkbox"><a href="#Multiple-Checkbox" class="headerlink" title="Multiple Checkbox"></a>Multiple Checkbox</h3><p>多選的 checkbox 作法一樣是在每個 input 裡下 v-model，不同的地方在於它所綁定的 data 必須是個陣列，只要選擇的 checkbox 是處於被勾選的狀態，那麼它的 value 就會被推到陣列內。</p>
+<figure class="highlight plain hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">&lt;input type=&quot;checkbox&quot; id=&quot;hiking&quot; value=&quot;hiking&quot; v-model=&quot;arrayCheckboxMsg&quot;&gt;</span><br><span class="line">&lt;label for=&quot;hiking&quot;&gt;hiking&lt;/label&gt;</span><br><span class="line">&lt;input type=&quot;checkbox&quot; id=&quot;swimming&quot; value=&quot;swimming&quot; v-model=&quot;arrayCheckboxMsg&quot;&gt;</span><br><span class="line">&lt;label for=&quot;swimming&quot;&gt;swimming&lt;/label&gt;</span><br><span class="line">&lt;input type=&quot;checkbox&quot; id=&quot;reading&quot; value=&quot;reading&quot; v-model=&quot;arrayCheckboxMsg&quot;&gt;</span><br><span class="line">&lt;label for=&quot;reading&quot;&gt;reading&lt;/label&gt;</span><br><span class="line">&lt;input type=&quot;checkbox&quot; id=&quot;gaming&quot; value=&quot;gaming&quot; v-model=&quot;arrayCheckboxMsg&quot;&gt;</span><br><span class="line">&lt;label for=&quot;gaming&quot;&gt;gaming&lt;/label&gt;</span><br><span class="line"></span><br><span class="line">&lt;p&gt;What do you like to do in your free time? &#123;&#123; arrayCheckboxMsg &#125;&#125;&lt;/p&gt;</span><br></pre></td></tr></table></figure>
+
+<h3 id="Select"><a href="#Select" class="headerlink" title="Select"></a>Select</h3><p>在 select 標籤裡下 v-model，就能依據 option 的 value 雙向綁定 selectMsg 內的資料。</p>
+<figure class="highlight plain hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">&lt;select v-model=&quot;selectMsg&quot;&gt;</span><br><span class="line">    &lt;option value=&quot;&quot; disabled&gt; --- &lt;/option&gt;</span><br><span class="line">    &lt;option value=&quot;前端&quot;&gt;frontend&lt;/option&gt;</span><br><span class="line">    &lt;option value=&quot;後端&quot;&gt;backend&lt;/option&gt;</span><br><span class="line">    &lt;option value=&quot;設計師&quot;&gt;ui/ux&lt;/option&gt;</span><br><span class="line">&lt;/select&gt;</span><br><span class="line">&lt;span&gt;&#123;&#123; selectMsg &#125;&#125;&lt;/span&gt;</span><br></pre></td></tr></table></figure>
+
+<h3 id="Select-with-v-for"><a href="#Select-with-v-for" class="headerlink" title="Select with v-for"></a>Select with v-for</h3><p>有時 select 會與 v-for 混用，這時的 v-model 用法和沒有使用 v-for 的沒有什麼太大的差別，一樣是綁定 option 的 value。</p>
+<figure class="highlight plain hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">&lt;select v-model=&quot;withVfor&quot;&gt;</span><br><span class="line">    &lt;option v-for=&quot;option in options&quot; :value=&quot;option.value&quot;&gt;&#123;&#123; option.text &#125;&#125;&lt;/option&gt;</span><br><span class="line">&lt;/select&gt;</span><br><span class="line">&lt;span&gt;&#123;&#123; withVfor &#125;&#125;&lt;/span&gt;</span><br></pre></td></tr></table></figure>
+
+<h2 id="修飾符"><a href="#修飾符" class="headerlink" title="修飾符"></a>修飾符</h2><ul>
+<li>.lazy</li>
+<li>.number</li>
+<li>.trim</li>
+</ul>
+<h3 id="lazy"><a href="#lazy" class="headerlink" title=".lazy"></a>.lazy</h3><p>不即時更新，而是在 change 事件發生時，也就是說離開 input 框時才更新。</p>
+<h3 id="number"><a href="#number" class="headerlink" title=".number"></a>.number</h3><p>把輸入的值自動轉型為 number。</p>
+<h3 id="trim"><a href="#trim" class="headerlink" title=".trim"></a>.trim</h3><p>去空白，首尾皆會過濾掉。</p>
+
         </div>
         
-        
-        <div class="level is-mobile">
+        <div class="level is-size-7 is-uppercase">
             <div class="level-start">
                 <div class="level-item">
-                <a class="button is-size-7 is-light" href="/ioioy77.github.io/2020/04/04/Vue v-model/#more">繼續閱讀</a>
+                    <span class="is-size-6 has-text-grey has-mr-7">#</span>
+                    <a class="has-link-grey -link" href="/ioioy77.github.io/tags/Vue/">Vue</a>, <a class="has-link-grey -link" href="/ioioy77.github.io/tags/w3HexSchool/">w3HexSchool</a>
                 </div>
             </div>
         </div>
+        
         
         
     </div>
 </div>
 
 <!-- 
- -->
 
-
-
-
-
-    
 <div class="card">
-    
-    <div class="card-content article ">
-        
-        <div class="level article-meta is-size-7 is-uppercase is-mobile is-overflow-x-auto">
-            <div class="level-left">
-                <time class="level-item has-text-grey" datetime="2020-03-28T08:02:20.477Z">2020-03-28</time>
-                
-                <div class="level-item">
-                <a class="has-link-grey -link" href="/ioioy77.github.io/categories/前端學習筆記/">前端學習筆記</a>
-                </div>
-                
-                
-                <!-- <span class="level-item has-text-grey">
-                    
-                    
-                    5 分鐘 閱讀文 (大約 824 個字)
-                </span> -->
-                
-                
-            </div>
-        </div>
-        
-        <h1 class="title is-size-3 is-size-4-mobile has-text-weight-normal">
+    <div class="card-content">
+        <h3 class="menu-label has-text-centered">喜歡這篇文章嗎? 贊助一下作者吧!</h3>
+        <div class="buttons is-centered">
             
-                <a class="has-link-black-ter" href="/ioioy77.github.io/2020/03/28/Vue Event Handling/">Vue Event Handling</a>
-            
-        </h1>
-        <div class="content">
-            <h2 id="事件監聽"><a href="#事件監聽" class="headerlink" title="事件監聽"></a>事件監聽</h2><p>使用 v-on 指令監聽 DOM 事件。</p>
         </div>
-        
-        
-        <div class="level is-mobile">
-            <div class="level-start">
-                <div class="level-item">
-                <a class="button is-size-7 is-light" href="/ioioy77.github.io/2020/03/28/Vue Event Handling/#more">繼續閱讀</a>
-                </div>
-            </div>
-        </div>
-        
-        
     </div>
 </div>
-
-<!-- 
  -->
 
 
-
-
-
-    
-<div class="card">
-    
-    <div class="card-content article ">
+<div class="card card-transparent">
+    <div class="level post-navigation is-flex-wrap is-mobile">
         
-        <div class="level article-meta is-size-7 is-uppercase is-mobile is-overflow-x-auto">
-            <div class="level-left">
-                <time class="level-item has-text-grey" datetime="2020-03-22T02:52:28.048Z">2020-03-22</time>
-                
-                <div class="level-item">
-                <a class="has-link-grey -link" href="/ioioy77.github.io/categories/前端學習筆記/">前端學習筆記</a>
-                </div>
-                
-                
-                <!-- <span class="level-item has-text-grey">
-                    
-                    
-                    4 分鐘 閱讀文 (大約 638 個字)
-                </span> -->
-                
-                
-            </div>
+        
+        <div class="level-end">
+            <a class="level level-item has-link-grey  article-nav-next" href="/ioioy77.github.io/2020/03/28/Vue Event Handling/">
+                <span class="level-item">Vue Event Handling</span>
+                <i class="level-item fas fa-chevron-right"></i>
+            </a>
         </div>
-        
-        <h1 class="title is-size-3 is-size-4-mobile has-text-weight-normal">
-            
-                <a class="has-link-black-ter" href="/ioioy77.github.io/2020/03/22/Vue List Rendering/">Vue List Rendering</a>
-            
-        </h1>
-        <div class="content">
-            <p>Vue 的列表渲染，使用的指令是 v-for。</p>
-        </div>
-        
-        
-        <div class="level is-mobile">
-            <div class="level-start">
-                <div class="level-item">
-                <a class="button is-size-7 is-light" href="/ioioy77.github.io/2020/03/22/Vue List Rendering/#more">繼續閱讀</a>
-                </div>
-            </div>
-        </div>
-        
         
     </div>
 </div>
-
-<!-- 
- -->
-
-
-
-
-
-    
-<div class="card">
-    
-    <div class="card-content article ">
-        
-        <div class="level article-meta is-size-7 is-uppercase is-mobile is-overflow-x-auto">
-            <div class="level-left">
-                <time class="level-item has-text-grey" datetime="2020-03-15T02:57:38.924Z">2020-03-15</time>
-                
-                <div class="level-item">
-                <a class="has-link-grey -link" href="/ioioy77.github.io/categories/前端學習筆記/">前端學習筆記</a>
-                </div>
-                
-                
-                <!-- <span class="level-item has-text-grey">
-                    
-                    
-                    3 分鐘 閱讀文 (大約 423 個字)
-                </span> -->
-                
-                
-            </div>
-        </div>
-        
-        <h1 class="title is-size-3 is-size-4-mobile has-text-weight-normal">
-            
-                <a class="has-link-black-ter" href="/ioioy77.github.io/2020/03/15/Vue Conditional Rendering/">Vue Conditional Rendering</a>
-            
-        </h1>
-        <div class="content">
-            <p>這次來介紹 Vue 的條件性渲染，主要的指令有 v-if 和 v-show。</p>
-        </div>
-        
-        
-        <div class="level is-mobile">
-            <div class="level-start">
-                <div class="level-item">
-                <a class="button is-size-7 is-light" href="/ioioy77.github.io/2020/03/15/Vue Conditional Rendering/#more">繼續閱讀</a>
-                </div>
-            </div>
-        </div>
-        
-        
-    </div>
-</div>
-
-<!-- 
- -->
-
-
-
-
-
-    
-<div class="card">
-    
-    <div class="card-content article ">
-        
-        <div class="level article-meta is-size-7 is-uppercase is-mobile is-overflow-x-auto">
-            <div class="level-left">
-                <time class="level-item has-text-grey" datetime="2020-03-07T13:34:42.487Z">2020-03-07</time>
-                
-                <div class="level-item">
-                <a class="has-link-grey -link" href="/ioioy77.github.io/categories/前端學習筆記/">前端學習筆記</a>
-                </div>
-                
-                
-                <!-- <span class="level-item has-text-grey">
-                    
-                    
-                    3 分鐘 閱讀文 (大約 418 個字)
-                </span> -->
-                
-                
-            </div>
-        </div>
-        
-        <h1 class="title is-size-3 is-size-4-mobile has-text-weight-normal">
-            
-                <a class="has-link-black-ter" href="/ioioy77.github.io/2020/03/07/Vue Computed Properties/">Vue Computed Properties</a>
-            
-        </h1>
-        <div class="content">
-            <p>模板內的表達式做不到的就交給計算屬性吧。<br>也就是說，任何複雜的邏輯都應該交給計算屬性。</p>
-        </div>
-        
-        
-        <div class="level is-mobile">
-            <div class="level-start">
-                <div class="level-item">
-                <a class="button is-size-7 is-light" href="/ioioy77.github.io/2020/03/07/Vue Computed Properties/#more">繼續閱讀</a>
-                </div>
-            </div>
-        </div>
-        
-        
-    </div>
-</div>
-
-<!-- 
- -->
-
-
-
-
-
-    
-<div class="card">
-    
-    <div class="card-content article ">
-        
-        <div class="level article-meta is-size-7 is-uppercase is-mobile is-overflow-x-auto">
-            <div class="level-left">
-                <time class="level-item has-text-grey" datetime="2020-02-28T01:54:50.802Z">2020-02-28</time>
-                
-                <div class="level-item">
-                <a class="has-link-grey -link" href="/ioioy77.github.io/categories/前端學習筆記/">前端學習筆記</a>
-                </div>
-                
-                
-                <!-- <span class="level-item has-text-grey">
-                    
-                    
-                    3 分鐘 閱讀文 (大約 426 個字)
-                </span> -->
-                
-                
-            </div>
-        </div>
-        
-        <h1 class="title is-size-3 is-size-4-mobile has-text-weight-normal">
-            
-                <a class="has-link-black-ter" href="/ioioy77.github.io/2020/02/28/Vue v-bind plus/">Vue Class and Style Bindings</a>
-            
-        </h1>
-        <div class="content">
-            <p>class 與 style 皆是屬性，在 HTML 屬性裡帶入資料，用的是 v-bind 語法。<br>通常來說 v-bind 的屬性值為字串，為了操作的方便，Vue 另外增強了 class 與 style 綁定的功能。</p>
-        </div>
-        
-        
-        <div class="level is-mobile">
-            <div class="level-start">
-                <div class="level-item">
-                <a class="button is-size-7 is-light" href="/ioioy77.github.io/2020/02/28/Vue v-bind plus/#more">繼續閱讀</a>
-                </div>
-            </div>
-        </div>
-        
-        
-    </div>
-</div>
-
-<!-- 
- -->
-
-
-
-
-
-    
-<div class="card">
-    
-    <div class="card-content article ">
-        
-        <div class="level article-meta is-size-7 is-uppercase is-mobile is-overflow-x-auto">
-            <div class="level-left">
-                <time class="level-item has-text-grey" datetime="2020-02-21T14:25:34.754Z">2020-02-21</time>
-                
-                <div class="level-item">
-                <a class="has-link-grey -link" href="/ioioy77.github.io/categories/前端學習筆記/">前端學習筆記</a>
-                </div>
-                
-                
-                <!-- <span class="level-item has-text-grey">
-                    
-                    
-                    4 分鐘 閱讀文 (大約 631 個字)
-                </span> -->
-                
-                
-            </div>
-        </div>
-        
-        <h1 class="title is-size-3 is-size-4-mobile has-text-weight-normal">
-            
-                <a class="has-link-black-ter" href="/ioioy77.github.io/2020/02/21/Vue Template_Syntax-basic/">Vue Template_Syntax - basic</a>
-            
-        </h1>
-        <div class="content">
-            <p>模板語法-基礎篇</p>
-        </div>
-        
-        
-        <div class="level is-mobile">
-            <div class="level-start">
-                <div class="level-item">
-                <a class="button is-size-7 is-light" href="/ioioy77.github.io/2020/02/21/Vue Template_Syntax-basic/#more">繼續閱讀</a>
-                </div>
-            </div>
-        </div>
-        
-        
-    </div>
-</div>
-
-<!-- 
- -->
-
-
-
-
-
-    
-<div class="card">
-    
-    <div class="card-content article ">
-        
-        <div class="level article-meta is-size-7 is-uppercase is-mobile is-overflow-x-auto">
-            <div class="level-left">
-                <time class="level-item has-text-grey" datetime="2020-02-15T14:36:28.913Z">2020-02-15</time>
-                
-                <div class="level-item">
-                <a class="has-link-grey -link" href="/ioioy77.github.io/categories/前端學習筆記/">前端學習筆記</a>
-                </div>
-                
-                
-                <!-- <span class="level-item has-text-grey">
-                    
-                    
-                    5 分鐘 閱讀文 (大約 751 個字)
-                </span> -->
-                
-                
-            </div>
-        </div>
-        
-        <h1 class="title is-size-3 is-size-4-mobile has-text-weight-normal">
-            
-                <a class="has-link-black-ter" href="/ioioy77.github.io/2020/02/15/Vue Lifecycle/">Vue Lifecycle</a>
-            
-        </h1>
-        <div class="content">
-            <p>Vue 實體在被創建時會經過一系列初始化的步驟，如數據監聽、編譯模板、掛載實體、綁定資料等。與此同時 Vue 也提供了讓使用者能在特定階段自行客製化程式碼的方法，這些方法就稱為 Lifecycle Hook。</p>
-        </div>
-        
-        
-        <div class="level is-mobile">
-            <div class="level-start">
-                <div class="level-item">
-                <a class="button is-size-7 is-light" href="/ioioy77.github.io/2020/02/15/Vue Lifecycle/#more">繼續閱讀</a>
-                </div>
-            </div>
-        </div>
-        
-        
-    </div>
-</div>
-
-<!-- 
- -->
-
-
-
-
-
-    
-<div class="card">
-    
-    <div class="card-content article ">
-        
-        <div class="level article-meta is-size-7 is-uppercase is-mobile is-overflow-x-auto">
-            <div class="level-left">
-                <time class="level-item has-text-grey" datetime="2020-02-08T08:26:36.694Z">2020-02-08</time>
-                
-                <div class="level-item">
-                <a class="has-link-grey -link" href="/ioioy77.github.io/categories/前端學習筆記/">前端學習筆記</a>
-                </div>
-                
-                
-                <!-- <span class="level-item has-text-grey">
-                    
-                    
-                    7 分鐘 閱讀文 (大約 1003 個字)
-                </span> -->
-                
-                
-            </div>
-        </div>
-        
-        <h1 class="title is-size-3 is-size-4-mobile has-text-weight-normal">
-            
-                <a class="has-link-black-ter" href="/ioioy77.github.io/2020/02/08/Vue Instance/">Vue Instance</a>
-            
-        </h1>
-        <div class="content">
-            <h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><p>Vue 音似 View，用意為表示 Vue.js 專注於 View。和其他實作 MVC 的 JavaScript 框架 ( Angular.js、Ember.js ) 相比，Vue.js 屬於 MVVM 設計模式的實作。</p>
-        </div>
-        
-        
-        <div class="level is-mobile">
-            <div class="level-start">
-                <div class="level-item">
-                <a class="button is-size-7 is-light" href="/ioioy77.github.io/2020/02/08/Vue Instance/#more">繼續閱讀</a>
-                </div>
-            </div>
-        </div>
-        
-        
-    </div>
-</div>
-
-<!-- 
- -->
-
-
-
 
 
 </div>
@@ -1090,7 +720,7 @@
             <div class="level-start has-text-centered-mobile">
                 <a class="footer-logo is-block has-mb-6" href="/ioioy77.github.io/">
                 
-                    <img src="/ioioy77.github.io/images/logo.svg" alt="Qing" height="28">
+                    <img src="/ioioy77.github.io/images/logo.svg" alt="Vue Two-way Data Bindings" height="28">
                 
                 </a>
                 <p class="is-size-7">
