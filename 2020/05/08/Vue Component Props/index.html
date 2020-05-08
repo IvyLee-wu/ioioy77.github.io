@@ -7,17 +7,22 @@
 
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
 
-<title>目錄 - Qing</title>
+<title>Vue Component Props - Qing</title>
 
 
-    <meta property="og:type" content="website">
-<meta property="og:title" content="Hexo">
-<meta property="og:url" content="https://github.com/IvyLee-wu/ioioy77.github.io/blog/archives/page/2/index.html">
+    <meta name="description" content="prop 是父傳子的單向下行綁定(one-way-down binding)父組件通過 props 把資料傳給子組件，子組件則需要聲明 props 接收。">
+<meta name="keywords" content="Vue,w3HexSchool">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Vue Component Props">
+<meta property="og:url" content="https://github.com/IvyLee-wu/ioioy77.github.io/blog/2020/05/08/Vue Component Props/index.html">
 <meta property="og:site_name" content="Hexo">
+<meta property="og:description" content="prop 是父傳子的單向下行綁定(one-way-down binding)父組件通過 props 把資料傳給子組件，子組件則需要聲明 props 接收。">
 <meta property="og:locale" content="zh-TW">
 <meta property="og:image" content="https://github.com/ioioy77.github.io/images/og_image.png">
+<meta property="og:updated_time" content="2020-05-08T14:06:27.686Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Hexo">
+<meta name="twitter:title" content="Vue Component Props">
+<meta name="twitter:description" content="prop 是父傳子的單向下行綁定(one-way-down binding)父組件通過 props 把資料傳給子組件，子組件則需要聲明 props 接收。">
 <meta name="twitter:image" content="https://github.com/ioioy77.github.io/images/og_image.png">
 
 
@@ -76,7 +81,7 @@
         <div class="navbar-brand is-flex-center">
             <a class="navbar-item navbar-logo" href="/ioioy77.github.io/">
             
-                <img src="/ioioy77.github.io/images/logo.svg" alt="Qing" height="25" width="25">
+                <img src="/ioioy77.github.io/images/logo.svg" alt="Vue Component Props" height="25" width="25">
             
             </a>
         </div>
@@ -118,89 +123,128 @@
         <div class="container">
             <div class="columns">
                 <div class="column is-8-tablet is-8-desktop is-6-widescreen has-order-2 column-main">
+<div class="card">
+    
+    <div class="card-content article ">
         
-<div class="card widget">
-    <div class="card-content">
-        <h3 class="tag is-link">
-        2020
-        </h3>
-        <div class="timeline">
-        
-            <article class="media">
+        <div class="level article-meta is-size-7 is-uppercase is-mobile is-overflow-x-auto">
+            <div class="level-left">
+                <time class="level-item has-text-grey" datetime="2020-05-08T14:03:12.069Z">2020-05-08</time>
                 
-                <div class="media-content">
-                    <div class="content">
-                        <time class="has-text-grey is-size-7 is-block is-uppercase" datetime="2020-02-08T08:26:36.694Z">2020-02-08</time>
-                        <a href="/ioioy77.github.io/2020/02/08/Vue Instance/" class="title has-link-black-ter is-size-6 has-text-weight-normal">Vue Instance</a>
-                        <div class="level article-meta is-mobile">
-                            <div class="level-left">
-                                
-                                <div class="level-item is-size-7 is-uppercase">
-                                <a class="has-link-grey -link" href="/ioioy77.github.io/categories/前端學習筆記/">前端學習筆記</a>
-                                </div>
-                                
-                            </div>
-                        </div>
-                    </div>
+                <div class="level-item">
+                <a class="has-link-grey -link" href="/ioioy77.github.io/categories/前端學習筆記/">前端學習筆記</a>
                 </div>
-            </article>
-        
+                
+                
+                <!-- <span class="level-item has-text-grey">
+                    
+                    
+                    4 分鐘 閱讀文 (大約 595 個字)
+                </span> -->
+                
+                
+            </div>
         </div>
+        
+        <h1 class="title is-size-3 is-size-4-mobile has-text-weight-normal">
+            
+                Vue Component Props
+            
+        </h1>
+        <div class="content">
+            <p>prop 是父傳子的單向下行綁定(one-way-down binding)<br>父組件通過 props 把資料傳給子組件，子組件則需要聲明 props 接收。</p>
+<a id="more"></a>
+
+<h2 id="基礎範例"><a href="#基礎範例" class="headerlink" title="基礎範例"></a>基礎範例</h2><figure class="highlight plain hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line">&lt;div id=&quot;app&quot;&gt;</span><br><span class="line">    &lt;!-- 2、3 --&gt;</span><br><span class="line">    &lt;child message=&quot;hello!&quot;&gt;&lt;/child&gt;</span><br><span class="line">&lt;/div&gt;</span><br><span class="line"> </span><br><span class="line">&lt;script&gt;</span><br><span class="line">Vue.component(&apos;child&apos;, &#123;</span><br><span class="line">  props: [&apos;message&apos;], // 4</span><br><span class="line">  template: &apos;&lt;span&gt;&#123;&#123; message &#125;&#125;&lt;/span&gt;&apos; // 5</span><br><span class="line">&#125;)</span><br><span class="line"></span><br><span class="line">new Vue(&#123;</span><br><span class="line">  el: &apos;#app&apos; // 1</span><br><span class="line">&#125;)</span><br><span class="line">&lt;/script&gt;</span><br></pre></td></tr></table></figure>
+
+<ol>
+<li>綁定 ‘#app’</li>
+<li>發現子組件 child</li>
+<li>解析子組件</li>
+<li>從定義的接收器接收 ‘hello!’</li>
+<li>渲染 <code>&lt;span&gt;hello!&lt;/span&gt;</code> 到頁面上</li>
+</ol>
+<h2 id="類型-型別"><a href="#類型-型別" class="headerlink" title="類型/型別"></a>類型/型別</h2><p>以物件的型態定義 props，格式為 <code>props: {&#39;prop名稱&#39;: prop型別}</code></p>
+<figure class="highlight javascript hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="hljs-comment">// 普通的字串與陣列的 prop</span></span><br><span class="line">props: [<span class="hljs-string">'title'</span>, <span class="hljs-string">'likes'</span>, <span class="hljs-string">'isPublished'</span>, <span class="hljs-string">'commentIds'</span>, <span class="hljs-string">'author'</span>]</span><br><span class="line"></span><br><span class="line"><span class="hljs-comment">// 以物件定義的 prop</span></span><br><span class="line">props: &#123;</span><br><span class="line">  title: <span class="hljs-built_in">String</span>,</span><br><span class="line">  likes: <span class="hljs-built_in">Number</span>,</span><br><span class="line">  isPublished: <span class="hljs-built_in">Boolean</span>,</span><br><span class="line">  commentIds: <span class="hljs-built_in">Array</span>,</span><br><span class="line">  author: <span class="hljs-built_in">Object</span>,</span><br><span class="line">  callback: <span class="hljs-built_in">Function</span>,</span><br><span class="line">  contactsPromise: <span class="hljs-built_in">Promise</span> <span class="hljs-comment">// or any other constructor</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h2 id="靜態與動態的-prop-值"><a href="#靜態與動態的-prop-值" class="headerlink" title="靜態與動態的 prop 值"></a>靜態與動態的 prop 值</h2><h3 id="字串"><a href="#字串" class="headerlink" title="字串"></a>字串</h3><p>給子組件 <code>blog-post</code> 傳入一個靜態的值。<br>子組件會聲明<code>props: [title]</code>來接收字串<code>My journey with Vue</code>。</p>
+<figure class="highlight plain hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&lt;blog-post title=&quot;My journey with Vue&quot;&gt;&lt;/blog-post&gt;</span><br></pre></td></tr></table></figure>
+
+<p>想要動態賦值則需使用 v-bind 指令。<br>同樣是聲明<code>props: [title]</code>，但<code>post.title</code>為父組件 data 內的變數，也就是說這裡 props 接收的是父層的變數。</p>
+<figure class="highlight plain hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">&lt;!-- 動態賦予一個變數的值 --&gt;</span><br><span class="line">&lt;blog-post v-bind:title=&quot;post.title&quot;&gt;&lt;/blog-post&gt;</span><br><span class="line"></span><br><span class="line">&lt;!-- 動態賦予一個複雜表達式的值 --&gt;</span><br><span class="line">&lt;blog-post v-bind:title=&quot;post.title + &apos; by &apos; + post.author.name&quot;&gt;&lt;/blog-post&gt;</span><br></pre></td></tr></table></figure>
+
+<h3 id="數字"><a href="#數字" class="headerlink" title="數字"></a>數字</h3><figure class="highlight plain hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">&lt;!-- 即便 &apos;42&apos; 是靜態的，仍須使用 v-bind 來告訴 Vue --&gt;</span><br><span class="line">&lt;!-- 這是一個 JavaScript 表達式而不是字串 --&gt;</span><br><span class="line">&lt;blog-post v-bind:likes=&quot;42&quot;&gt;&lt;/blog-post&gt;</span><br><span class="line"></span><br><span class="line">&lt;!-- 用一個變數進行動態賦值 --&gt;</span><br><span class="line">&lt;blog-post v-bind:likes=&quot;post.likes&quot;&gt;&lt;/blog-post&gt;</span><br></pre></td></tr></table></figure>
+
+<h3 id="布林"><a href="#布林" class="headerlink" title="布林"></a>布林</h3><figure class="highlight plain hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">&lt;!-- prop 没有值的情况也是 true --&gt;</span><br><span class="line">&lt;blog-post is-published&gt;&lt;/blog-post&gt;</span><br><span class="line"></span><br><span class="line">&lt;!-- 即便 &apos;false&apos; 是靜態的，仍須使用 v-bind 來告訴 Vue 這是一個 JavaScript 表達式而不是字串 --&gt;</span><br><span class="line">&lt;blog-post v-bind:is-published=&quot;false&quot;&gt;&lt;/blog-post&gt;</span><br><span class="line"></span><br><span class="line">&lt;!-- 用一個變數進行動態賦值 --&gt;</span><br><span class="line">&lt;blog-post v-bind:is-published=&quot;post.isPublished&quot;&gt;&lt;/blog-post&gt;</span><br></pre></td></tr></table></figure>
+
+<h3 id="陣列"><a href="#陣列" class="headerlink" title="陣列"></a>陣列</h3><figure class="highlight plain hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">&lt;!-- 即便陣列是靜態的，仍須使用 v-bind 來告訴 Vue 這是一個 JavaScript 表達式而不是字串 --&gt;</span><br><span class="line">&lt;blog-post v-bind:comment-ids=&quot;[234, 266, 273]&quot;&gt;&lt;/blog-post&gt;</span><br><span class="line"></span><br><span class="line">&lt;!-- 用一個變數進行動態賦值 --&gt;</span><br><span class="line">&lt;blog-post v-bind:comment-ids=&quot;post.commentIds&quot;&gt;&lt;/blog-post&gt;</span><br></pre></td></tr></table></figure>
+
+<h3 id="物件"><a href="#物件" class="headerlink" title="物件"></a>物件</h3><figure class="highlight plain hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">&lt;!-- 即便物件是靜態的，仍須使用 v-bind 來告訴 Vue 這是一個 JavaScript 表達式而不是字串 --&gt;</span><br><span class="line">&lt;blog-post</span><br><span class="line">  v-bind:author=&quot;&#123;</span><br><span class="line">    name: &apos;Veronica&apos;,</span><br><span class="line">    company: &apos;Veridian Dynamics&apos;</span><br><span class="line">  &#125;&quot;</span><br><span class="line">&gt;&lt;/blog-post&gt;</span><br><span class="line"></span><br><span class="line">&lt;!-- 用一個變數進行動態賦值 --&gt;</span><br><span class="line">&lt;blog-post v-bind:author=&quot;post.author&quot;&gt;&lt;/blog-post&gt;</span><br></pre></td></tr></table></figure>
+
+<h3 id="物件中的所有屬性"><a href="#物件中的所有屬性" class="headerlink" title="物件中的所有屬性"></a>物件中的所有屬性</h3><p>範例物件</p>
+<figure class="highlight javascript hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">post: &#123;</span><br><span class="line">  id: <span class="hljs-number">1</span>,</span><br><span class="line">  title: <span class="hljs-string">'My Journey with Vue'</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>如果想要使用 props 傳遞一個物件內的所有屬性，可以使用不帶參數的 v-bind。</p>
+<figure class="highlight plain hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">&lt;!-- 只有 v-bind --&gt;</span><br><span class="line">&lt;blog-post v-bind=&quot;post&quot;&gt;&lt;/blog-post&gt;</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight plain hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">&lt;blog-post</span><br><span class="line">  v-bind:id=&quot;post.id&quot;</span><br><span class="line">  v-bind:title=&quot;post.title&quot;</span><br><span class="line">&gt;&lt;/blog-post&gt;</span><br></pre></td></tr></table></figure>
+
+<h3 id="emit"><a href="#emit" class="headerlink" title="$emit"></a>$emit</h3><p>同場加映子傳父的 emit</p>
+<figure class="highlight plain hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line">&lt;div id=&quot;emit-example-simple&quot;&gt;</span><br><span class="line">  &lt;!-- 2、5 --&gt;</span><br><span class="line">  &lt;welcome-button v-on:welcome=&quot;sayHi&quot;&gt;&lt;/welcome-button&gt;</span><br><span class="line">&lt;/div&gt;</span><br><span class="line"></span><br><span class="line">Vue.component(&apos;welcome-button&apos;, &#123;</span><br><span class="line">  template: `</span><br><span class="line">    &lt;button v-on:click=&quot;$emit(&apos;welcome&apos;)&quot;&gt; // 3、4</span><br><span class="line">      Click me to be welcomed</span><br><span class="line">    &lt;/button&gt;</span><br><span class="line">  `</span><br><span class="line">&#125;)</span><br><span class="line">new Vue(&#123;</span><br><span class="line">  el: &apos;#emit-example-simple&apos;,  // 1</span><br><span class="line">  methods: &#123;</span><br><span class="line">    sayHi: function () &#123;  // 6</span><br><span class="line">      alert(&apos;Hi!&apos;)</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure>
+
+<ol>
+<li>綁定 ‘#app’</li>
+<li>找到子組件</li>
+<li>執行子組件(@click)</li>
+<li>@click後觸發事件</li>
+<li>父組件綁定了事件</li>
+<li>執行事件</li>
+</ol>
+
+        </div>
+        
+        <div class="level is-size-7 is-uppercase">
+            <div class="level-start">
+                <div class="level-item">
+                    <span class="is-size-6 has-text-grey has-mr-7">#</span>
+                    <a class="has-link-grey -link" href="/ioioy77.github.io/tags/Vue/">Vue</a>, <a class="has-link-grey -link" href="/ioioy77.github.io/tags/w3HexSchool/">w3HexSchool</a>
+                </div>
+            </div>
+        </div>
+        
+        
+        
     </div>
 </div>
 
-    
-        
-<div class="card widget">
+<!-- 
+
+<div class="card">
     <div class="card-content">
-        <h3 class="tag is-link">
-        2019
-        </h3>
-        <div class="timeline">
-        
-            <article class="media">
-                
-                <div class="media-content">
-                    <div class="content">
-                        <time class="has-text-grey is-size-7 is-block is-uppercase" datetime="2019-10-11T06:34:17.000Z">2019-10-11</time>
-                        <a href="/ioioy77.github.io/2019/10/11/Hoisting/" class="title has-link-black-ter is-size-6 has-text-weight-normal">Hoisting</a>
-                        <div class="level article-meta is-mobile">
-                            <div class="level-left">
-                                
-                                <div class="level-item is-size-7 is-uppercase">
-                                <a class="has-link-grey -link" href="/ioioy77.github.io/categories/前端學習筆記/">前端學習筆記</a>
-                                </div>
-                                
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </article>
-        
+        <h3 class="menu-label has-text-centered">喜歡這篇文章嗎? 贊助一下作者吧!</h3>
+        <div class="buttons is-centered">
+            
         </div>
     </div>
 </div>
+ -->
 
-    
 
-    
 <div class="card card-transparent">
-    <nav class="pagination is-centered" role="navigation" aria-label="pagination">
-        <div class="pagination-previous">
-            <a class="is-flex-grow has-text-black-ter" href="/ioioy77.github.io/archives/">上一頁</a>
+    <div class="level post-navigation is-flex-wrap is-mobile">
+        
+        
+        <div class="level-end">
+            <a class="level level-item has-link-grey  article-nav-next" href="/ioioy77.github.io/2020/04/11/Vue Component Registration/">
+                <span class="level-item">Vue Component Registration</span>
+                <i class="level-item fas fa-chevron-right"></i>
+            </a>
         </div>
-        <div class="pagination-next is-invisible is-hidden-mobile">
-            <a class="is-flex-grow has-text-black-ter" href="/ioioy77.github.io/archives/page/3/">下一頁</a>
-        </div>
-        <ul class="pagination-list is-hidden-mobile">
-            
-            <li><a class="pagination-link has-text-black-ter" href="/ioioy77.github.io/archives/">1</a></li>
-            
-            <li><a class="pagination-link is-current" href="/ioioy77.github.io/archives/page/2/">2</a></li>
-            
-        </ul>
-    </nav>
+        
+    </div>
 </div>
+
+
 </div>
                 
 
@@ -697,7 +741,7 @@
             <div class="level-start has-text-centered-mobile">
                 <a class="footer-logo is-block has-mb-6" href="/ioioy77.github.io/">
                 
-                    <img src="/ioioy77.github.io/images/logo.svg" alt="Qing" height="28">
+                    <img src="/ioioy77.github.io/images/logo.svg" alt="Vue Component Props" height="28">
                 
                 </a>
                 <p class="is-size-7">
